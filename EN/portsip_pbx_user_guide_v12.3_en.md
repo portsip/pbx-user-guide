@@ -5,11 +5,11 @@
 
 Version: v12.3
 
-Date: Oct 22, 2020
+Date: Feb 19, 2021
 
 
 
-Copyright ©2020, PortSIP Solutions, Inc. All rights reserved. No part of this document may be reproduced, translated into another language or format, or transmitted in any form or by any means, electronic or mechanical, for any purpose, without the express written permission of PortSIP Solutions, Inc.
+Copyright ©2021, PortSIP Solutions, Inc. All rights reserved. No part of this document may be reproduced, translated into another language or format, or transmitted in any form or by any means, electronic or mechanical, for any purpose, without the express written permission of PortSIP Solutions, Inc.
 
 
 
@@ -219,9 +219,7 @@ Tasks that MUST be completed before installing PortSIP PBX:
 
 #### Installing a fresh PortSIP PBX v12.3
 
-+ To install the PortSIP PBX for Centos, please refer to: [Setup PortSIP PBX for CentOS](https://www.portsip.com/knowledge-base/setup-portsip-pbx-for-centos/)
-+ To install the PortSIP PBX for Ubuntu, please refer to: [Setup PortSIP PBX for Ubuntu](https://www.portsip.com/knowledge-base/setup-portsip-pbx-for-ubuntu/)
-+ To install the PortSIP PBX for Debian, please refer to: [Setup PortSIP PBX for Debian](https://www.portsip.com/knowledge-base/setup-portsip-pbx-for-debian/)
++ To install the PortSIP PBX for Linux, please refer to: [Setup PortSIP PBX for Linux](https://www.portsip.com/knowledge-base/setup-portsip-pbx-for-linux/)
 
 
 

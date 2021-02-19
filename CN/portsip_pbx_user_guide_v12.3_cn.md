@@ -6,11 +6,11 @@
 
 版本：v12.3
 
-日期：2020 年 10 月 22 日
+日期：2021 年 2 月 19 日
 
 
 
-© 2020 博瞻信息技术有限公司。保留所有权利。未经博瞻信息技术有限责任公司的明确书面许可，不得出于任何目的、以任何形式或任何方式（无论是电子方式还是实体方式）对本手册内容的任何部分进行复制或传播。依据法律，复制包括将内容翻译为其他语言或格式。 
+© 2021 博瞻信息技术有限公司。保留所有权利。未经博瞻信息技术有限责任公司的明确书面许可，不得出于任何目的、以任何形式或任何方式（无论是电子方式还是实体方式）对本手册内容的任何部分进行复制或传播。依据法律，复制包括将内容翻译为其他语言或格式。 
 
 
 
@@ -207,9 +207,7 @@ PortSIP PBX 可以在没有域名的机器上运行，但是我们推荐使用�
 
 #### **全新安装 PortSIP PBX v12.3**
 
-- 如需安装 PortSIP PBX for Centos，请参考：[安装 PortSIP PBX for CentOS](https://www.portsip.com/knowledge-base/setup-portsip-pbx-for-centos/)
-- 如需安装 PortSIP PBX for Ubuntu，请参考：[安装 PortSIP PBX for Ubuntu](https://www.portsip.com/knowledge-base/setup-portsip-pbx-for-ubuntu/)
-- 如需安装 PortSIP PBX for Debian，请参考：[安装 PortSIP PBX for Debian](https://www.portsip.com/knowledge-base/setup-portsip-pbx-for-debian/)
+- 如需安装 PortSIP PBX for Linux，请参考：[安装 PortSIP PBX for Linux](http://www.portsip.cn/knowledge-base/setup-portsip-pbx-v12-linux/)
 
 
 
