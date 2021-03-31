@@ -171,7 +171,7 @@ This chapter provides the instructions for installing the PortSIP PBX on Windows
 
 The latest free edition of PortSIP PBX could always be found and downloaded at [PortSIP Website]([https://www.portsip.com](https://www.portsip.com/)). It’s available for both 64-bit Windows and Linux, but not for 32-bit version.
 
-The free edition of PortSIP PBX offers a maximum of 3 simultaneous calls and 10 extension registrations. If you require more simultaneous calls/extensions, please refer to [License Section](#11.9 License) for more details.
+The free edition of PortSIP PBX offers a maximum of 3 simultaneous calls and 10 extension registrations. If you require more simultaneous calls/extensions, please refer to [License Section](#11.10 License) for more details.
 
 You will get the installer after download completed.
 
@@ -332,7 +332,7 @@ If your current installation **is v12.0/v12.1,** you can't upgrade it to v12.4 d
 
 If your current installation **is v12.2.x or v12.3.0, v12.3.1,** you can't upgrade it to v12.4 directly, you have to upgrade to v12.3.2 first. Please follow up below steps to upgrade:
 
-1. Download [PortSIP PBX v12.3.2 installer for Windows](http://www.portsip.cn/downloads/pbx/v12/portsip-pbx-12.3.2.796.exe) 
+1. Download [PortSIP PBX v12.3.2 installer for Windows](https://www.portsip.com/downloads/pbx/v12/portsip-pbx-12.3.2.796.exe) 
 2. Double click it to install.
 
 
@@ -630,11 +630,13 @@ First of all, prepare the certificate files.
 
 + You have to generate the certificate files by yourself if you have not purchased trusted certificates from a trusted third-party certificate provider(for example, versign, thawte, digicert). Please download the certificate file tool from [PortSIP website](https://www.portsip.com/downloads/apps/PortCertMaker.exe) (or run *PortCertMaker.exe* in the installation path of PBX), enter your "**PBX Web domain**" which you entered in the step 1 of "**Setup Wizard**". Once clicked “**Generate**” button, certificate files will be generated automatically.
 
-+ The certificates include three files (assume your SIP domain is portsip.io):
++ The certificates include three files (assume your "Web Domain" is mypbx.com):
   domain_key_mypbx.com.pem
+  
   domain_cert_mypbx.com.pem
-  root_cert_mypbx.com.pem
 
+  root_cert_mypbx.com.pem
+  
 + Rename **domain_key_mypbx.com.pem** to **portsip.key**, rename **domain_cert_mypbx.com.pem** to **portsip.crt**
   
   
