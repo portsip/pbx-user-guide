@@ -55,7 +55,7 @@ This guide is designed to assist administrators deploying PortSIP products in a 
 
 PortSIP PBX (also known as **PortPBX**, **PortSIP UC Server**) is a software-based Unified Communications system for Windows and Linux that works with SIP standard-based IP Phones, Softphones, SIP Trunks and VoIP Gateways to provide a complete PBX solution – without the inflated cost and management headaches of an "**antiquated**" PBX. The SIP PBX supports not only all traditional PBX features, but also includes many new mobility and productivity features. 
 
-Calls are sent as data packets over the computer data network instead of the traditional phone network. Phones share the network with computers so no separate phone wiring is required. With the use of a VoIP Provider, SIP Trunking, you can connect existing phone lines to the PortSIP PBX to make and receive phone calls via a regular PSTN line. You can also use a VoIP Provider, which removes the requirement for a gateway. PortSIP PBX interoperates with standard SIP softphones, IP phones or smartphones, and provides internal call switching.
+Calls are sent as data packets over the computer data network instead of the traditional phone network. Phones share the network with computers so no separate phone wiring is required. With the use of a VoIP Provider, SIP Trunk, you can connect existing phone lines to the PortSIP PBX to make and receive phone calls via a regular PSTN line. You can also use a VoIP Provider, which removes the requirement for a gateway. PortSIP PBX interoperates with standard SIP softphones, IP phones or smartphones, and provides internal call switching.
 
 
 
@@ -69,7 +69,6 @@ Deploying PortSIP PBX in a Linux environment requires planning and knowledge of 
 
 **A popular Linux distribution:** 
 
-+ Redhat RHEL (64-bit)
 + CentOS 7.6 higher (64-bit), doesn't support 8.x , 7.9 recommended
 + Debian 9.5 higher (64-bit)
 +  Ubuntu 16.04 or higher (64-bit)
@@ -113,9 +112,6 @@ To build high-availability communication solution to help clients reducing cost 
 +  Google Could 
 +  Digital Ocean
 +  UCloud
-+  Alibaba Cloud
-+ Tencent Cloud
-+ Huawei Clould
 
 
 
@@ -136,7 +132,7 @@ Depending on the key features listed above, PortSIP PBX is able to run on PCs an
 
 #### Other Requirements
 
-+ Latest Firefox, Google Chrome
++ Latest Firefox, Google Chrome, Edge browser
 + Microsoft .NET Framework version 4.5 or higher
 +  Knowledge of Linux and Linux Internet administration
 +  Knowledge of Windows and Windows Internet administration
@@ -175,7 +171,7 @@ This chapter provides the instructions for installing the PortSIP PBX on Windows
 
 The latest free edition of PortSIP PBX could always be found and downloaded at [PortSIP Website]([https://www.portsip.com](https://www.portsip.com/)). It’s available for both 64-bit Windows and Linux, but not for 32-bit version.
 
-The free edition of PortSIP PBX offers a maximum of 3 simultaneous calls and 10 extensions (users). If you require more simultaneous calls/extensions, please refer to [License Section](#11.9 License) for more details.
+The free edition of PortSIP PBX offers a maximum of 3 simultaneous calls and 10 extension registrations. If you require more simultaneous calls/extensions, please refer to [License Section](#11.9 License) for more details.
 
 You will get the installer after download completed.
 
@@ -322,9 +318,9 @@ You also need to open the port that you are using for adding new transport:
 
 
 
-### 2.4 Preparing for upgrading to 12.4 from old version
+### 2.4 Preparing for upgrading to 12.4 from old versions on Windows
 
-#### Windows
+If your installation is PortSIP PBX Linux edition, please ignore this section 2.4.
 
 **Upgrade from v12.0/12.1**
 
@@ -382,7 +378,7 @@ PortSIP PBX listens on 8887 port for providing HTTPS portal to access the PBX Ma
 
 Assume your server IP is 172.217.14.16, you should open this URL: https://172.217.14.16:8887 by your browser. Note: Chrome and Firefox is recommended. Please do not use IE.
 
-For HTTPS portal default usage of the self-signed SSL certificate will cause the browser popup SSL certificate security warning.
+For HTTPS portal default usage of the self-signed SSL certificate will cause the browser popups SSL certificate security warning.
 
 To avoid SSL certificate warning, you will need to purchase a Signed Certificate (which is an authorized certificate issued by trustworthy certificate authority) to replace the self-signed one. To do this, please:
 
@@ -391,7 +387,7 @@ To avoid SSL certificate warning, you will need to purchase a Signed Certificate
 + After you have obtained the SSL certificate, rename the certificate to **portsip.crt**
 + On Linux, copy the **portsip.crt** and **portsip.key** to */var/lib/portsip/certificates/* to replace the existing **portsip.crt** and **portsip.key**
 + On Windows copy the **portsip.crt** and **portsip.key** to below path: *C:\ProgramData\PortSIP\certificates*\ to replace the existing **portsip.crt** and **portsip.key**
-+ Restart the PBX, for Linux, perform "**sudo docker restart portsip-pbx**", for Windows, just restart the Windows server.
++ Restart the PBX: for Linux, perform "**sudo docker restart portsip-pbx**", for Windows, just restart the Windows server.
 + Now you can sign in PortSIP PBX Management Console by URL https://mypbx.com:8887
 
 Note: You may also obtain SSL certificate from [Let’s Encrypt](https://letsencrypt.org/) for free.
@@ -420,7 +416,7 @@ After successful installation of PortSIP PBX with setup wizard, all you need is 
 The PortSIP PBX configuration wizard will guide you through a number of essential tasks to get your system up and running.
 PortSIP PBX listens on 8888 port for providing HTTP portal to access the PBX Management Console, and listens on 8887 port for providing HTTPS portal. More details please read the [2.6 section](#2.6 Avoid HTTPS Certificate Security Warnings). 
 
-+ Access the PBX Management Console by visiting http://172.217.14.16:8888 or http://mypbx.com:888 if you resolved your PBX web domain to PBX IP. (**Note**, don't use the IE browser)
++ Access the PBX Management Console by visiting http://172.217.14.16:8888 or http://mypbx.com:8888 if you resolved your PBX web domain to PBX IP.
 + Enter the Username and Password (defaulted as ”**admin**” for both) and click the “**Sign in**” button. Note that both the Username and Password are case sensitive. The “**Setup Wizard**” will be displayed which will guide you through the initial configuration step by step
 
 You may change the default Username and Password for "**admin**" by navigating to "**Profile**" > "**General**" in PortSIP PBX Management Console.
@@ -439,11 +435,11 @@ Assuming that PortSIP PBX is deployed in LAN with Internet connection, the serve
 
 **Step 1:**
 
-If you want to use the WebRTC client with PortSIP PBX, you must set up the "**Web Domain**" here, and have a SSL certificate of this "**Web Domain**" since the browser is requires a trusted certificates otherwise it will block the WebRTC Client. In case we use the mypbx.com.
+If you want to use the WebRTC client with PortSIP PBX, you must set up the "**Web Domain**" here, and prepare a SSL certificate of this "**Web Domain**" since the browser is requires a trusted certificates otherwise it will block the **WebRTC Client**. In case we use the **mypbx.com**.
 
 Enter the Public IPv4 if you have a **static public IP** of your LAN. Do not enter the Public IPv4 if your public IP is dynamic.
 
-**Note the loopback interface (127.0.0.1) is unacceptable.** Only the static IP for LAN where the PBX is located is allowed (do not use DHCP dynamic IP). This private IP must be reachable by your SIP client.
+**Note: the loopback interface (127.0.0.1) is unacceptable.** Only the static IP for LAN where the PBX is located is allowed (do not use DHCP dynamic IP). This private IP must be reachable by your SIP client.
 
 The IP address entered here is the SIP server address for PBX. It is required when a SIP client or SIP IP phone registers to PortSIP PBX.
 
@@ -569,8 +565,6 @@ In this page we can have an overview of the PBX statistics:
 
 
 
-
-
 ![services](..\images\services.png)
 
 
@@ -645,8 +639,9 @@ First of all, prepare the certificate files.
   
   
   
+
 You can also follow below steps if you would like to purchase certificate files from a trusted third-party provider (assume purchased certificate for **mypbx.com**):
-  
+
 + Generate the CSR file and private key file according to provider’s guide, and keep the files. If you have set the password when generating the private key file, remember it for future use;
   + Rename the private key file as **portsip.key**
   + Submit the CRS file to provider, and download the certificate files after your certificates approved. This step will end up with two files: **Intermediate CA certificate** and **SSL certificate**
@@ -1534,7 +1529,7 @@ To add a Call Queue, select menu “**Call Manager > Call Queue**”  and click 
 
 #### Configuring Queue Agents (members)
 
-By clicking the “**Members**” tab, you can select the agents for the call queue.
+By clicking the “**Members**” tab, you can select the agents for the call queue, the queue manager will never receive calls from the queue.
 
 
 
@@ -1551,6 +1546,44 @@ If an extension is set as queue manager, PBX will not assign the call to him/her
 #### Blacklist
 
 You can add one or more numbers to the blacklist of the call queue. When one of these numbers starts a call to the queue, a special prompt will be played to them. For more details please refer to [Configuring Queue Options](#Configuring Queue Options).
+
+
+
+#### **Lost calls**
+
+You can query the lost calls of the queue in this tab, for example, if the agents are busy and the caller hang up the call, then the call will be listed here.
+
+
+
+#### Set agent status to ready or not ready by REST API
+
+When an agent is registered to PBX, by default his status is ready, that mean the he is available to receive calls. If agent away, he can use the REST API to set his status to "**Not ready"** then queue will don't send call to him.
+
+You can find the REST API details here: https://www.portsip.com/pbx-rest-api/v12.2/call_queue.html#member_state_update
+
+The REST API POST request body likes below:
+
+```
+{
+  "extension_number" : "8000",
+  "status" : false,
+  "extension_id" : 244385281237716992
+}
+```
+
+The **extension_id** is the id of extension which be the queue agents(members).
+
+The **extension_number** is the queue number.
+
+
+
+#### Set agent status to ready or not ready by dial code
+
+The queue agent can dial a code to set his status to ready or not ready.
+
+For example, extension 102 is the member of queue 8000, 102 can dial \*001\*8000 to set his status to **ready**,  and use \*002*8000 to set status to **Not ready.**
+
+If extension 102 want to set status to **ready** for all queues, just dial \*001\*, set status to **Not ready** for all queues, dial \*002\*.
 
 
 
@@ -1874,15 +1907,35 @@ Click the “**Apply**” button, the call report will be sent to the specified 
 
 PortSIP PBX has inbuilt WebRTC client which allows you make & receive calls in the browser, support send IM, file, picture, picture clip, audio and video message, support conferencing and sharing screen.
 
-You can open the PortSIP inbuilt WebRTC client by click "**WebRTC **" menu.
+Before starting to use WebRTC Client, please ensure you have been read these sections carefully:
+
+- The [2.6 Avoid HTTPS Certificate Security Warnings](#2.6 Avoid HTTPS Certificate Security Warnings). 
+
+- The [3.1 Deploying PortSIP PBX in LAN](#3.1 Deploying PortSIP PBX in LAN). 
+
+- The [5.1 Add TLS/WSS transport](#5.1 Add TLS/WSS transport). 
+
+  
+
+If you used a trusted SSL certificates, please click left menu node "**WebRTC **", the browser will opens WebRTC client in a new browser tab (Note: Chrome, new Edge, Firefox are recommended), you will just need to enter the extension number and password to sign in.
+
+ Note: Chrome, new Edge, Firefox are recommended, and up to date.
 
 
 
+**If you used the self-signed SSL certificates, please follow below steps:**
+
+**step 1:**  open https://192.168.0.16:5065/ in a browser, the browser will warning the connection is unsafe, see below screenshot, please just click the "**Proceed to 192.168.0.16(unsafe)**". (Note: the 5065 port is the WSS transport that you added in the PortSIP PBX, if you used another port for the WSS transport, you should change the port here: https://192.168.0.16:wssport/ )
 
 
 
+![image-20210331113030068](..\images\webrtc_1.png)
+
+**Step 2:**  please click left menu node "**WebRTC **", the browser will opens WebRTC client in a new browser tab, the browser will raises warning again, please just click the "**Proceed to 192.168.0.16(unsafe)**". then you will just need to enter the extension number and password to sign in.
 
 
+
+After signed in, you can use the WebRTC client to make & receive calls.
 
 
 
@@ -2062,31 +2115,7 @@ If the boss’ extension is 101:
 
 
 
-### 11.2 SBC
-
-PortSIP includes the Session Border Controller (SBC) which can be used for the following reasons:
-
-+ Resolve issues of NAT Traversal at both the remote and the PBX location.
-+ Simplify Firewall configuration at both the remote and the PBX location.
-+ Overcome difficulties with ISPs that block VoIP Traffic based on port numbers.
-+ Allows VoIP-over-WiFi in some restricted locations, such as Hotel rooms.
-+ **“Fixes”** Firewalls that cannot handle VoIP traffic correctly or which are very problematic to configure correctly, such as Microsoft ISA Server.
-
-
-
-![sbc_1](..\images\sbc_1.png)
-
-
-
-Currently the SBC feature only supports UDP transport.
-
-Once the SBC is enabled and the SIP Signaling port and STUN port are specified, you can block all other ports in your firewall and remain the SIP Signaling port, STUN port and STUN port + 1 open as the client IP phones, apps only need these three ports to make & receive calls.
-
-**Note**: The STUN port + 1 indicates when the STUN port is 3478, the STUN port + 1 means 3479.
-
-
-
-### 11.3 CTI
+### 11.2 CTI
 
 The PortSIP PBX support advanced CTI features, for example, silence monitoring, whisper, barge-in, barge-break.
 
@@ -2121,7 +2150,7 @@ We would like to let the extension 101 and 102 to silence monitor other extensio
 
 
 
-### 11.4 Managing Media Server
+### 11.3 Managing Media Server
 
 The media server is used for handling NAT scenarios and acts as a relay gateway for RTP sessions of calls.
 With the PortSIP PBX successfully installed, a built-in media server has been enabled by default. The RTP packet from VoIP Endpoint A will be routed to Endpoint B with both IP and Port translation during each call established.
@@ -2162,7 +2191,7 @@ Be careful about the Built-in Media server. If you disabled it and did not add a
 
 
 
-### 11.5 Managing Conference Server
+### 11.4 Managing Conference Server
 
 PortSIP PBX System provides multi-user conference features. Once the PBX successfully installed, a built-in conference server is enabled by default. You can create as many conferences as you like, as long as there still are free system resources (i.e. memory, CPU, bandwidth) left.
 
@@ -2341,7 +2370,7 @@ To do this, please go to “**Advanced > Backup**” menu, click “**Backup Sch
 
 ### 11.10 License
 
-Without a license, PortSIP PBX could work for up to 3 simultaneous calls. If you require more, you will need to purchase a license.
+Without a license, PortSIP PBX could work for up to 3 simultaneous calls and 10 extension registrations. If you require more, you will need to purchase a license.
 
 Feel free to contact sales@portsip.com to purchase the license.
 
@@ -2349,7 +2378,7 @@ Once you have received the license key, please click the menu “**Advanced > Li
 
 PortSIP PBX requires Internet connection to verify the license key periodically. Please ensure that your PBX server could be connected to Internet smoothly. If the license key verifications fails, the PBX will be downgraded to free version which only allow maximum of 3 simultaneous calls.
 
-Do not let others know your license key. If PortSIP PBX detects a second user, it will be forced into invalid and will downgrades to free version which only allow maximum of 3 simultaneous calls.
+Do not let others know your license key. If PortSIP PBX detects a second user, it will be forced into invalid and will downgrades to free version which only allow maximum of 3 simultaneous calls and 10 extensions registrations.
 
 Please contact PortSIP Support or reseller if you encountered any license key related issue.
 
@@ -2840,22 +2869,6 @@ In this deployment, when running the "**Setup Wizard**", in the step 1 you will 
 When the PBX is deployed in LAN, and yet it registers to a trunk that is located on Internet, the caller can make call from landline/mobile phone to the extension of PBX, and the extension can make call to a landline/mobile phone number.
 
 This scenario requires the PBX server has a public static IP. When running the "**Setup Wizard**", in the step 1 enter the "**Private IPv4**" and "**Public IPv4**". The public IPv4 is the static public IP of the PBX server.
-
-
-
-### 16.3 Deploying PortSIP PBX with SBC enabled
-
-If your PortSIP PBX server has the static public IP, and do not wish to expose the topology to the public, then we can enable the SBC inbuilt with PortSIP PBX.
-
-Please follow below steps to configure the SBC:
-
-+ Run "**Setup Wizard**". In the step 1, enter the private IPv4 and public IPV4
-+ Click menu "**Advanced > SBC**", select the "**Enabled SBC**", enter the port for "**SIP Signaling Port**" and "**STUN Port**" that you want to use or keep the default ports
-+ Click the "**Apply**" button
-
-Once the SBC is configured, you can setup your firewall to disable all ports of the PBX server except for the "**SIP Signaling port**" and "**STUN Port**", "**STUN Port +1**". For example, if you set the "**SIP Signaling Port**" to 5080, and the "**STUN Port**" to 3478, you will need open the 5080, 3478, 3479 ports on your firewall, and you can block the other ports in firewall.
-
-Now your client app / IP Phone may register to the PBX by sending the SIP message to the 5080 port.
 
 
 
