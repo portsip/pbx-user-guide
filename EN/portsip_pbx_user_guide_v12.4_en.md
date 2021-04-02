@@ -357,7 +357,27 @@ Please perform below commands to upgrade.
 > + The **IP_ADDRESS** is the IP address of your PBX server. In this case it is 66.175.222.20, you will need to change it by yourself, if your server is on public internet network, this IP should be the public IP.
 > + The **POSTGRES_PASSWORD** is used to specify the PortSIP DB password. In this case we will use 123456, you can change it by yourself. 
 
+
+
+**CentOS:**
+
 ```
+$ firewall-cmd --permanent --service=portsip-pbx --add-port=5060/udp --add-port=25000-34999/udp --add-port=5065/tcp
+$ docker stop -t 120 portsip-pbx
+$ docker rm -f portsip-pbx
+$ cd /var/lib/portsip
+$ sudo rm -rf *.bak
+$ docker pull portsip/pbx:12
+$ docker container run -d --name portsip-pbx --restart=always --cap-add=SYS_PTRACE --network=host -v /var/lib/portsip:/var/lib/portsip -v /etc/localtime:/etc/localtime:ro -e POSTGRES_PASSWORD="123456" -e POSTGRES_LISTEN_ADDRESSES="*" -e IP_ADDRESS="66.175.222.20" portsip/pbx:12
+```
+
+
+
+**Debian / Ubuntu**
+
+```
+$ ufw allow 5060, 25000:34999/udp
+$ ufw allow 5065/tcp
 $ docker stop -t 120 portsip-pbx
 $ docker rm -f portsip-pbx
 $ cd /var/lib/portsip
@@ -388,28 +408,10 @@ To avoid SSL certificate warning, you will need to purchase a Signed Certificate
 
 + After you have obtained the SSL certificate, rename the certificate to **portsip.crt**
 
-+ On Linux, copy the **portsip.crt** and **portsip.key** to */var/lib/portsip/certificates/* to replace the existing **portsip.crt** and **portsip.key**
 
-+ On Windows copy the **portsip.crt** and **portsip.key** to below path: *C:\ProgramData\PortSIP\certificates*\ to replace the existing **portsip.crt** and **portsip.key**
 
-  
 
-> **Important: after replaced the certificate files, please perform below commands to restart server.**
-
-**Linux:** 
-
-```
-$ sudo docker -t 120 stop portsip-pbx
-$ sudo docker start portsip-pbx
-```
-
-**Windows:**
-
-```
-Restart the PortSIP PBX server directly。
-```
-
-+ Now you can sign in PortSIP PBX Management Console by URL https://mypbx.com:8887
+Now place the **portsip.crt** and **portsip.key** files in a folder we will use it  later.
 
 Note: You may also obtain SSL certificate from [Let’s Encrypt](https://letsencrypt.org/) for free.
 
@@ -456,7 +458,7 @@ Assuming that PortSIP PBX is deployed in LAN with Internet connection, the serve
 
 **Step 1:**
 
-If you want to use the WebRTC client with PortSIP PBX, you must set up the "**Web Domain**" here, and prepare a SSL certificate of this "**Web Domain**" since the browser is requires a trusted certificates otherwise it will block the **WebRTC Client**. In case we use the **mypbx.com**.
+ If you want to use the **HTTPS** with **PortSIP PBX Web management console** and **WebRTC client**,, you must set up the "**Web Domain**" here, and prepare a SSL certificate for this "**Web Domain**" since the browser is requires a trusted certificates otherwise it will block the **HTTPS** and **WebRTC Client**. In case we use the **mypbx.com**.  You will also need resolve your  Web domain **mypbx.com **to your PBX server IP.
 
 Enter the Public IPv4 if you have a **static public IP** of your LAN. Do not enter the Public IPv4 if your public IP is dynamic.
 
@@ -497,11 +499,9 @@ After setting up the SIP domain (in this case it is portsip.io), the extension S
 
 **Step 4:**
 
- If you want to use the WebRTC client, you must upload the SSL certificates file here, bye default the PBX listen 5065 port for WSS transport which communicates with the WebRTC client.
+ If you want to use the **HTTPS** with **PortSIP PBX Web management console** and **WebRTC client**, you **must** upload the SSL certificates file here for **WSS transport**, by default the PBX listens **5065** port for WSS transport which communicates with the WebRTC client.
 
-**Note**: You can use the self-signed certificates here but it will cause browser pop ups the warning when you open the WebRTC client. More details please read the [2.6 section](#2.6 Avoid HTTPS Certificate Security Warnings). 
-
-
+**Note**: You can use the self-signed certificates here but it will cause browser pop ups the warning when you open the WebRTC client, you can purchase a trusted certificate to avoid the browser blocking and warning. More details please read the [2.6 section](#2.6 Avoid HTTPS Certificate Security Warnings). 
 
 **Step 5:** 
 
@@ -510,6 +510,29 @@ Setup mail server. You may set up the SMTP mail server in this step for receivin
 **Note:** This step is not mandatory. You may choose to setup SMTP server whenever necessary.
 
 By clicking the “**Apply**” button, you have now completed the initial configuration of PortSIP PBX. You will be redirected to Management Console.
+
+
+
+**Step 6**
+
+After successfully completed the setup wizard, you have to restart the PortSIP PBX in order to make the SSL certificates work.
+
+**Linux:** 
+
+```
+$ sudo docker -t 120 stop portsip-pbx
+$ sudo docker start portsip-pbx
+```
+
+**Windows:**
+
+Restart the Windows Server directly.
+
+After restarted,  you can sign in PortSIP PBX Management Console by URL https://mypbx.com:8887
+
+If you don't use trusted certificate files for the WSS transport, you will get the browser warning and blocked when you use WebRTC client.
+
+Please refer to  [2.6 Avoid HTTPS Certificate Security Warnings](#2.6 Avoid HTTPS Certificate Security Warnings) to learn how to avoid the browser warning and blocking.
 
 
 
@@ -645,7 +668,7 @@ To add UDP/TCP/WS transport:
 
 In order to use the WebRTC Client, we must add the TLS/WSS transport with self-signed certificate.
 
-If you already uploaded the SSL certificate files in the  step 4 of "**Section 3.1**", then the WSS transport is already added. 
+If you already uploaded the SSL certificate files in the  **step 4** of "**Section 3.1**", then the WSS transport is already added. 
 
 First of all, prepare the certificate files.
 
@@ -691,11 +714,9 @@ $ sudo docker start portsip-pbx
 
 **Windows:**
 
-```
-Restart the PortSIP PBX server directly.
-```
+Restart the Windows Server directly.
 
-+ Now you can sign in PortSIP PBX Management Console by URL https://mypbx.com:8887
+After restarted,  you can sign in PortSIP PBX Management Console by URL https://mypbx.com:8887
 
 If you don't use trusted certificate files for the WSS transport, you will get the browser warning and blocked when you use WebRTC client.
 

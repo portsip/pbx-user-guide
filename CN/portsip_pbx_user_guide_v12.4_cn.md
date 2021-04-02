@@ -338,7 +338,10 @@ PortSIP PBX 的系统服务将在安装成功完成后自动运行，以及在�
 > + **IP_ADDRESS** 是指您的 PBX 服务器的IP地址. 在本例中这个地址是 66.175.222.20, 您需要将其改为你的 PBX 服务器地址.
 > + **POSTGRES_PASSWORD** 是用来指定 PBX 所用的数据库密码，你可以自行修改。
 
+**CentOS:**
+
 ```
+$ firewall-cmd --permanent --service=portsip-pbx --add-port=5060/udp --add-port=25000-34999/udp --add-port=5065/tcp
 $ docker stop -t 120 portsip-pbx
 $ docker rm -f portsip-pbx
 $ cd /var/lib/portsip
@@ -349,44 +352,43 @@ $ docker container run -d --name portsip-pbx --restart=always --cap-add=SYS_PTRA
 
 
 
-### 2.6 消除 HTTPS 证书安全警告信息
+**Debian / Ubuntu**
+
+```
+$ ufw allow 5060, 25000:34999/udp
+$ ufw allow 5065/tcp
+$ docker stop -t 120 portsip-pbx
+$ docker rm -f portsip-pbx
+$ cd /var/lib/portsip
+$ sudo rm -rf *.bak
+$ docker pull portsip/pbx:12
+$ docker container run -d --name portsip-pbx --restart=always --cap-add=SYS_PTRACE --network=host -v /var/lib/portsip:/var/lib/portsip -v /etc/localtime:/etc/localtime:ro -e POSTGRES_PASSWORD="123456" -e POSTGRES_LISTEN_ADDRESSES="*" -e IP_ADDRESS="66.175.222.20" portsip/pbx:12
+```
+
+
+
+### 2.6 使用受信任的证书消除浏览器警告
 
 PortSIP PBX 在 8888 端口监听并提供 HTTP 服务，以便访问 PBX 管理控制台。
 
 假定将 PortSIP PBX 安装在 IP 地址为 172.217.14.16 的服务器上，那么您可以使用 http://172.217.14.16:8888 来访问 PortSIP PBX的WEB 管理界面。注意：推荐使用 Chrome 、 Firefox和最新的 Edge 浏览器，请勿使用 IE 浏览器。
 
-PortSIP PBX 在 8887 端口监听并提供 HTTPS 服务。假定将 PortSIP PBX 安装在 IP 地址为 172.217.14.16 的服务器上，那么您可以使用 https://172.217.14.16:8887 来访问 PortSIP PBX的 WEB 管理界面。注意：推荐使用 Chrome 和 Firefox 浏览器，请勿使用 IE 浏览器。
+PortSIP PBX 在 8887 端口监听并提供 HTTPS 服务。假定将 PortSIP PBX 安装在 IP 地址为 172.217.14.16 的服务器上，那么您可以使用 https://172.217.14.16:8887 来访问 PortSIP PBX的 WEB 管理界面。注意：推荐使用 Chrome 、Firefox 和 Edge 浏览器，请勿使用 IE 浏览器。
 
 默认情况下，HTTPS 使用自签名的 SSL 证书，将导致浏览器弹出 SSL 证书安全警告信息。 
 
-要避免 SSL 证书警告信息，您需要购买收信人的证书（由可信任的证书机构发放的授权证书），替 换自签名证书。要执行该操作，请遵循以下步骤： 
+要避免 SSL 证书警告信息，您需要购买受信任的证书（由受信任的证书机构发放的授权证书），替 换自签名证书。要执行该操作，请遵循以下步骤： 
 
-+ 联系 Thawte 或者 Versign 或其他证书提供商，购买 SSL 证书。将私有密钥保存为 **portsip.key**。
+- 将您要使用的 PBX Web domain 解析到您的 PBX 服务器IP。
 
-+ 在获取到 SSL 证书后，将其重命名为 **portsip.crt**。 
+- 联系 Thawte、Digicent 或者 Versign 等证书提供商，购买 SSL 证书，将私有密钥保存为 **portsip.key**。
 
-+ 在 Linux 上， 将 **portsip.key** 和 **portsip.crt** 复 制 到 PortSIP PBX 安 装 路 径 (*/var/lib/portsip/certificates*) 以替换现有 **portsip.key** 和 **portsip.crt**。 
+- 在获取到 SSL 证书后，将其重命名为 **portsip.crt**。 
 
-+ 在 Windows 上，将 portsip.key 和 portsip.crt 复制到 PortSIP PBX 安装路径*C:\ProgramData\PortSIP\certificates*，替换现有 **portsip.key** 和 **portsip.crt**。 
-
-  
-
-  > **重要提示：替换完证书后，请执行如下操作对服务器进行重启.**
-
-  **Linux:** 
-
-  ```
-  $ sudo docker -t 120 stop portsip-pbx
-  $ sudo docker start portsip-pbx
-  ```
-
-  **Windows:**
-
-  直接重启 Windows 服务器。
+- 将上述证书文件保存好，我们将在后面使用。
 
   
 
-+ 重启完成后，打开 https://mypbx.com:8887以访问 PortSIP PBX 管理控制台。
 
 注意：您还可以从 [Let’s Encrypt](https://letsencrypt.org/) 免费获取受信任的 SSL 证书。
 
@@ -398,7 +400,7 @@ PortSIP PBX 在 8887 端口监听并提供 HTTPS 服务。假定将 PortSIP PBX 
 
 ------
 
-PortSIP PBX 包含多个组件，例如 Call Manager、Media Server、REST API Gateway、File Server、WebRTC Gateway、Database、Call Queue、Conference、Voicemail、MOH、Auto Attendant、Instant Messaging 以及 Presence Server。以下是其架构级工作原理示意图。
+PortSIP PBX 包含多个组件，例如 Call Manager、Media Server、REST API Gateway、File Server、Database、Call Queue、Conference、Voicemail、MOH、Auto Attendant、Instant Messaging 以及 Presence Server。以下是其架构工作原理示意图。
 
 
 
@@ -406,7 +408,7 @@ PortSIP PBX 包含多个组件，例如 Call Manager、Media Server、REST API G
 
 
 
-PortSIP PBX 支持多种方式部署以适应不同的应用场景。支持在局域网或者 Internet 上的部署， 支持各种虚拟化平台，支持多种主流云平台比如 AZURE、AWS、阿里云、UCloud、Linode， Digital Ocean、腾讯云等。 
+PortSIP PBX 支持多种方式部署以适应不同的应用场景。支持在局域网或者 Internet 上的部署， 支持各种虚拟化平台，支持多种主流云平台比如 AZURE、AWS、GCE、阿里云、UCloud、Linode， Digital Ocean、腾讯云、华为云等。 
 PortSIP PBX 成功安装后，只需要简单地点击几下鼠标就能够完成必要的设置，让 PortSIP PBX 正常运行。
 
 
@@ -435,7 +437,7 @@ PortSIP PBX 监听 8888 端口并提供 HTTP 服务，并监听 8887 端口以�
 
 **第 1 步：**
 
-要使用 WebRTC 客户端功能，您必须设置在这一步设置 "**Web Domain**" , 并准备好这个 "Web Domain" 的 SSL 证书文件， 因为浏览器要求设置受信任的 SSL 证书否则会提示安全警告，阻止使用 WebRTC 客户端。
+要使用 HTTPS 访问 PBX 管理界面和 WebRTC 客户端功能，您必须设置在这一步设置 "**Web Domain**" , 准备好这个 "**Web Domain**" 的 SSL 证书文件， 因为浏览器要求受信任的 SSL 证书否则会提示安全警告，并阻止使用 WebRTC 客户端。详情见前面 [2.6 使用受信任的证书消除浏览器警告。](#2.6 使用受信任的证书消除浏览器警告)
 
 如果您的PBX服务器拥有的**静态公网 IP 地址**，请将其输入到Public IPv4。如果您的公网 IP 地址是动态 IP，请勿在Public IPv4 内输入信息。
 
@@ -476,9 +478,7 @@ PortSIP PBX 监听 8888 端口并提供 HTTP 服务，并监听 8887 端口以�
 
 **第4步:**
 
-如果想要让 WebRTC 客户端工作正常，我们必须在这一步上传 SSL 证书并设置 WSS 传输协议。默认情况下，PortSIP PBX 使用 5065端口来监听 WSS。 
-
-**提示**: 您可以使用自签名证书但是这会导致浏览器打开 WebRTC 客户端的时候弹出警告消息。更多的细节请见 [2.6 消除 HTTPS 证书安全警告信息](#2.6 消除 HTTPS 证书安全警告信息)。
+要使用 HTTPS 访问 PBX 管理界面和 WebRTC 客户端功能，您必须在向导的第一步设置 "**Web Domain**" , 并在本步骤上传准备好的 SSL 证书文件给 WSS 传输协议。 默认情况下，PortSIP PBX 使用 5065 端口为 WebRTC 客户端提供服务。详情见前面 [2.6 使用受信任的证书消除浏览器警告](#2.6 使用受信任的证书消除浏览器警告)
 
 
 
@@ -488,6 +488,29 @@ PortSIP PBX 监听 8888 端口并提供 HTTP 服务，并监听 8887 端口以�
 
 **注意：**该步不是必填项，您可以根据需要进行设置。您可随时选择设置 SMTP 服务器。 
 点击“**保存**”按钮，就完成了 PortSIP PBX 的基本设置。然后，系统会自动跳转到管理控制台界面。
+
+
+
+**第 6 步：** 
+
+在成功完成设置向导之后，您需要重启 PortSIP PBX 使得 SSL 证书生效。
+
+**Linux:** 
+
+```
+$ sudo docker -t 120 stop portsip-pbx
+$ sudo docker start portsip-pbx
+```
+
+**Windows:**
+
+```
+直接重启 Windows 服务器。
+```
+
++ 现在您可以使用 https://mypbx.com:8887 来访问您的 PBX 管理界面。
+
+如果您使用的是自签名证书，那么浏览器会弹出警告并阻止您的访问，详情见前面 [2.6 使用受信任的证书消除浏览器警告](#2.6 使用受信任的证书消除浏览器警告)
 
 
 
@@ -661,7 +684,7 @@ PortSIP PBX 支持所有的主流传输协议来收发 SIP 消息，包括 UDP�
 
   
 
-> **重要提示：创建完 TLS/WSS 传输协议之后，请执行如下操作对服务器进行重启.**
+> **重要提示：创建完 TLS/WSS 传输协议之后，请执行如下操作对服务器进行重启以使得 SSL 证书生效。**
 
 **Linux:** 
 
@@ -676,7 +699,9 @@ $ sudo docker start portsip-pbx
 
 
 
-如果您创建 WSS Transport 的时候使用的是自签名证书, 在浏览器里打开 WebRTC 客户端的时候会遇到警告消息。详情请见：见 [2.6 消除 HTTPS 证书安全警告信息](#2.6 消除 HTTPS 证书安全警告信息). 
+现在您可以使用 https://mypbx.com:8887 来访问您的 PBX 管理界面。
+
+如果您使用的是自签名证书，那么浏览器会弹出警告并阻止您的访问，详情见前面 [2.6 使用受信任的证书消除浏览器警告](#2.6 使用受信任的证书消除浏览器警告)。
 
 
 
@@ -1886,19 +1911,19 @@ PortSIP PBX 允许管理员账户对租户及其分机用户的设置进行管�
 
 ## 第 8 章 WebRTC
 
-PortSIP PBX 内置集成了 WebRTC 客户端，可通过网页直接接听和拨打通话，发送和接收消息，并支持视频会议，屏幕共享以及富媒体通讯。
+PortSIP PBX 内置集成了 WebRTC 客户端，可通过网页直接接听和拨打通话，发送和接收消息，发送和接收文件，发送语音和视频消息，并支持视频会议，屏幕共享以及富媒体通讯。
 
 在使用 WebRTC 客户端之前，请确认您已经仔细过如下章节：
 
-- The [2.6 消除 HTTPS 证书安全警告信息](#2.6 消除 HTTPS 证书安全警告信息). 
+- [2.6 使用受信任的证书消除浏览器警告](#2.6 使用受信任的证书消除浏览器警告)
 
-- The [3.1 在局域网里部署 PortSIP PBX](#3.1 在局域网里部署 PortSIP PBX). 
+- [3.1 在局域网里部署 PortSIP PBX](#3.1 在局域网里部署 PortSIP PBX)
 
-- The [5.1 域名和传输协议](#5.1 域名和传输协议). 
+- [5.1 域名和传输协议](#5.1 域名和传输协议)
 
 
 
-如果您创建 WSS 传输协议的时候使用的是受信任的 SSL 证书，请直接点击左侧 "WebRTC" 菜单，浏览器将在新的 Tab 页打开 WebRTC 客户端，您只需输入用户名和密码即可登录使用。
+如果您创建 WSS 传输协议的时候使用的是受信任的 SSL 证书，请直接点击左侧 "**WebRTC**" 菜单，浏览器将在新的 Tab 页打开 WebRTC 客户端，您只需输入用户名和密码即可登录使用。
 
  提示: 推荐使用 Chrome, Edge, Firefox等浏览器。
 
@@ -1911,6 +1936,8 @@ PortSIP PBX 内置集成了 WebRTC 客户端，可通过网页直接接听和拨
 ![webrtc_1](..\images\webrtc_1.png)
 
 **2**： 点击左侧的 "WebRTC" 菜单，浏览器将会在一个新的 Tab 页里打开WebRTC 客户端，浏览器会弹出警告信息提示连接不安全，请点击 "**Proceed to 192.168.0.16(unsafe)**"。然后在 WebRTC 客户端登录窗口输入用户名和密码即可使用。
+
+
 
 
 
