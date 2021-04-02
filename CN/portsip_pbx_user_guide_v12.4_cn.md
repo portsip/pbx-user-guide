@@ -344,7 +344,7 @@ $ docker rm -f portsip-pbx
 $ cd /var/lib/portsip
 $ sudo rm -rf *.bak
 $ docker pull portsip/pbx:12
-$ docker container run -d --name portsip-pbx --restart=always --cap-add=SYS_PTRACE --network=host -v /var/lib/portsip:/var/lib/portsip -e POSTGRES_PASSWORD="123456" -e POSTGRES_LISTEN_ADDRESSES="*" -e IP_ADDRESS="66.175.222.20" portsip/pbx:12
+$ docker container run -d --name portsip-pbx --restart=always --cap-add=SYS_PTRACE --network=host -v /var/lib/portsip:/var/lib/portsip -v /etc/localtime:/etc/localtime:ro -e POSTGRES_PASSWORD="123456" -e POSTGRES_LISTEN_ADDRESSES="*" -e IP_ADDRESS="66.175.222.20" portsip/pbx:12
 ```
 
 
@@ -362,13 +362,33 @@ PortSIP PBX 在 8887 端口监听并提供 HTTPS 服务。假定将 PortSIP PBX 
 要避免 SSL 证书警告信息，您需要购买收信人的证书（由可信任的证书机构发放的授权证书），替 换自签名证书。要执行该操作，请遵循以下步骤： 
 
 + 联系 Thawte 或者 Versign 或其他证书提供商，购买 SSL 证书。将私有密钥保存为 **portsip.key**。
-+ 在获取到 SSL 证书后，将其重命名为 **portsip.crt**。 
-+ 在 Linux 上， 将 **portsip.key** 和 **portsip.crt** 复 制 到 PortSIP PBX 安 装 路 径 (*/var/lib/portsip/certificates*) 以替换现有 **portsip.key** 和 **portsip.crt**。 
-+ 在 Windows 上，将 portsip.key 和 portsip.crt 复制到 PortSIP PBX 安装路径*C:\ProgramData\PortSIP\certificates*，替换现有 **portsip.key** 和 **portsip.crt**。 
-+ 重启 PortSIP PBX, Linux 下执行  "**sudo docker restart portsip-pbx**" 命令来重启，Windows 下直接重启服务器。
-+ 登录到 https://mypbx.com:8887，访问 PortSIP PBX 管理控制台。
 
-注意：您还可以从 [Let’s Encrypt](https://letsencrypt.org/) 免费获取受新人的 SSL 证书。
++ 在获取到 SSL 证书后，将其重命名为 **portsip.crt**。 
+
++ 在 Linux 上， 将 **portsip.key** 和 **portsip.crt** 复 制 到 PortSIP PBX 安 装 路 径 (*/var/lib/portsip/certificates*) 以替换现有 **portsip.key** 和 **portsip.crt**。 
+
++ 在 Windows 上，将 portsip.key 和 portsip.crt 复制到 PortSIP PBX 安装路径*C:\ProgramData\PortSIP\certificates*，替换现有 **portsip.key** 和 **portsip.crt**。 
+
+  
+
+  > **重要提示：替换完证书后，请执行如下操作对服务器进行重启.**
+
+  **Linux:** 
+
+  ```
+  $ sudo docker -t 120 stop portsip-pbx
+  $ sudo docker start portsip-pbx
+  ```
+
+  **Windows:**
+
+  直接重启 Windows 服务器。
+
+  
+
++ 重启完成后，打开 https://mypbx.com:8887以访问 PortSIP PBX 管理控制台。
+
+注意：您还可以从 [Let’s Encrypt](https://letsencrypt.org/) 免费获取受信任的 SSL 证书。
 
 
 
@@ -614,28 +634,47 @@ PortSIP PBX 支持所有的主流传输协议来收发 SIP 消息，包括 UDP�
   
   domain_key_mypbx.com.pem
   
-domain_cert_mypbx.com.pem
-  
-root_cert_mypbx.com.pem
-  
+
+​       domain_cert_mypbx.com.pem
+
+​        root_cert_mypbx.com.pem
+
   将 domain_key_mypbx.com.pem 重命名为 portsip.key，将 domain_cert_mypbx.com.pem 重命名为 portsip.crt.
+
   
-  
-  
+
 如果你需要从受信任的第三方证书证书提供商处购买证书，那么请按照如下步骤（假设为 mypbx.com 购买证书）： 
-  
+
   - 根据证书提供商的指示生成 CSR 文件和私有证书文件并保存。如果你在生成私有证书 的时候设置了密码，请记录下来。
+
   - 将私有证书文件重命名为 portsip.key。
+
   - 将 CSR 提交给证书提供商，在你的证书申请被通过之后，请从证书提供商处下载你的证书文件，证书文件通常有两个：Intermediate CA 证书 和 SSL 证书。
+
   - 用一个纯文本编辑器（不能用WORD）分别打开 Intermediate CA 证书 和 SSL 证书， 然后将 Intermediate CA 证书的全部内容复制后粘贴在 SSL 证书内容的后面，将合并后 的 SSL 证书文件另存为 portsip.crt。
-  
-    
   
 - 点击“**添加**”按钮，然后在“**传输协议**”窗口，在协议下拉框里选择 TLS 或者 WSS， TLS/WSS 传输协议的默认端口分别为 5063/5065。您也可以使用其他的端口，需要确保您所使用的端口没有被其他程序所占用。 
 
 - 点击证书文件后面的“**上传**”按钮选择域名证书文件： 为“**证书文件**”选择 “portsip.crt”，为“**私钥文件**”选择 “*portsip.key*”。
 
 - 点击“**确定**”按钮，完成设置。 
+
+  
+
+> **重要提示：创建完 TLS/WSS 传输协议之后，请执行如下操作对服务器进行重启.**
+
+**Linux:** 
+
+```
+$ sudo docker -t 120 stop portsip-pbx
+$ sudo docker start portsip-pbx
+```
+
+**Windows:**
+
+1. 重启 Windows 服务器。
+
+
 
 如果您创建 WSS Transport 的时候使用的是自签名证书, 在浏览器里打开 WebRTC 客户端的时候会遇到警告消息。详情请见：见 [2.6 消除 HTTPS 证书安全警告信息](#2.6 消除 HTTPS 证书安全警告信息). 
 

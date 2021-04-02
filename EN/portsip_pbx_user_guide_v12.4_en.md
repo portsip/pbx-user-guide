@@ -363,7 +363,7 @@ $ docker rm -f portsip-pbx
 $ cd /var/lib/portsip
 $ sudo rm -rf *.bak
 $ docker pull portsip/pbx:12
-$ docker container run -d --name portsip-pbx --restart=always --cap-add=SYS_PTRACE --network=host -v /var/lib/portsip:/var/lib/portsip -e POSTGRES_PASSWORD="123456" -e POSTGRES_LISTEN_ADDRESSES="*" -e IP_ADDRESS="66.175.222.20" portsip/pbx:12
+$ docker container run -d --name portsip-pbx --restart=always --cap-add=SYS_PTRACE --network=host -v /var/lib/portsip:/var/lib/portsip -v /etc/localtime:/etc/localtime:ro -e POSTGRES_PASSWORD="123456" -e POSTGRES_LISTEN_ADDRESSES="*" -e IP_ADDRESS="66.175.222.20" portsip/pbx:12
 ```
 
 
@@ -383,11 +383,32 @@ For HTTPS portal default usage of the self-signed SSL certificate will cause the
 To avoid SSL certificate warning, you will need to purchase a Signed Certificate (which is an authorized certificate issued by trustworthy certificate authority) to replace the self-signed one. To do this, please:
 
 + Resolve your PBX web domain (for example **mypbx.com**, if you don't have the domain you can purchase it from domain provider, such as Godaddy) to the PBX IP in case is 172.217.14.16.
+
 + Go to Thawte or Versign or other certificate providers to purchase a SSL certificate for your PBX Web Domain(in case is **mypbx.com**). Save the private key as **portsip.key**
+
 + After you have obtained the SSL certificate, rename the certificate to **portsip.crt**
+
 + On Linux, copy the **portsip.crt** and **portsip.key** to */var/lib/portsip/certificates/* to replace the existing **portsip.crt** and **portsip.key**
+
 + On Windows copy the **portsip.crt** and **portsip.key** to below path: *C:\ProgramData\PortSIP\certificates*\ to replace the existing **portsip.crt** and **portsip.key**
-+ Restart the PBX: for Linux, perform "**sudo docker restart portsip-pbx**", for Windows, just restart the Windows server.
+
+  
+
+> **Important: after replaced the certificate files, please perform below commands to restart server.**
+
+**Linux:** 
+
+```
+$ sudo docker -t 120 stop portsip-pbx
+$ sudo docker start portsip-pbx
+```
+
+**Windows:**
+
+```
+Restart the PortSIP PBX server directly。
+```
+
 + Now you can sign in PortSIP PBX Management Console by URL https://mypbx.com:8887
 
 Note: You may also obtain SSL certificate from [Let’s Encrypt](https://letsencrypt.org/) for free.
@@ -659,9 +680,26 @@ You can also follow below steps if you would like to purchase certificate files 
 
 
 
+> **Important: after added  TLS/WSS transport，please perform below commands to restart server.**
+
+**Linux:** 
+
+```
+$ sudo docker -t 120 stop portsip-pbx
+$ sudo docker start portsip-pbx
+```
+
+**Windows:**
+
+```
+Restart the PortSIP PBX server directly.
+```
+
++ Now you can sign in PortSIP PBX Management Console by URL https://mypbx.com:8887
+
 If you don't use trusted certificate files for the WSS transport, you will get the browser warning and blocked when you use WebRTC client.
 
-Please refer to  [2.6 section](#2.6 Avoid HTTPS Certificate Security Warnings) to learn how to avoid the browser warning and blocking.
+Please refer to  [2.6 Avoid HTTPS Certificate Security Warnings](#2.6 Avoid HTTPS Certificate Security Warnings) to learn how to avoid the browser warning and blocking.
 
 
 
