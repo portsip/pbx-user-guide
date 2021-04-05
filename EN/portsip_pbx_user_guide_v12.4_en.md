@@ -520,8 +520,11 @@ After successfully completed the setup wizard, you have to restart the PortSIP P
 **Linux:** 
 
 ```
-$ sudo docker -t 120 stop portsip-pbx
-$ sudo docker start portsip-pbx
+$ sudo docker exec -it portsip-pbx /bin/bash
+$ supervisorctl stop nginx
+$ supervisorctl stop gateway
+$ supervisorctl start nginx
+$ supervisorctl start gateway
 ```
 
 **Windows:**
@@ -708,8 +711,11 @@ You can also follow below steps if you would like to purchase certificate files 
 **Linux:** 
 
 ```
-$ sudo docker -t 120 stop portsip-pbx
-$ sudo docker start portsip-pbx
+$ sudo docker exec -it portsip-pbx /bin/bash
+$ supervisorctl stop nginx
+$ supervisorctl stop gateway
+$ supervisorctl start nginx
+$ supervisorctl start gateway
 ```
 
 **Windows:**
