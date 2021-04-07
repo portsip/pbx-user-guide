@@ -498,8 +498,11 @@ PortSIP PBX 监听 8888 端口并提供 HTTP 服务，并监听 8887 端口以�
 **Linux:** 
 
 ```
-$ sudo docker -t 120 stop portsip-pbx
-$ sudo docker start portsip-pbx
+$ sudo docker exec -it portsip-pbx /bin/bash
+$ supervisorctl stop nginx
+$ supervisorctl stop gateway
+$ supervisorctl start nginx
+$ supervisorctl start gateway
 ```
 
 **Windows:**
@@ -689,8 +692,11 @@ PortSIP PBX 支持所有的主流传输协议来收发 SIP 消息，包括 UDP�
 **Linux:** 
 
 ```
-$ sudo docker -t 120 stop portsip-pbx
-$ sudo docker start portsip-pbx
+$ sudo docker exec -it portsip-pbx /bin/bash
+$ supervisorctl stop nginx
+$ supervisorctl stop gateway
+$ supervisorctl start nginx
+$ supervisorctl start gateway
 ```
 
 **Windows:**

@@ -503,6 +503,8 @@ After setting up the SIP domain (in this case it is portsip.io), the extension S
 
 **Note**: You can use the self-signed certificates here but it will cause browser pop ups the warning when you open the WebRTC client, you can purchase a trusted certificate to avoid the browser blocking and warning. More details please read the [2.6 section](#2.6 Avoid HTTPS Certificate Security Warnings). 
 
+
+
 **Step 5:** 
 
 Setup mail server. You may set up the SMTP mail server in this step for receiving notifications, voicemails, conference invitations and CDR downloads. You can use your SMTP server or Gmail SMTP server.
@@ -526,6 +528,8 @@ $ supervisorctl stop gateway
 $ supervisorctl start nginx
 $ supervisorctl start gateway
 ```
+
+
 
 **Windows:**
 
@@ -696,8 +700,6 @@ You can also follow below steps if you would like to purchase certificate files 
   + Submit the CRS file to provider, and download the certificate files after your certificates approved. This step will end up with two files: **Intermediate CA certificate** and **SSL certificate**
   + Use a plain text editor for example Windows Notepad (do not use **MS Word**) to open the Intermediate CA file and SSL certificate file, copy the Intermediate CA contents to append to the SSL certificate file, and rename SSL certificate file as **portsip.crt.**
   
-    
-
 + Click “**Add**” button and choose the TLS or WSS in “**Transport protocol**” box. The default Transport Port for TLS/WSS 5063/5065. You may specify another port as you like, but the port must not be in use by other applications
 
 + Click the Upload button to choose the certificate files that you have generated for uploading, “**portsip.crt**” for the “**Certificate file**”, “**portsip.key**” for the “**Private key file**”.
@@ -717,6 +719,8 @@ $ supervisorctl stop gateway
 $ supervisorctl start nginx
 $ supervisorctl start gateway
 ```
+
+
 
 **Windows:**
 
