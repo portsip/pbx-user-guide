@@ -4,9 +4,9 @@
 
 # <center>PortSIP PBX 用户手册</center>
 
-版本：v12.4
+版本：v12.5
 
-日期：2021 年 3 月 30 日
+日期：2021 年 4 月 30 日
 
 
 
@@ -206,7 +206,7 @@ PortSIP PBX 可以在没有域名的机器上运行，但是我们推荐使用�
 
 
 
-#### **在 Linux 上全新安装 PortSIP PBX v12.4**
+#### **在 Linux 上全新安装 PortSIP PBX v12.5*
 
 如需全新安装 PortSIP PBX for Linux，请参考：[安装 PortSIP PBX for Linux](http://www.portsip.cn/knowledge-base/setup-portsip-pbx-v12-linux/)
 
@@ -294,7 +294,7 @@ PortSIP PBX 的系统服务将在安装成功完成后自动运行，以及在�
 
 
 
-### 2.4 准备从 v12.0/v12.1 升级到 v12.4.0
+### 2.4 准备从 v12.0/v12.1 升级到 v12.5.0
 
 如果您安装的是 Linux 版本的 PortSIP PBX，请忽略本小节。
 
@@ -302,28 +302,28 @@ PortSIP PBX 的系统服务将在安装成功完成后自动运行，以及在�
 
 **从 v12.0/v12.1.0 升级到 v12.3.2**
 
-如果您当前安装的 PortSIP PBX 版本是 v12.0/v12.1.0，那么不能直接升级到 v12.4.0，必须先升级到 v12.3.2版本。请按照  [从 PortSIP PBX v12.0 / v12.1 升级到 v12.3.2](http://www.portsip.cn/knowledge-base/upgrade-portsip-pbx-12-to-13-windows/)进行升级。
+如果您当前安装的 PortSIP PBX 版本是 v12.0/v12.1.0，那么不能直接升级到 v12.5.0，必须先升级到 v12.3.2版本。请按照  [从 PortSIP PBX v12.0 / v12.1 升级到 v12.3.2](http://www.portsip.cn/knowledge-base/upgrade-portsip-pbx-12-to-13-windows/)进行升级。
 
 
 
 **从 v12.2.x/v12.3.0/v12.3.1 升级到 v12.3.2**
 
-如果您当前安装的 PortSIP PBX 版本是 v12.2.x/v12.3.0/v12.3.1，那么不能直接升级到 v12.4.0，必须先升级到 v12.3.2版本。请按照下述步骤进行升级。
+如果您当前安装的 PortSIP PBX 版本是 v12.2.x/v12.3.0/v12.3.1，那么不能直接升级到 v12.5.0，必须先升级到 v12.3.2版本。请按照下述步骤进行升级。
 
 1. 下载 v12.3.2 安装包[PortSIP PBX v12.3.2 Windows 安装包](http://www.portsip.cn/downloads/pbx/v12/portsip-pbx-12.3.2.796.exe) 。
 2. 双击安装包进行安装。
 
 
 
-### 2.5 升级当前版本到 v12.4
+### 2.5 升级当前版本到 v12.5
 
 #### Windows 升级
 
 1. 进入 **c:/programdata/portsip** 目录, 删除所有以 **.bak** 结束的文件和文件夹。
 
-2. 确认您当前安装的 PortSIP PBX 已经是 v12.3.2或者已经升级到 v12.3.2。
+2. 确认您当前安装的 PortSIP PBX 已经是 v12.3.2或者已经升级到 v12.3.2，或者你当前安装的版本已经是v12.4
 
-3. 下载 v12.4.0 安装包[PortSIP PBX v12.4.0 Windows 安装包](http://www.portsip.cn/downloads/pbx/v12/portsip-pbx-12.4.0.1014.exe) 。
+3. 下载 v12.5.0 安装包[PortSIP PBX v12.5.0 Windows 安装包](http://www.portsip.cn/downloads/pbx/v12/portsip-pbx-12.5.0.1014.exe) 。
 
 4. 双击安装包进行安装。
 
@@ -659,7 +659,6 @@ PortSIP PBX 支持所有的主流传输协议来收发 SIP 消息，包括 UDP�
 - 生成的证书包括如下三个文件（假设您的 Web Domain 是 mypbx.com）：
   
   domain_key_mypbx.com.pem
-  
 
 ​       domain_cert_mypbx.com.pem
 
@@ -1298,7 +1297,6 @@ VoIP 运营商/SIP 中继进行。外拨规则一般是基于发起外拨呼叫�
     中继的被叫号码就是 2345。
   
     
-  
 
 #### 外拨规则的工作时间
 
