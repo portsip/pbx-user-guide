@@ -5,7 +5,7 @@
 
 Version: v12.4
 
-Date: March 30, 2021
+Date: May 10, 2021
 
 
 
@@ -204,12 +204,12 @@ Tasks that MUST be completed before installing PortSIP PBX:
 + Below ports must be permitted by your firewall.
   
   UDP: 45000– 65000, 25000-  34999
-  TCP: 8899– 8900、8887-8888、8881-8884
+  TCP: 8899– 8900、8887-8888、8881-8885
   
 + Make sure that below ports have not been used by other programs:
 
   UDP: 45000– 65000, 25000-  34999
-  TCP: 8899– 8900、8887-8888、8881-8884
+  TCP: 8899– 8900、8887-8888、8881-8885
 
   
   
@@ -217,7 +217,7 @@ Tasks that MUST be completed before installing PortSIP PBX:
   
   
 
-#### Installing a fresh PortSIP PBX v12.4 for Linux
+#### Installing a fresh PortSIP PBX v12.5 for Linux
 
 To install the PortSIP PBX for Linux, please refer to: [Setup PortSIP PBX for Linux](https://www.portsip.com/knowledge-base/setup-portsip-pbx-for-linux/)
 
@@ -229,7 +229,7 @@ After having successfully installed PortSIP PBX, the PortSIP PBX ports has been 
 If your server has a firewall which is blocking the ports, you must open the below ports in order to make the PortSIP PBX working properly.
 
 + UDP ports: **45000– 65000, 25000-  34999 **. These ports are used for the RTP sessions.
-+ TCP: **8899– 8900、8887-8888、8881-8884**. These ports are used for the Server control and WebRTC client.
++ TCP: **8899– 8900、8887-8888、8881-8885**. These ports are used for the Server control and WebRTC client.
 + UDP: **5060**. This is the default UDP transport for SIP communications (to send and receive SIP signaling).
 + TCP: **5065.** This is the default WSS transport for SIP communications in browser (to send and receive SIP signaling).
 
@@ -271,12 +271,12 @@ Tasks that MUST be completed before installing PortSIP PBX.
 + Below ports must be permitted by your firewall:
   
   UDP: 45000– 65000, 25000-  34999
-  TCP: 8899– 8900、8887-8888、8881-8884
+  TCP: 8899– 8900、8887-8888、8881-8885
   
 + Make sure that below ports have not been used by other programs:
   
   UDP: 45000– 65000, 25000-  34999
-  TCP: 8899– 8900、8887-8888、8881-8884
+  TCP: 8899– 8900、8887-8888、8881-8885
   
 + Ensure your Windows Firewall is enabled
 
@@ -284,7 +284,7 @@ Tasks that MUST be completed before installing PortSIP PBX.
 
 
 
-#### Installing a fresh PortSIP PBX v12.4 for Windows
+#### Installing a fresh PortSIP PBX v12.5 for Windows
 
 To install PortSIP PBX, you only need to double-click the installer, which will guide you through the installation process.
 
@@ -304,7 +304,7 @@ After having successfully installed PortSIP PBX, the PortSIP PBX ports has been 
 If your server has a firewall which is blocking the ports, you must open the below ports in order to make the PortSIP PBX working properly.
 
 + UDP ports: **45000– 65000, 25000-  34999 **. These ports are used for the RTP sessions.
-+ TCP: **8899– 8900、8887-8888、8881-8884**. These ports are used for the Server control and WebRTC client.
++ TCP: **8899– 8900、8887-8888、8881-8885**. These ports are used for the Server control and WebRTC client.
 + UDP: **5060**. This is the default UDP transport for SIP communications (to send and receive SIP signaling).
 + TCP: **5065.** This is the default WSS transport for SIP communications in browser (to send and receive SIP signaling).
 
@@ -318,22 +318,22 @@ You also need to open the port that you are using for adding new transport:
 
 
 
-### 2.4 Preparing for upgrading to 12.4 from old versions on Windows
+### 2.4 Preparing for upgrading to 12.5 from old versions on Windows
 
 If your installation is PortSIP PBX Linux edition, please ignore this section 2.4.
 
 **Upgrade from v12.0/12.1**
 
-If your current installation **is v12.0/v12.1,** you can't upgrade it to v12.4 directly, you have to upgrade to v12.3.2 first. Please read this link to upgrade:  [Upgrade PortSIP PBX from v12.0 / v12.1 to v12.3.2](https://www.portsip.com/knowledge-base/upgrade-portsip-pbx-12-to-13-windows/)
+If your current installation **is v12.0/v12.1,** you can't upgrade it to v12.5 directly, you have to upgrade to v12.3.2 first. Please read this link to upgrade:  [Upgrade PortSIP PBX from v12.0 / v12.1 to v12.3.2](https://www.portsip.com/knowledge-base/upgrade-portsip-pbx-12-to-13-windows/)
 
 
 
 **Upgrade from v12.2.x/12.3.0, 12.3.1**
 
-If your current installation **is v12.2.x or v12.3.0, v12.3.1,** you can't upgrade it to v12.4 directly, you have to upgrade to v12.3.2 first. Please follow up below steps to upgrade:
+If your current installation **is v12.2.x or v12.3.0, v12.3.1,** you can't upgrade it to v12.5 directly, you have to upgrade to v12.3.2 first. Please follow up below steps to upgrade:
 
 1. Download [PortSIP PBX v12.3.2 installer for Windows](https://www.portsip.com/downloads/pbx/v12/portsip-pbx-12.3.2.796.exe) 
-2. Double click it to install.
+2. Double click it to install for upgrade to v12.3.2
 
 
 
@@ -342,9 +342,9 @@ If your current installation **is v12.2.x or v12.3.0, v12.3.1,** you can't upgra
 #### **Windows**
 
 1. Go to **c:/programdata/portsip** folder, delete all ***.bak** files and folders
-2. Ensure your current installation **is v12.3.2 or is already upgraded to 12.3.2**
-3. Download [PortSIP PBX v12.4.0 installer for Windows](https://www.portsip.com/downloads/pbx/v12/portsip-pbx-12.4.0.1014.exe) 
-4. After downloaded the v12.4.0 installer for Windows, you only need to double-click the installer, which will guide you through the upgrade process.
+2. Ensure your current installation **is v12.4 or v12.3.2, or is already upgraded to 12.3.2**
+3. Download [PortSIP PBX v12.5.0 installer for Windows](https://www.portsip.com/downloads/pbx/v12/portsip-pbx-12.4.0.1014.exe) 
+4. After downloaded the v12.5.0 installer for Windows, you only need to double-click the installer, which will guide you through the upgrade process.
 
 
 
@@ -362,7 +362,7 @@ Please perform below commands to upgrade.
 **CentOS:**
 
 ```
-$ firewall-cmd --permanent --service=portsip-pbx --add-port=5060/udp --add-port=25000-34999/udp --add-port=5065/tcp
+$ firewall-cmd --permanent --service=portsip-pbx --add-port=8885/tcp --add-port=5060/udp --add-port=25000-34999/udp --add-port=5065/tcp
 $ docker stop -t 120 portsip-pbx
 $ docker rm -f portsip-pbx
 $ cd /var/lib/portsip
@@ -377,7 +377,7 @@ $ docker container run -d --name portsip-pbx --restart=always --cap-add=SYS_PTRA
 
 ```
 $ ufw allow 5060, 25000:34999/udp
-$ ufw allow 5065/tcp
+$ ufw allow 8885, 5065/tcp
 $ docker stop -t 120 portsip-pbx
 $ docker rm -f portsip-pbx
 $ cd /var/lib/portsip
@@ -689,7 +689,6 @@ First of all, prepare the certificate files.
   root_cert_mypbx.com.pem
   
 + Rename **domain_key_mypbx.com.pem** to **portsip.key**, rename **domain_cert_mypbx.com.pem** to **portsip.crt**
-  
   
   
 
