@@ -402,7 +402,7 @@ For HTTPS portal default usage of the self-signed SSL certificate will cause the
 
 To avoid SSL certificate warning, you will need to purchase a Signed Certificate (which is an authorized certificate issued by trustworthy certificate authority) to replace the self-signed one. To do this, please:
 
-+ Resolve your PBX web domain (for example **mypbx.com**, if you don't have the domain you can purchase it from domain provider, such as Godaddy) to the PBX IP in case is 172.217.14.16.
++ Resolve your **PBX web domain** (for example **mypbx.com**, if you don't have the domain you can purchase it from domain provider, such as Godaddy) to the PBX IP in case is 172.217.14.16.
 
 + Go to Thawte or Versign or other certificate providers to purchase a SSL certificate for your PBX Web Domain(in case is **mypbx.com**). Save the private key as **portsip.key**
 
@@ -464,7 +464,7 @@ Enter the Public IPv4 if you have a **static public IP** of your LAN. Do not ent
 
 **Note: the loopback interface (127.0.0.1) is unacceptable.** Only the static IP for LAN where the PBX is located is allowed (do not use DHCP dynamic IP). This private IP must be reachable by your SIP client.
 
-The IP address entered here is the SIP server address for PBX. It is required when a SIP client or SIP IP phone registers to PortSIP PBX.
+The IP address entered here is the SIP server IP address for PBX. It is required when a SIP client or SIP IP phone registers to PortSIP PBX should be configured as the "**Outbound Proxy Server**".
 
 
 
@@ -1165,24 +1165,24 @@ First, you need to have an account with a VoIP service provider. PortSIP PBX sup
 
 After you have created the VoIP provider account, you will need to configure the account in PortSIP PBX. To do this:
 
-+ Select “**Call Manager > VoIP Providers/Trunks > Add**”. Enter a friendly name for this VoIP provider
-+ Select the Country for the VoIP provider. If the country that the providers locates is not listed, please choose “**Generic**”
-+ Select your VoIP provider from the Provider drop-down list. If your provider is not listed, select “**Generic**”.
-+ The hostname of SIP server or IP may be prefilled. Compare these information with the details that you have received from your VoIP provider and check if they are correct. Depending on the VoIP provider that you are using, some fields will be disabled, which means you do not need to change them
+1. Select “**Call Manager > VoIP Providers/Trunks > Add**”. Enter a friendly name for this VoIP provider
+2. Select the Country for the VoIP provider. If the country that the providers locates is not listed, please choose “**Generic**”
+3. Select your VoIP provider from the Provider drop-down list. If your provider is not listed, select “**Generic**”.
+4. The hostname of SIP server or IP may be prefilled. Compare these information with the details that you have received from your VoIP provider and check if they are correct. Depending on the VoIP provider that you are using, some fields will be disabled, which means you do not need to change them
   **Note**: For generic providers, you need to fill in relevant parameters for server by yourself. Please consult your provide for more details
-+ Transport. The transport which used for the PBX communicates with your provider / trunk, you should consult your provider and choose appropriate transport, currently support UDP and TCP. The transport must added in PBX before add the provider / trunk. For example, if your provider requires the TCP, you should add the TCP transport in PBX, please refer to section [5.1](#5.1 Domain and Transport)
-+ If your provider is verified on IP address and does not require registration, please choose "**IP Based**" for"**Authentication Mode**"
-+ If you have customized a provider such as the E1 gateway and it is located in the same LAN with PBX, or other PBX/SIP servers, please check “**Provider is located in same LAN with PBX**”
-+ This provider only accepts single via SIP header. Usually the  providers/trunks only accept single via SIP header. It is selected by default
-+ Enter the VoIP provider account details. Enter the Authentication ID/username and password of your VoIP provider account. If your provider/trunk is IP based, no need to enter them.
-+ Associated IPs of Provider. For some providers/trunks, it maybe sends the INVITE message to PBX from multiple IPs rather than from the host only. You need to enter each IP here and click the "**Add**" button to add them
-+ Click the "**Tenants**" tab, choose one or more tenants to allow them access this trunk/provider.
-+ Once a tenant is assigned with the trunk/provider, admin can also set the DID pool for this tenant. When tenant creates the inbound rule based on this assigned trunk/provider, he can only use the DID number from the DID pool.
-+ Admin can leave the DID pool empty for a tenant, so that the tenant cannot create the inbound rule based on this trunk/provider, but no matter to create the outbound rule based on this trunk/provider.
-+ The DID Pool format: allows to set the wildcard \*. If a tenant is assigned with the trunk/provider, and the DID pool is set as "\*". When we assign this trunk/provider to other tenants, we cannot set any DID pool for them (the DID pool can be left as empty) since the "\*" is already assigned to the first tenant.
-+ The DID pool allows to set a numerical prefix and wildcard \*. For example, setting the DID pool as 44\*\*\*\*\*\* means all numbers started with 44 and a total length of 8. Once the inbound rule is created, any number started with 44 and a total length of 8 can be set as DID number for this rule.
-+ The DID pool allows to set a number range like 12000-18000, or 22000-22800. Setting the number range requires the start number and end number use a same prefix: 12000-22000 is not allowed. The numbers must has same amount of digits: 12000-180000 is not allowed. The start number must be less than end number: 18000-12000 is not allowed.
-+ DID pool allows to set a semicolon-separated list of multiple ranges, for example: 123;1100-1200;44\*\*\*\*\*\*
+5. Transport. The transport which used for the PBX communicates with your provider / trunk, you should consult your provider and choose appropriate transport, currently support UDP and TCP. The transport must added in PBX before add the provider / trunk. For example, if your provider requires the TCP, you should add the TCP transport in PBX, please refer to section [5.1](#5.1 Domain and Transport)
+6. If your provider is verified on IP address and does not require registration, please choose "**IP Based**" for"**Authentication Mode**"
+7. If you have customized a provider such as the E1 gateway and it is located in the same LAN with PBX, or other PBX/SIP servers, please check “**Provider is located in same LAN with PBX**”
+8. This provider only accepts single via SIP header. Usually the  providers/trunks only accept single via SIP header. It is selected by default
+9. Enter the VoIP provider account details. Enter the Authentication ID/username and password of your VoIP provider account. If your provider/trunk is IP based, no need to enter them.
+10. Associated IPs of Provider. For some providers/trunks, it maybe sends the INVITE message to PBX from multiple IPs rather than from the host only. You need to enter each IP here and click the "**Add**" button to add them
+11. Click the "**Tenants**" tab, choose one or more tenants to allow them access this trunk/provider.
+12. Once a tenant is assigned with the trunk/provider, admin can also set the DID pool for this tenant. When tenant creates the inbound rule based on this assigned trunk/provider, he can only use the DID number from the DID pool.
+13. Admin can leave the DID pool empty for a tenant, so that the tenant cannot create the inbound rule based on this trunk/provider, but no matter to create the outbound rule based on this trunk/provider.
+14. The DID Pool format: allows to set the wildcard \*. If a tenant is assigned with the trunk/provider, and the DID pool is set as "\*". When we assign this trunk/provider to other tenants, we cannot set any DID pool for them (the DID pool can be left as empty) since the "\*" is already assigned to the first tenant.
+15. The DID pool allows to set a numerical prefix and wildcard \*. For example, setting the DID pool as 44\*\*\*\*\*\* means all numbers started with 44 and a total length of 8. Once the inbound rule is created, any number started with 44 and a total length of 8 can be set as DID number for this rule.
+16. The DID pool allows to set a number range like 12000-18000, or 22000-22800. Setting the number range requires the start number and end number use a same prefix: 12000-22000 is not allowed. The numbers must has same amount of digits: 12000-180000 is not allowed. The start number must be less than end number: 18000-12000 is not allowed.
+17. DID pool allows to set a semicolon-separated list of multiple ranges, for example: 123;1100-1200;44\*\*\*\*\*\*
 
 
 
@@ -1191,6 +1191,40 @@ After you have created the VoIP provider account, you will need to configure the
 
 
 The PortSIP PBX will display all added providers/trunks status by clicking “**Call Manager > VoIP Providers/Trunks**” menu.
+
+
+
+#### Configure E1/T1 Gateway register to PortSIP PBX
+
+Consider we deployed the PortSIP PBX on a cloud platform such as AWS, AZURE, GCE, and wish to configure the E1/T1 gateway which located in local LAN as a trunk for the PortSIP PBX, but the E1/T1 without static public IP, we can't configure the **Authentication mode** to "**IP Based**" and **"Register Based".**
+
+ For this scenario, we can configure that E1/T1 is register to the cloud PortSIP PBX from local LAN, then the E1/T1 can be act as the VoIP Provider / SIP Trunk to works with PortSIP PBX for make & receive calls.
+
+
+
+Please follow below steps to config the E1/T1 register to the cloud PortSIP PBX.
+
+1. Select “**Call Manager > VoIP Providers/Trunks > Add**”. Enter a friendly name for this VoIP provider.
+
+2. Choose “**Generic**” for both provider country and provider brand.
+
+3. Enter a domain for the "**Host**" filed, this domain doesn't require exists, you can enter any domain here, for example, **portspitrunk1.io**. 
+
+   **Important**: ensure this domain is not equals to any tenant's SIP domain.
+
+4. Please choose "**Accept Register**" for"**Authentication Mode**".
+
+5. For the **"Authorization Name"** , you can enter any number here, for example: **123456**, the E1/T1 gateway will use this for the authorization when it register to PortSIP PBX.
+
+6. For the password, you can enter any password here, the E1/T1 gateway will use this for the authorization when it register to PortSIP PBX.
+
+7. Other settings are same as the previous section for configure the **"IP based"** and **"Register based"** VoIP provider/Trunk.
+
+8. After applied the settings, now you can configure the E1/T1 gateway to let it register to the could PortSIP PBX. In the E1/T1 settings, set up the step3 "**Host**" as **"SIP Domain/SIP Server"**, for example **portsiptrunk1.io**, set up the cloud PBX public static IP as "**Outbound Proxy Server**"，set up the PortSIP PBX transport port as the "**Outbound Proxy Server port**", set up the step 5, 6 **Authorization name** and **Password** as the **username** and **password**, then the E1/T1 gateway can register to cloud PortSIP PBX.
+
+9. You can sign in the PortSIP PBX Web Management Console to create the inbound & outbound rule base on this E1/T1 gateway trunk.
+
+
 
 #### Outbound parameters and Inbound parameters
 
@@ -1568,6 +1602,14 @@ To add a Call Queue, select menu “**Call Manager > Call Queue**”  and click 
 
 + **Music on hold** – The music that would be played when the caller is queued
 
++ **Skip member(s) who's calling** - If this option was checked, the queue will don't distribute calls to the agent who is on call
+
++ **Keep waiting if there is no members online** - If this option was checked, even there no any agent online, the queue will still keep the caller in the queue until reached the maximum wait time
+
++ **Set the member ready to accept call automatically** - If this option was checked, once a queue agent(member) is registered to PBX, his status will be set to **"sign in the queue"** automatically, then queue will distribute calls to that agent, after the agent was ring or completed a call, the agent status will be set to **"sign in the queue"** automatically.
+
+  If this option was un-checked, once the queue agent is registered to PBX,  his status will be set to **"sign out the queue"** automatically, the agent must use REST API or dial a code to sign in the queue in order to let queue distribute the calls to him. After the agent was ring or completed a call, his status will be set to "**sign out the queue**" automatically.
+
 + **Polling strategy** – This option allows you to choose how calls should be distributed to agents:
 
   + **Ring Simultaneous**: All Ring Group members will be rang at the same time.
@@ -1585,8 +1627,6 @@ To add a Call Queue, select menu “**Call Manager > Call Queue**”  and click 
 + In the “**Destination if no answer**” section, you can define what should happen if the call does not get answered by an agent. If no agent logged into the queue, this option would be triggered immediately
 
 + In the “**Other options**” section, you can specify a custom introduction prompt and a custom music on hold file. You can now choose whether to play the full intro prompt before the system starts to call queue agents
-
-+ **Play special prompt if the caller is in blacklist**. If this option is checked and the caller is in the black list of this call queue, you can set a special prompt for him. If the caller pressed the DTMF after listening the prompt, PBX will continue the normal call queue workflow.
 
 + **Maximum Queue Wait Time**. Once the caller stayed in the call queue longer than this duration, it will be hangup by PBX.
 
@@ -1610,12 +1650,6 @@ You can set one or more extensions as the queue manager(s) to receive the email 
 If an extension is set as queue manager, PBX will not assign the call to him/her, which means the queue manager will not receive the call even he is a member of the call queue.
 
 **Note:** The SMTP server and the email of queue manager must be set up in order to receive the notifications.
-
-
-
-#### Blacklist
-
-You can add one or more numbers to the blacklist of the call queue. When one of these numbers starts a call to the queue, a special prompt will be played to them. For more details please refer to [Configuring Queue Options](#Configuring Queue Options).
 
 
 
@@ -1651,9 +1685,9 @@ The **extension_number** is the queue number.
 
 The queue agent can dial a code to set his status to ready or not ready.
 
-For example, extension 102 is the member of queue 8000, 102 can dial \*001\*8000 to set his status to **ready**,  and use \*002*8000 to set status to **Not ready.**
+For example, extension 102 is the member of queue 8000, 102 can dial \*51\*8000 to set his status to **ready(sign in the queue)**  and use \*52*8000 to set status to **Not ready(sign out the queue)**.
 
-If extension 102 want to set status to **ready** for all queues, just dial \*001\*, set status to **Not ready** for all queues, dial \*002\*.
+If extension 102 want to set status to **ready(sign in the queue)** for all queues, just dial \*51\*, set status to **Not ready(sign out the queue)** for all queues, dial \*52\*.
 
 
 
@@ -2189,6 +2223,8 @@ If the boss’ extension is 101:
 
 The PortSIP PBX support advanced CTI features, for example, silence monitoring, whisper, barge-in, barge-break.
 
+#### CTI Features
+
 Silent call monitoring allows a supervisor to eavesdrop on a call conversation. The most common scenario is in a call center where a call agent is speaking with a customer. Call centers need to be able to guarantee the quality of customer service that an agent in a call center provides. With silent monitoring, the supervisor can hear both call participants, but neither of the call participants can hear the supervisor.
 
 Silent monitoring is call based. When a supervisor invokes a silent monitoring session, the following occurs:
@@ -2217,6 +2253,56 @@ We would like to let the extension 101 and 102 to silence monitor other extensio
 6. Now if the extension 103 has a call, then 101 or 102 can silence monitor 103 by dial "**888\*103**"
 7. During silence monitoring, the 101 or 102 can press DTMF 2 to whisper, press 3 to barge-in, and press 4 to barge-break the 103's call
 8. The 101 or 102 can dial "**888\*103\*1**" or  "**888\*103**"  directly to silence monitoring;  By dial "**888\*103\*2**" to whisper 103, dial "**888\*103\*3**" directly to barge-in, and dial "**888\*103\*4**" directly to barge-break the 103's call.
+
+
+
+#### Exclusive Agent
+
+In some scenarios, for the special industry callers of contact center, we will need the special agents who have rich special industry knowledges and skills to serve the them.
+
+PortSIP PBX provides the "**Exclusive Agent**" feature allow set up one or more agents from the queue  as "**Exclusive Agent**" for the special callers, once the call comes from these callers, the queue will distributes the call to the **exclusive agent** give highest priority if the agent is idle, of course if all exclusive agent are busy / sign out, the call will be distributed to other agents.
+
+
+
+- Click the menu **"CTI > Exclusive Agent"**, click the "**Add**" button
+
+- Enter the friendly text for describe this exclusive agent purpose
+
+- Caller number, enter the caller number which will be assign the exclusive agent for it. Once the call comes from this number, the call will be distribute to the exclusive agent with highest priority. 
+
+  You can add more caller numbers by click the "**Add**" button.
+
+- Call Queue: choose the queue member from the queues for set up as exclusive agent
+
+
+
+**Note: if the call is not comes from the specified caller numbers, the exclusive agent  works as the normal agent.**
+
+
+
+#### VIP List
+
+PortSIP PBX provides the VIP Caller feature, make VIP customers feel special when trying to connect PortSIP PBX contact center. When the VIP call was determined,  the queue always give the top priority to the caller and pushed on top of the queue.
+
+
+
+- Click the menu **"CTI > VIP List"**, click the "**Add**" button
+- Enter the VIP customer phone number
+- Enter the friendly text for describe this VIP caller
+- Set up how long of the the VIP number validity
+- Enabled: turn on/off
+
+
+
+**Note: the VIP list is global validity for all queues**
+
+
+
+#### Harass Numbers
+
+
+
+
 
 
 
@@ -2757,87 +2843,6 @@ Once set, the extension events will be sent as below:
 
 
 
-### 13.7 SMS
-
-#### SMS
-
-By setting up SMS, PortSIP PBX will be able to send SMS message when it receives a text message from extension. 
-
-To setup, go to “**Profile > SMS**” of Management Console. To enable the SMS feature, below options should be provided: 
-
-+ **Enable**: By checking/unchecking this option, you are allowed to enable or disable the SMS feature. 
-+ **SMS Provider**: SMS providers supported by PortSIP PBX, currently including Twilio, Clickatell, Nexmo, SMSAPI. You can signup an account from one of these providers.
-
-
-
-**Setup with Clickatell**
-
-Clickatell is a SMS provider. You can visit https://www.clickatell.com to register an account and sign in.
-
-![sms_1](..\images\sms_1.png)
-
-
-
-Click the “**SMS integrations**” on the left menu, and the “**Create new integration**” in the top right corner. Follow the wizard to create and copy API key once integration created. Note: You should choose “**REST**” as the API type. Now in PortSIP PBX, choose the SMS provider “**Clickatell**“, paste the copied API key into “**API key/Token**“.
-
-
-
-#### SMSAPI 
-
-SMSAPI is a SMS provider. You can visit https://www.smsapi.com to register an account and sign in.
-
-![sms_2](..\images\sms_2.png)
-
-
-
-Click the “**API password (MD5)**” on the left menu. In the “**Change API Password**” section displayed, enter your account password and new API password, click “**Change API password**“. In this page the “**API password in MD5**” will show up, please copy the MD5 string. 
-
-Now in PortSIP PBX, choose the SMS provider “**SMSAPI**“, paste the copied API MD5 string to “**Password**“, enter your SMSAPI account.
-
-
-
-**Nextmo** 
-
-Nextmo is a SMS provider. You can visit https://www.nextmo.com to register an account and sign in.
-
-![sms_3](..\images\sms_3.png)
-
-
-
-Now in PortSIP PBX, choose the SMS provider as “**Nexmo**“, copy the “**key**” from Nexmo and paste to “**Username**” filed in PortSIP PBX, copy the “**secret**” from Nexmo and paste to “**Password**” filed in PortSIP PBX. Enter a name for “**From**” filed if you want to specify the SMS sender.
-
-
-
-#### Twilio 
-
-Twilio is a SMS provider. You can visit https://www.twilio.com to register an account and sign in.
-
-![sms_4](..\images\sms_4.png)
-
-
-
-To work with Twilio, you should also buy a number in order to send the SMS. To do so, click the Manage Numbers in “**Phone Numbers**” section and follow the instructions to buy a number.
-
-![sms_5](..\images\sms_5.png)
-
-
-
-Now in PortSIP PBX, choose the SMS provider “**Twilio**“, copy the “**ACCOUNT SID**” from Twilio Console Dashboard to “**Username**” field in PortSIP PBX, copy the “**AUTH TOKEN**” from Twilio Console Dashboard to “**Password**” field in PortSIP PBX, and copy the phone number to “**From**” field in PortSIP PBX. 
-
-**Note**, you should remove the “(“, “-“, and blank space from the phone number before pasting to PortSIP PBX. For example, the (305) 676-8541 should be 3056768541.
-
-***Important**: Before you fill the SMS provider information into PortSIP PBX, we recommend you to send some test SMS messages in your SMS provider management console/panel to make sure SMS works well.* 
-
-**Example:** 
-
-If you have setup the SMS provider, now an extension sends a pager message to PortSIP PBX, and indicates that pager message is a SMS message:
-
- *To: <sip:102@portsip.io>;messagetype=SMS*
-
-If the parameter “**messagetype**” is presented in the “**To**” header, and the value is “**SMS**”, PBX will relay this pager to the configured SMS provider.
-
-
-
 ### 13.8 Rebranding
 
 The PortSIP PBX allows you customize and rebrand it.
@@ -2912,7 +2917,7 @@ Above header will cause the PBX rewrite the from header if the call is send to t
 
 
 
-Skype ID: portsip, the name is "PortSIP PBX"
+Skype ID: portsip, the name is "**PortSIP PBX**"
 
 Email: support@portsip.com
 
