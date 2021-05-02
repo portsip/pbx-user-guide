@@ -197,10 +197,10 @@ PortSIP PBX 可以在没有域名的机器上运行，但是我们推荐使用�
 + 安装 PortSIP PBX 的主机不能是 DNS 或 DHCP 服务器。 
 + 在防火墙打开如下端口： 
   UDP: 45000– 65000, 25000-  34999
-  TCP: 8899– 8900、8887-8888、8881-8884
+  TCP: 8899– 8900、8887-8888、8881-8885
 + 确保如下端口没有被其他程序占用：
   UDP: 45000– 65000, 25000-  34999
-  TCP: 8899– 8900、8887-8888、8881-8884
+  TCP: 8899– 8900、8887-8888、8881-8885
 
 **重要提示：**如果您是在 AWS，阿里云等云平台上运行 PBX，并且云平台具有自己的防火墙，您还必须在云平台防 火墙上打开这些端口。
 
@@ -254,11 +254,11 @@ PortSIP PBX 可以在没有域名的机器上运行，但是我们推荐使用�
   TCP: 8899– 8900、8887-8888、8881-8885
 + 确保如下窗口未被其他程序占用：
   UDP: 45000– 65000, 25000-  34999
-  TCP: 8899– 8900、8887-8888、8881-8884请确保已启用 Windows 防火墙。
+  TCP: 8899– 8900、8887-8888、8881-8885请确保已启用 Windows 防火墙。
 
 
 
-#### **在 Windows 主机上全新安装 PortSIP PBX**
+#### **在 Windows 主机上全新安装 PortSIP PBX v12.5**
 
 要安装 PortSIP PBX，您只需要双击安装程序文件，然后根据安装程序的提示进行安装。 
 
@@ -345,7 +345,7 @@ PortSIP PBX 的系统服务将在安装成功完成后自动运行，以及在�
 **CentOS:**
 
 ```
-$ firewall-cmd --permanent --service=portsip-pbx --add-port=5060/udp --add-port=25000-34999/udp --add-port=5065/tcp
+$ firewall-cmd --permanent --service=portsip-pbx --add-port=5060/udp --add-port=25000-34999/udp --add-port=5065/tcp --add-port=8885/tcp
 $ docker stop -t 120 portsip-pbx
 $ docker rm -f portsip-pbx
 $ cd /var/lib/portsip
@@ -360,7 +360,7 @@ $ docker container run -d --name portsip-pbx --restart=always --cap-add=SYS_PTRA
 
 ```
 $ ufw allow 5060, 25000:34999/udp
-$ ufw allow 5065/tcp
+$ ufw allow 8885, 5065/tcp
 $ docker stop -t 120 portsip-pbx
 $ docker rm -f portsip-pbx
 $ cd /var/lib/portsip
@@ -1135,7 +1135,7 @@ PortSIP PBX 支持如下两种 VoIP运营商：
 2. 选择服务运营商所在国家，或者选择“**Generic**”以输入没有列出的运营商。 
 3. 在运营商的下拉列表选择运营商。如果你的服务运营商不在列表里，请在上面的国家下拉列表里选择“**Generic**”。 
 4. 选择一个运营商后，该运营商的服务器 IP 地址和端口以及其他的一些参数会被自动填写。 请将这些信息和参数与你从 VoIP运营商处收到的参数进行核对。基于你选择的运营商，有 些参数输入框已经被禁用，意味着你不需要填写这些参数。点击“**下一步**”继续。 
-  注：对于选择的Generic VoIP运营商，你需要自己填写服务器等参数，详情请询问你的运营商。
+    注：对于选择的Generic VoIP运营商，你需要自己填写服务器等参数，详情请询问你的运营商。
 5. 如果你的运营商不需要注册，是基于 IP 地址认证，请在“**认证模式**”下选择“**基于 IP**”。 
 6. 如果运营商是你自己配置的运行于和 PBX 同一个局域网的 E1 网关或者其他的 PBX/SIP 服务器，请勾选“**运营商位于 PBX 所在的局域网**”。 
 7. "该运营商只接受单个 Via SIP 消息"。通常，运营商/中继仅接受单个 Via SIP 消息。该选项默认已选中。
