@@ -2857,7 +2857,7 @@ target_ended: 被叫目标结束呼叫
 
 > cdr_events
 
-当一个通话结束后，通话的 CDR 消息将会被 PBX 主动推送到订阅者, 消息主题为 cdr_events，消息 key 为如下：
+当一个通话结束后，通话的 CDR 消息将会被 PBX 主动推送到订阅者, 消息主题为 **cdr_events**，消息 key 为如下。
 
 ```
 call_cdr
@@ -2867,7 +2867,7 @@ call_cdr
 
 > queue_events
 
-当队列状态发生改变时，相关的队列状态信息被主动推送到订阅者，消息主题为 queue_events，包括如下消息key:
+当队列状态发生改变时，相关的队列状态信息被主动推送到订阅者，消息主题为 **queue_events**，包括如下消息key。
 
 ```
 queue_status
@@ -2877,7 +2877,7 @@ queue_status
 
 > trunk_events
 
-当 Trunk 的状态发生改变时候，比如成功注册到 Trunk， 或者注册到 Trunk 失败，或者和 Trunk 的注册丢失，链接断开，PBX 将主动推送 Trunk 状态信息给订阅者，消息主题为 trunk_events, 消息 key 如下：
+当 Trunk 的状态发生改变时候，比如成功注册到 Trunk， 或者注册到 Trunk 失败，或者和 Trunk 的注册丢失，链接断开，PBX 将主动推送 Trunk 状态信息给订阅者，消息主题为 **trunk_events**, 消息 key 如下。
 
 ```
 trunk_connected
@@ -2887,8 +2887,8 @@ trunk_disconnected
 
 
 
-关于消息订阅的详细使用教程，请阅读 使用 [PortSIP PBX 的 WebSocket Pub/Sub 机制订阅事件消息。](
-http://www.portsip.cn/knowledge-base/portsip-pbx-websocket-pub-sub/(opens in a new tab))
+关于消息订阅的详细使用教程，请阅读 使用 [PortSIP PBX 的 WebSocket Pub/Sub 机制订阅事件消息](
+http://www.portsip.cn/knowledge-base/portsip-pbx-websocket-pub-sub/(opens in a new tab))。
 
 
 

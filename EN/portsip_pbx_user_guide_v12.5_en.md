@@ -1169,7 +1169,7 @@ After you have created the VoIP provider account, you will need to configure the
 2. Select the Country for the VoIP provider. If the country that the providers locates is not listed, please choose “**Generic**”
 3. Select your VoIP provider from the Provider drop-down list. If your provider is not listed, select “**Generic**”.
 4. The hostname of SIP server or IP may be prefilled. Compare these information with the details that you have received from your VoIP provider and check if they are correct. Depending on the VoIP provider that you are using, some fields will be disabled, which means you do not need to change them
-  **Note**: For generic providers, you need to fill in relevant parameters for server by yourself. Please consult your provide for more details
+    **Note**: For generic providers, you need to fill in relevant parameters for server by yourself. Please consult your provide for more details
 5. Transport. The transport which used for the PBX communicates with your provider / trunk, you should consult your provider and choose appropriate transport, currently support UDP and TCP. The transport must added in PBX before add the provider / trunk. For example, if your provider requires the TCP, you should add the TCP transport in PBX, please refer to section [5.1](#5.1 Domain and Transport)
 6. If your provider is verified on IP address and does not require registration, please choose "**IP Based**" for"**Authentication Mode**"
 7. If you have customized a provider such as the E1 gateway and it is located in the same LAN with PBX, or other PBX/SIP servers, please check “**Provider is located in same LAN with PBX**”
@@ -1198,31 +1198,31 @@ The PortSIP PBX will display all added providers/trunks status by clicking “**
 
 Consider we deployed the PortSIP PBX on a cloud platform such as AWS, AZURE, GCE, and wish to configure the E1/T1 gateway which located in local LAN as a trunk for the PortSIP PBX, but the E1/T1 without static public IP, we can't configure the **Authentication mode** to "**IP Based**" and **"Register Based".**
 
- For this scenario, we can configure that E1/T1 is register to the cloud PortSIP PBX from local LAN, then the E1/T1 can be act as the VoIP Provider / SIP Trunk to works with PortSIP PBX for make & receive calls.
+ For this scenario, we can configure that E1/T1 is registering to the cloud PortSIP PBX from local LAN, then the E1/T1 can act as the VoIP Provider / SIP Trunk works with PortSIP PBX for make & receive calls.
 
 
 
-Please follow below steps to config the E1/T1 register to the cloud PortSIP PBX.
+Please follow the below steps to config the E1/T1 register to the cloud PortSIP PBX.
 
 1. Select “**Call Manager > VoIP Providers/Trunks > Add**”. Enter a friendly name for this VoIP provider.
 
 2. Choose “**Generic**” for both provider country and provider brand.
 
-3. Enter a domain for the "**Host**" filed, this domain doesn't require exists, you can enter any domain here, for example, **portspitrunk1.io**. 
+3. Enter a domain for the "**Host**" filed, this domain doesn't require to exist, you can enter any domain here, for example, **portspitrunk1.io**. 
 
-   **Important**: ensure this domain is not equals to any tenant's SIP domain.
+   **Important**: ensure this domain does not equal to any tenant's SIP domain.
 
 4. Please choose "**Accept Register**" for"**Authentication Mode**".
 
-5. For the **"Authorization Name"** , you can enter any number here, for example: **123456**, the E1/T1 gateway will use this for the authorization when it register to PortSIP PBX.
+5. For the **"Authorization Name"** , you can enter any number here, for example **123456**, the E1/T1 gateway will use this for the authorization when it registers to PortSIP PBX.
 
-6. For the password, you can enter any password here, the E1/T1 gateway will use this for the authorization when it register to PortSIP PBX.
+6. For the password, you can enter any password here, the E1/T1 gateway will use this for the authorization when it registers to PortSIP PBX.
 
-7. Other settings are same as the previous section for configure the **"IP based"** and **"Register based"** VoIP provider/Trunk.
+7. Other settings are the same as the previous section for confining the **"IP based"** and **"Register based"** VoIP provider/Trunk.
 
 8. After applied the settings, now you can configure the E1/T1 gateway to let it register to the could PortSIP PBX. In the E1/T1 settings, set up the step3 "**Host**" as **"SIP Domain/SIP Server"**, for example **portsiptrunk1.io**, set up the cloud PBX public static IP as "**Outbound Proxy Server**"，set up the PortSIP PBX transport port as the "**Outbound Proxy Server port**", set up the step 5, 6 **Authorization name** and **Password** as the **username** and **password**, then the E1/T1 gateway can register to cloud PortSIP PBX.
 
-9. You can sign in the PortSIP PBX Web Management Console to create the inbound & outbound rule base on this E1/T1 gateway trunk.
+9. You can sign in to the PortSIP PBX Web Management Console to create the inbound & outbound rule base on this E1/T1 gateway trunk.
 
 
 
@@ -1606,9 +1606,9 @@ To add a Call Queue, select menu “**Call Manager > Call Queue**”  and click 
 
 + **Keep waiting if there is no members online** - If this option was checked, even there no any agent online, the queue will still keep the caller in the queue until reached the maximum wait time
 
-+ **Set the member ready to accept call automatically** - If this option was checked, once a queue agent(member) is registered to PBX, his status will be set to **"sign in the queue"** automatically, then queue will distribute calls to that agent, after the agent was ring or completed a call, the agent status will be set to **"sign in the queue"** automatically.
++ **Set the member ready to accept call automatically** - If this option was checked, once a queue agent(member) is registered to PBX, his status will be set to **"sign in the queue"** automatically, then the queue will distribute calls to that agent, after the agent was ringing or completed a call, the agent status will be set to **"sign in the queue"** automatically.
 
-  If this option was un-checked, once the queue agent is registered to PBX,  his status will be set to **"sign out the queue"** automatically, the agent must use REST API or dial a code to sign in the queue in order to let queue distribute the calls to him. After the agent was ring or completed a call, his status will be set to "**sign out the queue**" automatically.
+  If this option was unchecked, once the queue agent is registered to PBX,  his status will be set to **"sign out the queue"** automatically, the agent must use REST API or dial a code to sign in the queue in order to let queue distribute the calls to him. After the agent was ringing or completed a call, his status will be set to "**sign out the queue**" automatically.
 
 + **Polling strategy** – This option allows you to choose how calls should be distributed to agents:
 
@@ -1685,9 +1685,9 @@ The **extension_number** is the queue number.
 
 The queue agent can dial a code to set his status to ready or not ready.
 
-For example, extension 102 is the member of queue 8000, 102 can dial \*51\*8000 to set his status to **ready(sign in the queue)**  and use \*52*8000 to set status to **Not ready(sign out the queue)**.
+For example, extension 102 is the member of queue 8000, 102 can dial \*51\*8000 to set his status to **ready(sign in the queue)**  and use \*52*8000 to set the status to **Not ready(sign out the queue)**.
 
-If extension 102 want to set status to **ready(sign in the queue)** for all queues, just dial \*51\*, set status to **Not ready(sign out the queue)** for all queues, dial \*52\*.
+If extension 102 wants to set the status to **ready(sign in the queue)** for all queues, just dial \*51\*, set the status to **Not ready(sign out the queue)** for all queues, dial \*52\*.
 
 
 
@@ -2258,9 +2258,9 @@ We would like to let the extension 101 and 102 to silence monitor other extensio
 
 #### Exclusive Agent
 
-In some scenarios, for the special industry callers of contact center, we will need the special agents who have rich special industry knowledges and skills to serve the them.
+In some scenarios, for the special industry callers of contact center, we will need the special agents who have rich special industry knowledges and skills to serve them.
 
-PortSIP PBX provides the "**Exclusive Agent**" feature allow set up one or more agents from the queue  as "**Exclusive Agent**" for the special callers, once the call comes from these callers, the queue will distributes the call to the **exclusive agent** give highest priority if the agent is idle, of course if all exclusive agent are busy / sign out, the call will be distributed to other agents.
+PortSIP PBX provides the "**Exclusive Agent**" feature allow set up one or more agents from the queue  as "**Exclusive Agent**" for the special callers, once the call comes from these callers, the queue will distributes the call to the **exclusive agent** give highest priority if the agent is idle, of course if all exclusive agents are busy / sign out, the call will be distributed to other agents.
 
 
 
@@ -2268,11 +2268,11 @@ PortSIP PBX provides the "**Exclusive Agent**" feature allow set up one or more 
 
 - Enter the friendly text for describe this exclusive agent purpose
 
-- Caller number, enter the caller number which will be assign the exclusive agent for it. Once the call comes from this number, the call will be distribute to the exclusive agent with highest priority. 
+- Caller number: enter the caller number who will be assigned the exclusive agents. Once the call comes from this caller, the call will be distributed to the exclusive agent with highest priority. 
 
   You can add more caller numbers by click the "**Add**" button.
 
-- Call Queue: choose the queue member from the queues for set up as exclusive agent
+- Call Queue: choose the queue member from the queues to set up as exclusive agent
 
 
 
@@ -2288,7 +2288,7 @@ PortSIP PBX provides the VIP Caller feature, make VIP customers feel special whe
 
 - Click the menu **"CTI > VIP List"**, click the "**Add**" button
 - Enter the VIP customer phone number
-- Enter the friendly text for describe this VIP caller
+- Enter the friendly text to describe this VIP caller
 - Set up how long of the the VIP number validity
 - Enabled: turn on/off
 
@@ -2300,9 +2300,14 @@ PortSIP PBX provides the VIP Caller feature, make VIP customers feel special whe
 
 #### Harass Numbers
 
+Spam calls are the plague of all businesses, especially call centers,  PortSIP PBX provide three ways for anti the spam calls.
+
+1. A global "**Number Blacklist**", it will rejected the call silently if the caller is in the number blacklist. You can find the details at section [12.2 Number Blacklist](#12.2 Number Blacklist).
+2. Harass Number. PortSIP PBX also provides the "**Harass Number**" features for anti the spam calls only of the Call queue. The harass number is defined  as two levels, if a caller is determined in the "**Level 1**",  the preset prompt file will be played to alert the caller, and if caller press **1** the call will be hang-up, press **2** the call will continue; if a caller is determined in the "**Level 2**",  the preset prompt file will be played to alert the caller, and the call will be hang-up after play finished.
 
 
 
+**Note: both of the two levels of the "Harass Number" only for the call which reached to the queues, and its validity to all queues.**
 
 
 
@@ -2317,7 +2322,7 @@ With the PortSIP PBX successfully installed, a built-in media server has been en
 
 #### Adding External Media Server
 
-The PortSIP PBX uses default media server to relay RTP packets for calls. A large amount of simultaneous calls will lead to high loads of CPU, network bandwidth, memory overload, voice latency, unavailability for new calls etc.
+The PortSIP PBX uses default media server to relay RTP packets for calls. A large amount of simultaneous calls will lead to high loads of CPU, network bandwidth, memory overload, voice latency, unavailability for new calls, etc...
 You can add more media servers to handle the RTP packets relay in order to reduce the PortSIP PBX IP loads and decrease network latency.
 
 
@@ -2917,6 +2922,75 @@ Above header will cause the PBX rewrite the from header if the call is send to t
 
 
 
+From v12.5，PortSIP PBX provides the Pub/Sub mechanism which bases on the WebSocket, the user is able to create the WebSocket in any programming languages to subscribe to the PBX events, once the subscribed events occur, PortSIP PBX will push the event message to subscriber automatically, the message is in the JSON format. 
+
+PortSIP PBX v12.5 provide below topics and keys for the Pub/Sub。
+
+
+
+> extension_events
+
+All extension related event message will be published by  **extension_events** topic，it's include below message keys.
+
+```
+extension_register: extension registered to PBX or un-register from the PBX.
+call_hold: call was held
+call_unhold: call was resume
+call_start: call starting
+call_established: the call was answered and successfully connected
+call_ended: call is ended.
+call_noanswer: call is no anaswer
+call_reroute: the call was re-routed to another target
+call_fail: call is failed
+target_add: start call to a target. For example extension 101 is registered to PBX from an IP Phone and an App, when someone make call to 101, the IP Phone, and App will be added as target, the target_add event will be triggered two times.
+target_ringing: the called target is ringing.
+target_noanswer: there no answer from the called target.
+target_fail: call failed from the called target. For example, the App / IP Phone rejected the call.
+target_ended: call is ended from the called target.For example, the App / IP Phone hangup the call.
+```
+
+
+
+> cdr_events
+
+Once a call is ended, the CDR of this call will be push to the subscribers, the message topic is: **cdr_events**, the message key is below.
+
+```
+call_cdr
+```
+
+
+
+> queue_events
+
+Once the queue status is changed, for example, the caller who in the queue was hangup the call, or the caller who is in the queue is answered by an agent.... the related status information will be pushed to the subscribers. The message topic is **queue_events**，includes below message key.
+
+```
+queue_status
+```
+
+
+
+> trunk_events
+
+Once a trunk state is changed, for example, the PBX successfully registered to a Trunk, or register to the Trunk is fails, or the registration is lost from a trunk, connection timeout,  PortSIP PBX will pushed the message information to the subscribers, the message topic is **trunk_events**, the key is below.
+
+```
+trunk_connected
+
+trunk_disconnected
+```
+
+
+
+More details of the WebSocket Pub/Sb, please read this link [Going Real-Time with PortSIP PBX Pub/Sub]().
+
+
+
+## Chapter 16. Help
+
+
+
 Skype ID: portsip, the name is "**PortSIP PBX**"
 
 Email: support@portsip.com
@@ -2925,13 +2999,13 @@ Email: support@portsip.com
 
 
 
-## Chapter 16. Best Practices for Deployment
+## Chapter 17. Best Practices for Deployment
 
 Sometimes a bad production deployment can ruin all the efforts you invested in a development process. This chapter aims to help you better understand how to deal with deployments in your scenario and provide some best practices for deployments.
 
 
 
-### 16.1 Deploying PortSIP PBX in LAN
+### 17.1 Deploying PortSIP PBX in LAN
 
 This is a simple but typical deployment mode, in which scenario the PortSIP PBX is deployed in LAN. Extensions from the same LAN will register to PBX and make calls to each other. With default settings, the SIP signaling and RTP streams (RTP packet for audio and video) are relayed by PBX.
 
@@ -2939,7 +3013,7 @@ In this deployment, when running the "**Setup Wizard**", in the step 1 you will 
 
 
 
-### 16.2 Deploying PortSIP PBX in LAN and registering to public trunk
+### 17.2 Deploying PortSIP PBX in LAN and registering to public trunk
 
 When the PBX is deployed in LAN, and yet it registers to a trunk that is located on Internet, the caller can make call from landline/mobile phone to the extension of PBX, and the extension can make call to a landline/mobile phone number.
 
