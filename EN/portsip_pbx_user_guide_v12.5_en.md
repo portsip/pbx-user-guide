@@ -2918,35 +2918,35 @@ Above header will cause the PBX rewrite the from header if the call is send to t
 
 
 
-## Chapter 15. Help
+## Chapter 15. WebSocket Publisher
 
 
 
 From v12.5，PortSIP PBX provides the Pub/Sub mechanism which bases on the WebSocket, the user is able to create the WebSocket in any programming languages to subscribe to the PBX events, once the subscribed events occur, PortSIP PBX will push the event message to subscriber automatically, the message is in the JSON format. 
 
-PortSIP PBX v12.5 provide below topics and keys for the Pub/Sub。
+PortSIP PBX v12.5 provide below topics and keys for the Pub/Sub.
 
 
 
 > extension_events
 
-All extension related event message will be published by  **extension_events** topic，it's include below message keys.
+All extension related event message will be published by  **extension_events** topic，it includes below message keys.
 
 ```
 extension_register: extension registered to PBX or un-register from the PBX.
-call_hold: call was held
-call_unhold: call was resume
-call_start: call starting
-call_established: the call was answered and successfully connected
+call_hold: call was held.
+call_unhold: call has been resumed from held.
+call_start: call starting.
+call_established: the call was answered and successfully connected.
 call_ended: call is ended.
-call_noanswer: call is no anaswer
-call_reroute: the call was re-routed to another target
-call_fail: call is failed
-target_add: start call to a target. For example extension 101 is registered to PBX from an IP Phone and an App, when someone make call to 101, the IP Phone, and App will be added as target, the target_add event will be triggered two times.
+call_noanswer: call is no answer.
+call_reroute: the call was re-routed to another target.
+call_fail: call is failed.
+target_add: start call to a target. For example, extension 101 is registered to PBX from an IP Phone and an App, when someone makes calls to 101, the IP Phone, and App will be added as the target, the target_add event will be triggered two times.
 target_ringing: the called target is ringing.
 target_noanswer: there no answer from the called target.
 target_fail: call failed from the called target. For example, the App / IP Phone rejected the call.
-target_ended: call is ended from the called target.For example, the App / IP Phone hangup the call.
+target_ended: call is ended from the called target. For example, the App / IP Phone hangs up the call.
 ```
 
 
@@ -2956,7 +2956,7 @@ target_ended: call is ended from the called target.For example, the App / IP Pho
 Once a call is ended, the CDR of this call will be push to the subscribers, the message topic is: **cdr_events**, the message key is below.
 
 ```
-call_cdr
+call_cdr: once a is ended, the CDR will be packed in JSON format and push to subscriber.
 ```
 
 
@@ -2966,7 +2966,7 @@ call_cdr
 Once the queue status is changed, for example, the caller who in the queue was hangup the call, or the caller who is in the queue is answered by an agent.... the related status information will be pushed to the subscribers. The message topic is **queue_events**，includes below message key.
 
 ```
-queue_status
+queue_status: if the queue status changed, the information will be packed into JSON message and push to subscriber.
 ```
 
 
