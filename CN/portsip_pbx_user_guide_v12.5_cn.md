@@ -2824,7 +2824,7 @@ PortSIP PBX 提供了丰富的 REST API，让您能够实现自己的 Web 管理
 
 
 
-## 第 15 章 WebSocket Pub/Sub
+## 第 15 章 实时事件推送 WebSocket Pub/Sub
 
 从 v12.5 开始，PortSIP PBX 开始支持基于 WebSocket 的 Pub/Sub 机制，用户可以在任何编程语言中使用 WebSocket 来订阅 PBX 的事件消息，一旦订阅的事件发生，PBX即主动推送消息到订阅者，消息采用 JSON 格式封装。
 
@@ -2887,7 +2887,7 @@ trunk_disconnected
 
 
 
-关于消息订阅的详细使用教程，请阅读 使用 [PortSIP PBX 的 WebSocket Pub/Sub 机制订阅事件消息](
+关于消息订阅的详细使用教程，请阅读 使用 [PortSIP PBX 基于 WebSocket Pub/Sub 实时消息推送](
 http://www.portsip.cn/knowledge-base/portsip-pbx-websocket-pub-sub/(opens in a new tab))。
 
 
