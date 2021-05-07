@@ -1942,10 +1942,9 @@ PortSIP PBX 内置集成了 WebRTC 客户端，可通过网页直接接听和拨
 在使用 WebRTC 客户端之前，请确认您已经仔细过如下章节：
 
 - [2.6 使用受信任的证书消除浏览器警告](#2.6 使用受信任的证书消除浏览器警告)
-
 - [3.1 在局域网里部署 PortSIP PBX](#3.1 在局域网里部署 PortSIP PBX)
-
 - [5.1 域名和传输协议](#5.1 域名和传输协议)
+- [17.3 解决 HTTPS 和 WebRTC 客户端的证书警告问题](#17.3 解决 HTTPS 和 WebRTC 客户端的证书警告问题)
 
 
 
@@ -2926,5 +2925,31 @@ Skype ID：portsip，用户名为 PortSIP PBX
 
 
 
+### 17.3 解决 HTTPS 和 WebRTC 客户端的证书警告问题
 
+在成功安装配置 PortSIP PBX 之后，如果你用 HTTPS 访问 PBX 的管理界面，或者打开 PBX 自带的 WebRTC 客户端时遇到浏览器显示的证书警告，请按照如下步骤解决。
+
+1. 从域名提供商处购买一个域名，比如说阿里云。
+2. 为新买的域名创建一条 A 记录 DNS解析，将其解析到 PBX 的 IP 地址。
+3. 从受信任的 SSL 证书提供商处为域名购买 SSL 证书，通常会得到两个文件，一个是证书文件，一个是私钥文件。购买时请选择为 Nginx 配置证书。
+4. 登录到 PBX 的 WEB 管理界面。
+5. 点击左侧菜单 "**首页 > 概要**", 点击 "**设置向导**", 在向导的第一步的 “**PBX Web 域名**” 处，输入购买的域名， 然后持续点击 “**下一步**” 完成向导。
+6. 点击菜单  "**首页> 通话管理 > 域名和传输协议**",  如果 PBX 已经创建 TLS 和 WSS 的 传输协议，请删除它们。 
+7. 点击 “**添加**” 按钮重新创建 WSS 和 TLS 传输协议，并按照提示上传证书文件和私钥。
+8. 重新创建完 TLS 和 WSS 传输协议后，请重启服务器。如果是 Windows 系统，直接重启。
+9. 如果是 Linux 系统，执行如下命令进行重启： 
+
+```
+$ sudo docker exec -it portsip-pbx /bin/bash
+$ supervisorctl stop nginx
+$ supervisorctl stop gateway
+$ supervisorctl start nginx
+$ supervisorctl start gateway
+```
+
+
+
+重启之后，你可以使用 https://yourdomain.com:8887 地址来登录 PBX 的管理界面。
+
+成功登录后，点击左侧菜单 WebRTC 可以打开 WebRTC 客户端。
 

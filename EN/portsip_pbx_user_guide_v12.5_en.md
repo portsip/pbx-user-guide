@@ -3,7 +3,7 @@
 # <center>PortSIP PBX User Guide</center>
 
 
-Version: v12.4
+Version: v12.5
 
 Date: May 10, 2021
 
@@ -2019,6 +2019,8 @@ Before starting to use WebRTC Client, please ensure you have been read these sec
 
 - The [5.1 Add TLS/WSS transport](#5.1 Add TLS/WSS transport). 
 
+- The [17.3 Solve the self-signed certificates warning](#17.3 Solve the self-signed certificates warning).
+
   
 
 If you used a trusted SSL certificates, please click left menu node "**WebRTC **", the browser will opens WebRTC client in a new browser tab (Note: Chrome, new Edge, Firefox are recommended), you will just need to enter the extension number and password to sign in.
@@ -3018,6 +3020,38 @@ In this deployment, when running the "**Setup Wizard**", in the step 1 you will 
 When the PBX is deployed in LAN, and yet it registers to a trunk that is located on Internet, the caller can make call from landline/mobile phone to the extension of PBX, and the extension can make call to a landline/mobile phone number.
 
 This scenario requires the PBX server has a public static IP. When running the "**Setup Wizard**", in the step 1 enter the "**Private IPv4**" and "**Public IPv4**". The public IPv4 is the static public IP of the PBX server.
+
+
+
+### 17.3 Solve the self-signed certificates warning
+
+After you completed the PBX setting up, if get the self-signed certificates warning in browser when you access PBX Web Management Console by HTTPS or access the WebRTC client, please follow up below steps to solve it.
+
+1. Purchase a Domain from the domain provider for your PBX, for example Godaddy.
+2. Add the an A record in the Domain DNS zone, resolve the Domain to your PBX IP.
+3. Purchase a certificate from the trust certificate provider, for example Digicert, Thawte, GeoTrust, usually you will have two files, one is certificate, another one is private key. **Note**, please check the certificates for Nginx.
+4. Sign in the PortSIP PBX Web Management Console.
+5. Click left menu "**Home > Summary**", then click the "**Setup Wizard**", in the step 1, enter your domain for the "**Web Domain**", click **Next** button to complete the wizard.
+6. Click the left menu "**Home > Call Manager > Domain and Transport**",  if there has the TLS, WSS transport added, just delete the TLS and WSS transport.
+7. Add the WSS and TLS transport with upload the purchased certificate files.
+8. For Windows installation, restart the Windows Server directly.
+9. For Linux installation, perform the below commands: 
+
+```
+$ sudo docker exec -it portsip-pbx /bin/bash
+$ supervisorctl stop nginx
+$ supervisorctl stop gateway
+$ supervisorctl start nginx
+$ supervisorctl start gateway
+```
+
+
+
+After restarted,  you can sign in PortSIP PBX Management Console by URL https://yourdomain.com:8887
+
+If you don't use trusted certificate files for the WSS transport, you will get the browser warning and blocked when you use WebRTC client.
+
+
 
 
 
