@@ -2956,7 +2956,7 @@ target_ended: call is ended from the called target. For example, the App / IP Ph
 Once a call is ended, the CDR of this call will be push to the subscribers, the message topic is: **cdr_events**, the message key is below.
 
 ```
-call_cdr: once a is ended, the CDR will be packed in JSON format and push to subscriber.
+call_cdr: once a call is ended, the CDR will be packed in JSON format and push to subscriber.
 ```
 
 
@@ -2983,7 +2983,7 @@ trunk_disconnected
 
 
 
-More details of the WebSocket Pub/Sb, please read this link [Going Real-Time with PortSIP PBX Pub/Sub]().
+More details of the WebSocket Pub/Sb, please read this link [Going Real-Time with PortSIP PBX Pub/Sub](https://www.portsip.com/knowledge-base/portsip-pbx-websocket-publisher/).
 
 
 
