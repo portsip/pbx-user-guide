@@ -2268,13 +2268,13 @@ PortSIP PBX provides the "**Exclusive Agent**" feature allow set up one or more 
 
 - Click the menu **"CTI > Exclusive Agent"**, click the "**Add**" button
 
-- Enter the friendly text for describe this exclusive agent purpose
+- **Description:** A descriptive name for the exclusive agent being entered. For example, enter “**XXX Bank**” as the description for the bank caller.
 
-- Caller number: enter the caller number who will be assigned the exclusive agents. Once the call comes from this caller, the call will be distributed to the exclusive agent with highest priority. 
+- **Caller number: **enter the caller number who will be assigned the exclusive agents. Once the call comes from this caller, the call will be distributed to the exclusive agent with highest priority. 
 
   You can add more caller numbers by click the "**Add**" button.
 
-- Call Queue: choose the queue member from the queues to set up as exclusive agent
+- **Call Queue:** choose the queue member from the queues to set up as exclusive agent
 
 
 
@@ -2290,9 +2290,9 @@ PortSIP PBX provides the VIP Caller feature, make VIP customers feel special whe
 
 - Click the menu **"CTI > VIP List"**, click the "**Add**" button
 - Enter the VIP customer phone number
-- Enter the friendly text to describe this VIP caller
+- **Description:** A descriptive name for the VIP Caller being entered.  For example, enter “**Microsoft team**” as the description for the VIP caller
 - Set up how long of the the VIP number validity
-- Enabled: turn on/off
+- **Enabled:** turn on/off
 
 
 
@@ -2305,7 +2305,7 @@ PortSIP PBX provides the VIP Caller feature, make VIP customers feel special whe
 Spam calls are the plague of all businesses, especially call centers,  PortSIP PBX provide three ways for anti the spam calls.
 
 1. A global "**Number Blacklist**", it will rejected the call silently if the caller is in the number blacklist. You can find the details at section [12.2 Number Blacklist](#12.2 Number Blacklist).
-2. Harass Number. PortSIP PBX also provides the "**Harass Number**" features for anti the spam calls only of the Call queue. The harass number is defined  as two levels, if a caller is determined in the "**Level 1**",  the preset prompt file will be played to alert the caller, and if caller press **1** the call will be hang-up, press **2** the call will continue; if a caller is determined in the "**Level 2**",  the preset prompt file will be played to alert the caller, and the call will be hang-up after play finished.
+2. **Harass Number:** PortSIP PBX also provides the "**Harass Number**" features for anti the spam calls only for the Call Queue. The harass number is defined  as two levels, if a caller is determined in the "**Level 1**",  the preset prompt file will be played to alert the caller, and if caller press **1** the call will be hang-up, press **2** the call is continue; If a caller is determined in the "**Level 2**",  the preset prompt file will be played to alert the caller, and the call will be hang-up automatically after play finished.
 
 
 
