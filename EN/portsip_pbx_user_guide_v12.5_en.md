@@ -2262,7 +2262,7 @@ We would like to let the extension 101 and 102 to silence monitor other extensio
 
 In some scenarios, for the special industry callers of contact center, we will need the special agents who have rich special industry knowledges and skills to serve them.
 
-PortSIP PBX provides the "**Exclusive Agent**" feature allow set up one or more agents from the queue  as "**Exclusive Agent**" for the special callers, once the call comes from these callers, the queue will distributes the call to the **exclusive agent** give highest priority if the agent is idle, of course if all exclusive agents are busy / sign out, the call will be distributed to other agents.
+PortSIP PBX provides the "**Exclusive Agent**" feature allow set up one or more agents from the queue  as "**Exclusive Agent**" for the special callers, once the call comes from these callers, the queue will distribute the call to the **exclusive agent** give the highest priority if the agent is idle, of course, if all exclusive agents are busy / sign out, the call will be distributed to other agents.
 
 
 
@@ -2278,13 +2278,13 @@ PortSIP PBX provides the "**Exclusive Agent**" feature allow set up one or more 
 
 
 
-**Note: if the call is not comes from the specified caller numbers, the exclusive agent  works as the normal agent.**
+**Note: if the call is not comeing from the specified caller numbers, the exclusive agent  works as the normal agent.**
 
 
 
 #### VIP List
 
-PortSIP PBX provides the VIP Caller feature, make VIP customers feel special when trying to connect PortSIP PBX contact center. When the VIP call was determined,  the queue always give the top priority to the caller and pushed on top of the queue.
+PortSIP PBX provides the VIP Caller feature, make VIP customers feel special when trying to connect PortSIP PBX contact center. When the VIP call was determined,  the queue always gives the top priority to the caller and pushed on top of the queue.
 
 
 
@@ -2302,10 +2302,11 @@ PortSIP PBX provides the VIP Caller feature, make VIP customers feel special whe
 
 #### Harass Numbers
 
-Spam calls are the plague of all businesses, especially call centers,  PortSIP PBX provide three ways for anti the spam calls.
+Spam calls are the plague of all businesses, especially call centers,  PortSIP PBX provides two ways for anti spam calls.
 
 1. A global "**Number Blacklist**", it will rejected the call silently if the caller is in the number blacklist. You can find the details at section [12.2 Number Blacklist](#12.2 Number Blacklist).
-2. Harass Number. PortSIP PBX also provides the "**Harass Number**" features for anti the spam calls only of the Call queue. The harass number is defined  as two levels, if a caller is determined in the "**Level 1**",  the preset prompt file will be played to alert the caller, and if caller press **1** the call will be hang-up, press **2** the call will continue; if a caller is determined in the "**Level 2**",  the preset prompt file will be played to alert the caller, and the call will be hang-up after play finished.
+2. Harass Number. PortSIP PBX also provides the "**Harass Number**" features for anti the spam calls only of the Call queue. The harass number is defined  as two levels, if a caller is determined in the "**Level 1**",  the preset prompt file will be played to alert the caller, and if caller press **1** the call will be hang-up, press **2** the call will continue; 
+3. If a caller is determined in the "**Level 2**",  the preset prompt file will be played to alert the caller, and the call will be hang-up after play finished.
 
 
 
@@ -2924,7 +2925,7 @@ Above header will cause the PBX rewrite the from header if the call is send to t
 
 
 
-From v12.5，PortSIP PBX provides the Pub/Sub mechanism which bases on the WebSocket, the user is able to create the WebSocket in any programming languages to subscribe to the PBX events, once the subscribed events occur, PortSIP PBX will push the event message to subscriber automatically, the message is in the JSON format. 
+From v12.5，PortSIP PBX provides the Pub/Sub mechanism which bases on the WebSocket, the user is able to create the WebSocket in any programming languages to subscribe to the PBX events, once the subscribed events occur, PortSIP PBX will push the event message to the subscriber automatically, the message is in the JSON format. 
 
 PortSIP PBX v12.5 provide below topics and keys for the Pub/Sub.
 
