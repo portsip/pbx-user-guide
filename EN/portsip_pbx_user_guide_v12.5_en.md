@@ -3,7 +3,7 @@
 # <center>PortSIP PBX User Guide</center>
 
 
-Version: v12.5
+Version: v12.5.1
 
 Date: May 10, 2021
 
@@ -217,7 +217,7 @@ Tasks that MUST be completed before installing PortSIP PBX:
   
   
 
-#### Installing a fresh PortSIP PBX v12.5 for Linux
+#### Installing a fresh PortSIP PBX v12.5.1 for Linux
 
 To install the PortSIP PBX for Linux, please refer to: [Setup PortSIP PBX for Linux](https://www.portsip.com/knowledge-base/setup-portsip-pbx-for-linux/)
 
@@ -284,7 +284,7 @@ Tasks that MUST be completed before installing PortSIP PBX.
 
 
 
-#### Installing a fresh PortSIP PBX v12.5 for Windows
+#### Installing a fresh PortSIP PBX v12.5.1 for Windows
 
 To install PortSIP PBX, you only need to double-click the installer, which will guide you through the installation process.
 
@@ -318,19 +318,19 @@ You also need to open the port that you are using for adding new transport:
 
 
 
-### 2.4 Preparing for upgrading to 12.5 from old versions on Windows
+### 2.4 Preparing for upgrading to 12.5.1 from old versions on Windows
 
 If your installation is PortSIP PBX Linux edition, please ignore this section 2.4.
 
 **Upgrade from v12.0/12.1**
 
-If your current installation **is v12.0/v12.1,** you can't upgrade it to v12.5 directly, you have to upgrade to v12.3.2 first. Please read this link to upgrade:  [Upgrade PortSIP PBX from v12.0 / v12.1 to v12.3.2](https://www.portsip.com/knowledge-base/upgrade-portsip-pbx-12-to-13-windows/)
+If your current installation **is v12.0/v12.1,** you can't upgrade it to v12.5.1 directly, you have to upgrade to v12.3.2 first. Please read this link to upgrade:  [Upgrade PortSIP PBX from v12.0 / v12.1 to v12.3.2](https://www.portsip.com/knowledge-base/upgrade-portsip-pbx-12-to-13-windows/)
 
 
 
 **Upgrade from v12.2.x/12.3.0, 12.3.1**
 
-If your current installation **is v12.2.x or v12.3.0, v12.3.1,** you can't upgrade it to v12.5 directly, you have to upgrade to v12.3.2 first. Please follow up below steps to upgrade:
+If your current installation **is v12.2.x or v12.3.0, v12.3.1,** you can't upgrade it to v12.5.1 directly, you have to upgrade to v12.3.2 first. Please follow up below steps to upgrade:
 
 1. Download [PortSIP PBX v12.3.2 installer for Windows](https://www.portsip.com/downloads/pbx/v12/portsip-pbx-12.3.2.796.exe) 
 2. Double click it to install for upgrade to v12.3.2
@@ -342,9 +342,9 @@ If your current installation **is v12.2.x or v12.3.0, v12.3.1,** you can't upgra
 #### **Windows**
 
 1. Go to **c:/programdata/portsip** folder, delete all ***.bak** files and folders
-2. Ensure your current installation **is v12.4 or v12.3.2, or is already upgraded to 12.3.2**
-3. Download [PortSIP PBX v12.5.0 installer for Windows](https://www.portsip.com/downloads/pbx/v12/portsip-pbx-12.4.0.1014.exe) 
-4. After downloaded the v12.5.0 installer for Windows, you only need to double-click the installer, which will guide you through the upgrade process.
+2. Ensure your current installation **is v12.5.0 or v12.4.0 or v12.3.2, or is already upgraded to 12.3.2**
+3. Download [PortSIP PBX v12.5.1 installer for Windows](https://www.portsip.com/downloads/pbx/v12/portsip-pbx-12.5.1.1220.exe) 
+4. After downloaded the v12.5.1 installer for Windows, you only need to double-click the installer, which will guide you through the upgrade process.
 
 
 
@@ -2924,9 +2924,9 @@ Above header will cause the PBX rewrite the from header if the call is send to t
 
 
 
-From v12.5，PortSIP PBX provides the Pub/Sub mechanism which bases on the WebSocket, the user is able to create the WebSocket in any programming languages to subscribe to the PBX events, once the subscribed events occur, PortSIP PBX will push the event message to subscriber automatically, the message is in the JSON format. 
+PortSIP PBX provides the Pub/Sub mechanism which bases on the WebSocket, the user is able to create the WebSocket in any programming languages to subscribe to the PBX events, once the subscribed events occur, PortSIP PBX will push the event message to subscriber automatically, the message is in the JSON format. 
 
-PortSIP PBX v12.5 provide below topics and keys for the Pub/Sub.
+PortSIP PBX provides below topics and keys for the Pub/Sub.
 
 
 
