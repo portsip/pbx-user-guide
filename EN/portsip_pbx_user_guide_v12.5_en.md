@@ -3,7 +3,7 @@
 # <center>PortSIP PBX User Guide</center>
 
 
-Version: v12.5.1
+Version: v12.5
 
 Date: May 10, 2021
 
@@ -217,7 +217,7 @@ Tasks that MUST be completed before installing PortSIP PBX:
   
   
 
-#### Installing a fresh PortSIP PBX v12.5.1 for Linux
+#### Installing a fresh PortSIP PBX v12.5 for Linux
 
 To install the PortSIP PBX for Linux, please refer to: [Setup PortSIP PBX for Linux](https://www.portsip.com/knowledge-base/setup-portsip-pbx-for-linux/)
 
@@ -284,7 +284,7 @@ Tasks that MUST be completed before installing PortSIP PBX.
 
 
 
-#### Installing a fresh PortSIP PBX v12.5.1 for Windows
+#### Installing a fresh PortSIP PBX v12.5 for Windows
 
 To install PortSIP PBX, you only need to double-click the installer, which will guide you through the installation process.
 
@@ -318,19 +318,19 @@ You also need to open the port that you are using for adding new transport:
 
 
 
-### 2.4 Preparing for upgrading to 12.5.1 from old versions on Windows
+### 2.4 Preparing for upgrading to 12.5 from old versions on Windows
 
 If your installation is PortSIP PBX Linux edition, please ignore this section 2.4.
 
 **Upgrade from v12.0/12.1**
 
-If your current installation **is v12.0/v12.1,** you can't upgrade it to v12.5.1 directly, you have to upgrade to v12.3.2 first. Please read this link to upgrade:  [Upgrade PortSIP PBX from v12.0 / v12.1 to v12.3.2](https://www.portsip.com/knowledge-base/upgrade-portsip-pbx-12-to-13-windows/)
+If your current installation **is v12.0/v12.1,** you can't upgrade it to v12.5 directly, you have to upgrade to v12.3.2 first. Please read this link to upgrade:  [Upgrade PortSIP PBX from v12.0 / v12.1 to v12.3.2](https://www.portsip.com/knowledge-base/upgrade-portsip-pbx-12-to-13-windows/)
 
 
 
 **Upgrade from v12.2.x/12.3.0, 12.3.1**
 
-If your current installation **is v12.2.x or v12.3.0, v12.3.1,** you can't upgrade it to v12.5.1 directly, you have to upgrade to v12.3.2 first. Please follow up below steps to upgrade:
+If your current installation **is v12.2.x or v12.3.0, v12.3.1,** you can't upgrade it to v12.5 directly, you have to upgrade to v12.3.2 first. Please follow up below steps to upgrade:
 
 1. Download [PortSIP PBX v12.3.2 installer for Windows](https://www.portsip.com/downloads/pbx/v12/portsip-pbx-12.3.2.796.exe) 
 2. Double click it to install for upgrade to v12.3.2
@@ -342,9 +342,9 @@ If your current installation **is v12.2.x or v12.3.0, v12.3.1,** you can't upgra
 #### **Windows**
 
 1. Go to **c:/programdata/portsip** folder, delete all ***.bak** files and folders
-2. Ensure your current installation **is v12.5 or v12.4 or v12.3.2, or is already upgraded to 12.3.2**
-3. Download [PortSIP PBX v12.5.1 installer for Windows](https://www.portsip.com/downloads/pbx/v12/portsip-pbx-12.5.1.1220.exe) 
-4. After downloaded the v12.5.1 installer for Windows, you only need to double-click the installer, which will guide you through the upgrade process.
+2. Ensure your current installation **is v12.4 or v12.3.2, or is already upgraded to 12.3.2**
+3. Download [PortSIP PBX v12.5.0 installer for Windows](https://www.portsip.com/downloads/pbx/v12/portsip-pbx-12.4.0.1014.exe) 
+4. After downloaded the v12.5.0 installer for Windows, you only need to double-click the installer, which will guide you through the upgrade process.
 
 
 
@@ -2262,37 +2262,37 @@ We would like to let the extension 101 and 102 to silence monitor other extensio
 
 In some scenarios, for the special industry callers of contact center, we will need the special agents who have rich special industry knowledges and skills to serve them.
 
-PortSIP PBX provides the "**Exclusive Agent**" feature allow set up one or more agents from the queue  as "**Exclusive Agent**" for the special callers, once the call comes from these callers, the queue will distribute the call to the **exclusive agent** give the highest priority if the agent is idle, of course, if all exclusive agents are busy / sign out, the call will be distributed to other agents.
+PortSIP PBX provides the "**Exclusive Agent**" feature allow set up one or more agents from the queue  as "**Exclusive Agent**" for the special callers, once the call comes from these callers, the queue will distributes the call to the **exclusive agent** give highest priority if the agent is idle, of course if all exclusive agents are busy / sign out, the call will be distributed to other agents.
 
 
 
 - Click the menu **"CTI > Exclusive Agent"**, click the "**Add**" button
 
-- Enter the friendly text for describe this exclusive agent purpose
+- **Description:** A descriptive name for the exclusive agent being entered. For example, enter “**XXX Bank**” as the description for the bank caller.
 
-- Caller number: enter the caller number who will be assigned the exclusive agents. Once the call comes from this caller, the call will be distributed to the exclusive agent with highest priority. 
+- **Caller number: **enter the caller number who will be assigned the exclusive agents. Once the call comes from this caller, the call will be distributed to the exclusive agent with highest priority. 
 
   You can add more caller numbers by click the "**Add**" button.
 
-- Call Queue: choose the queue member from the queues to set up as exclusive agent
+- **Call Queue:** choose the queue member from the queues to set up as exclusive agent
 
 
 
-**Note: if the call is not comeing from the specified caller numbers, the exclusive agent  works as the normal agent.**
+**Note: if the call is not comes from the specified caller numbers, the exclusive agent  works as the normal agent.**
 
 
 
 #### VIP List
 
-PortSIP PBX provides the VIP Caller feature, make VIP customers feel special when trying to connect PortSIP PBX contact center. When the VIP call was determined,  the queue always gives the top priority to the caller and pushed on top of the queue.
+PortSIP PBX provides the VIP Caller feature, make VIP customers feel special when trying to connect PortSIP PBX contact center. When the VIP call was determined,  the queue always give the top priority to the caller and pushed on top of the queue.
 
 
 
 - Click the menu **"CTI > VIP List"**, click the "**Add**" button
 - Enter the VIP customer phone number
-- Enter the friendly text to describe this VIP caller
+- **Description:** A descriptive name for the VIP Caller being entered.  For example, enter “**Microsoft team**” as the description for the VIP caller
 - Set up how long of the the VIP number validity
-- Enabled: turn on/off
+- **Enabled:** turn on/off
 
 
 
@@ -2302,11 +2302,10 @@ PortSIP PBX provides the VIP Caller feature, make VIP customers feel special whe
 
 #### Harass Numbers
 
-Spam calls are the plague of all businesses, especially call centers,  PortSIP PBX provides two ways for anti spam calls.
+Spam calls are the plague of all businesses, especially call centers,  PortSIP PBX provide three ways for anti the spam calls.
 
 1. A global "**Number Blacklist**", it will rejected the call silently if the caller is in the number blacklist. You can find the details at section [12.2 Number Blacklist](#12.2 Number Blacklist).
-2. Harass Number. PortSIP PBX also provides the "**Harass Number**" features for anti the spam calls only of the Call queue. The harass number is defined  as two levels, if a caller is determined in the "**Level 1**",  the preset prompt file will be played to alert the caller, and if caller press **1** the call will be hang-up, press **2** the call will continue; 
-3. If a caller is determined in the "**Level 2**",  the preset prompt file will be played to alert the caller, and the call will be hang-up after play finished.
+2. **Harass Number:** PortSIP PBX also provides the "**Harass Number**" features for anti the spam calls only for the Call Queue. The harass number is defined  as two levels, if a caller is determined in the "**Level 1**",  the preset prompt file will be played to alert the caller, and if caller press **1** the call will be hang-up, press **2** the call is continue; If a caller is determined in the "**Level 2**",  the preset prompt file will be played to alert the caller, and the call will be hang-up automatically after play finished.
 
 
 
@@ -2925,9 +2924,9 @@ Above header will cause the PBX rewrite the from header if the call is send to t
 
 
 
-PortSIP PBX provides the Pub/Sub mechanism which bases on the WebSocket, the user is able to create the WebSocket in any programming languages to subscribe to the PBX events, once the subscribed events occur, PortSIP PBX will push the event message to the subscriber automatically, the message is in the JSON format. 
+From v12.5，PortSIP PBX provides the Pub/Sub mechanism which bases on the WebSocket, the user is able to create the WebSocket in any programming languages to subscribe to the PBX events, once the subscribed events occur, PortSIP PBX will push the event message to subscriber automatically, the message is in the JSON format. 
 
-PortSIP PBX  provides below topics and keys for the Pub/Sub.
+PortSIP PBX v12.5 provide below topics and keys for the Pub/Sub.
 
 
 
