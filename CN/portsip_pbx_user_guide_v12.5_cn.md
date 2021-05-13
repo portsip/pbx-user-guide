@@ -4,7 +4,7 @@
 
 # <center>PortSIP PBX 用户手册</center>
 
-版本：v12.5
+版本：v12.5.1
 
 日期：2021 年 5 月 10 日
 
@@ -206,7 +206,7 @@ PortSIP PBX 可以在没有域名的机器上运行，但是我们推荐使用�
 
 
 
-#### **在 Linux 上全新安装 PortSIP PBX v12.5**
+#### **在 Linux 上全新安装 PortSIP PBX v12.5.1**
 
 如需全新安装 PortSIP PBX for Linux，请参考：[安装 PortSIP PBX for Linux](http://www.portsip.cn/knowledge-base/setup-portsip-pbx-v12-linux/)
 
@@ -258,7 +258,7 @@ PortSIP PBX 可以在没有域名的机器上运行，但是我们推荐使用�
 
 
 
-#### **在 Windows 主机上全新安装 PortSIP PBX v12.5**
+#### **在 Windows 主机上全新安装 PortSIP PBX v12.5.1**
 
 要安装 PortSIP PBX，您只需要双击安装程序文件，然后根据安装程序的提示进行安装。 
 
@@ -294,7 +294,7 @@ PortSIP PBX 的系统服务将在安装成功完成后自动运行，以及在�
 
 
 
-### 2.4 准备从 v12.0/v12.1 升级到 v12.5.0
+### 2.4 准备从 v12.0/v12.1 升级到 v12.5.1
 
 如果您安装的是 Linux 版本的 PortSIP PBX，请忽略本小节。
 
@@ -302,13 +302,13 @@ PortSIP PBX 的系统服务将在安装成功完成后自动运行，以及在�
 
 **从 v12.0/v12.1.0 升级到 v12.3.2**
 
-如果您当前安装的 PortSIP PBX 版本是 v12.0/v12.1.0，那么不能直接升级到 v12.5.0，必须先升级到 v12.3.2版本。请按照  [从 PortSIP PBX v12.0 / v12.1 升级到 v12.3.2](http://www.portsip.cn/knowledge-base/upgrade-portsip-pbx-12-to-13-windows/)进行升级。
+如果您当前安装的 PortSIP PBX 版本是 v12.0/v12.1.0，那么不能直接升级到 v12.5.1，必须先升级到 v12.3.2版本。请按照  [从 PortSIP PBX v12.0 / v12.1 升级到 v12.3.2](http://www.portsip.cn/knowledge-base/upgrade-portsip-pbx-12-to-13-windows/)进行升级。
 
 
 
 **从 v12.2.x/v12.3.0/v12.3.1 升级到 v12.3.2**
 
-如果您当前安装的 PortSIP PBX 版本是 v12.2.x/v12.3.0/v12.3.1，那么不能直接升级到 v12.5.0，必须先升级到 v12.3.2版本。请按照下述步骤进行升级。
+如果您当前安装的 PortSIP PBX 版本是 v12.2.x/v12.3.0/v12.3.1，那么不能直接升级到 v12.5.1，必须先升级到 v12.3.2版本。请按照下述步骤进行升级。
 
 1. 下载 v12.3.2 安装包[PortSIP PBX v12.3.2 Windows 安装包](http://www.portsip.cn/downloads/pbx/v12/portsip-pbx-12.3.2.796.exe) 。
 2. 双击安装包进行安装。
@@ -319,15 +319,15 @@ PortSIP PBX 的系统服务将在安装成功完成后自动运行，以及在�
 
 
 
-### 2.5 升级当前版本到 v12.5
+### 2.5 升级当前版本到 v12.5.1
 
 #### Windows 升级
 
 1. 进入 **c:/programdata/portsip** 目录, 删除所有以 **.bak** 结束的文件和文件夹。
 
-2. 确认您当前安装的 PortSIP PBX 已经是 **v12.3.2**或者已经升级到 **v12.3.2**，或者你当前安装的版本已经是**v12.4**。
+2. 确认您当前安装的 PortSIP PBX 已经是 **v12.3.2**或者已经升级到 **v12.3.2**，或者你当前安装的版本已经是**v12.4 或者 v12.5**。
 
-3. 下载 v12.5.0 安装包[PortSIP PBX v12.5.0 Windows 安装包](http://www.portsip.cn/downloads/pbx/v12/portsip-pbx-12.5.0.1014.exe) 。
+3. 下载 v12.5.1 安装包[PortSIP PBX v12.5.1 Windows 安装包](http://www.portsip.cn/downloads/pbx/v12/portsip-pbx-12.5.1.1220.exe) 。
 
 4. 双击安装包进行安装。
 
@@ -2826,9 +2826,9 @@ PortSIP PBX 提供了丰富的 REST API，让您能够实现自己的 Web 管理
 
 ## 第 15 章 实时事件推送 WebSocket Pub/Sub
 
-从 v12.5 开始，PortSIP PBX 开始支持基于 WebSocket 的 Pub/Sub 机制，用户可以在任何编程语言中使用 WebSocket 来订阅 PBX 的事件消息，一旦订阅的事件发生，PBX即主动推送消息到订阅者，消息采用 JSON 格式封装。
+PortSIP PBX 支持基于 WebSocket 的 Pub/Sub 机制，用户可以在任何编程语言中使用 WebSocket 来订阅 PBX 的事件消息，一旦订阅的事件发生，PBX即主动推送消息到订阅者，消息采用 JSON 格式封装。
 
-PortSIP PBX v12.5 支持订阅如下事件主题。
+PortSIP PBX  支持订阅如下事件主题。
 
 
 
