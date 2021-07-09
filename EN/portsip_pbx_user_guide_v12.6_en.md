@@ -255,7 +255,7 @@ Tasks that MUST be completed before installing PortSIP PBX:
   
   
 
-#### Installing a fresh PortSIP PBX v12.6 for Linux
+#### Installing a fresh PortSIP PBX v12.6.1 for Linux
 
 To install the PortSIP PBX for Linux, please refer to: [Setup PortSIP PBX for Linux](https://www.portsip.com/knowledge-base/setup-portsip-pbx-for-linux/)
 
@@ -322,7 +322,7 @@ Tasks that MUST be completed before installing PortSIP PBX.
 
 
 
-#### Installing a fresh PortSIP PBX v12.6 for Windows
+#### Installing a fresh PortSIP PBX v12.6.1 for Windows
 
 To install PortSIP PBX, you only need to double-click the installer, which will guide you through the installation process.
 
@@ -356,19 +356,19 @@ You also need to open the port that you are using for adding new transport:
 
 
 
-### 2.4 Preparing for upgrading to 12.6 from old versions on Windows
+### 2.4 Preparing for upgrading to 12.6.1 from old versions on Windows
 
 If your installation is PortSIP PBX Linux edition, please ignore this section 2.4.
 
 **Upgrade from v12.0/12.1**
 
-If your current installation **is v12.0/v12.1,** you can't upgrade it to v12.6 directly, you have to upgrade to v12.3.2 first. Please read this link to upgrade:  [Upgrade PortSIP PBX from v12.0 / v12.1 to v12.3.2](https://www.portsip.com/knowledge-base/upgrade-portsip-pbx-12-to-13-windows/)
+If your current installation **is v12.0/v12.1,** you can't upgrade it to v12.6.1 directly, you have to upgrade to v12.3.2 first. Please read this link to upgrade:  [Upgrade PortSIP PBX from v12.0 / v12.1 to v12.3.2](https://www.portsip.com/knowledge-base/upgrade-portsip-pbx-12-to-13-windows/)
 
 
 
 **Upgrade from v12.2.x/12.3.0, 12.3.1**
 
-If your current installation **is v12.2.x or v12.3.0, v12.3.1,** you can't upgrade it to v12.6 directly, you have to upgrade to v12.3.2 first. Please follow up below steps to upgrade:
+If your current installation **is v12.2.x or v12.3.0, v12.3.1,** you can't upgrade it to v12.6.1 directly, you have to upgrade to v12.3.2 first. Please follow up below steps to upgrade:
 
 1. Download [PortSIP PBX v12.3.2 installer for Windows](https://www.portsip.com/downloads/pbx/v12/portsip-pbx-12.3.2.796.exe) 
 2. Double click it to install for upgrade to v12.3.2
@@ -381,8 +381,8 @@ If your current installation **is v12.2.x or v12.3.0, v12.3.1,** you can't upgra
 
 1. Go to **c:/programdata/portsip** folder, delete all ***.bak** files and folders
 2. Ensure your current installation **is v12.5.x or v12.4.0 or v12.3.2, or is already upgraded to 12.3.2**
-3. Download [PortSIP PBX v12.6.0 installer for Windows](https://www.portsip.com/downloads/pbx/v12/portsip-pbx-12.6.0.1342.exe) 
-4. After downloaded the v12.6.0 installer for Windows, you only need to double-click the installer, which will guide you through the upgrade process.
+3. Download [PortSIP PBX v12.6.1 installer for Windows](https://www.portsip.com/downloads/pbx/v12/portsip-pbx-12.6.1.1491.exe) 
+4. After downloaded the v12.6.1 installer for Windows, you only need to double-click the installer, which will guide you through the upgrade process.
 
 
 
@@ -397,29 +397,14 @@ Please perform below commands to upgrade.
 
 
 
-**CentOS:**
+**CentOS / Debian / Ubuntu:**
 
-```
-$ firewall-cmd --permanent --service=portsip-pbx --add-port=8885/tcp --add-port=5060/udp --add-port=25000-34999/udp --add-port=5065/tcp
+```shell
 $ docker stop -t 120 portsip-pbx
 $ docker rm -f portsip-pbx
 $ cd /var/lib/portsip
 $ sudo rm -rf *.bak
-$ docker pull portsip/pbx:12
-$ docker container run -d --name portsip-pbx --restart=always --cap-add=SYS_PTRACE --network=host -v /var/lib/portsip:/var/lib/portsip -v /etc/localtime:/etc/localtime:ro -e POSTGRES_PASSWORD="123456" -e POSTGRES_LISTEN_ADDRESSES="*" -e IP_ADDRESS="66.175.222.20" portsip/pbx:12
-```
-
-
-
-**Debian / Ubuntu**
-
-```
-$ ufw allow 5060, 25000:34999/udp
-$ ufw allow 8885, 5065/tcp
-$ docker stop -t 120 portsip-pbx
-$ docker rm -f portsip-pbx
-$ cd /var/lib/portsip
-$ sudo rm -rf *.bak
+$ sudo curl https://raw.githubusercontent.com/portsip/portsip-pbx-sh/master/v12.6.x/install_pbx_docker.sh|bash
 $ docker pull portsip/pbx:12
 $ docker container run -d --name portsip-pbx --restart=always --cap-add=SYS_PTRACE --network=host -v /var/lib/portsip:/var/lib/portsip -v /etc/localtime:/etc/localtime:ro -e POSTGRES_PASSWORD="123456" -e POSTGRES_LISTEN_ADDRESSES="*" -e IP_ADDRESS="66.175.222.20" portsip/pbx:12
 ```
