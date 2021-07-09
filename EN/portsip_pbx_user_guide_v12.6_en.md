@@ -3,9 +3,9 @@
 # <center>PortSIP PBX User Guide</center>
 
 
-Version: v12.6.0
+Version: v12.6.1
 
-Date: June 4, 2021
+Date: July 08, 2021
 
 
 
@@ -40,6 +40,43 @@ While PortSIP uses reasonable efforts to include accurate and up-to-date informa
 #### Limitation of Liability
 
 PortSIP and/or its respective suppliers make no representations about the suitability of the information contained in this document for any purpose. Information is provided “as is” without warranty of any kind and is subject to change without notice. The entire risk arising out of its use remains with the recipient. In no event shall PortSIP and/or its respective suppliers be liable for any direct, consequential, incidental, special, punitive or other damages whatsoever (including without limitation, damages for loss of business profits, business interruption, or loss of business information), even if PortSIP has been advised of the possibility of such damages.
+
+
+
+## Summary of Changes
+
+
+
+#### Changes for Release v12.6.1
+
+This release includes the following changes:
+
+- Removed the built-in backup/restore features, suggest use the VM snapshot to backup. Or user can simply backup the data directory:
+  	a. Windows: by default it's 
+
+  ```
+  c:/programdata/portsip
+  ```
+
+  ​	b. Linux: by default it's
+
+  ```
+   /var/lib/portsip
+  ```
+
+  
+
+- Support store the recording and log files to the AWS S3.
+
+- Support the Privacy header, if the UA makes call with the Privacy header, the PBX will forward this header to the callee.
+
+- When there have the call reached agent of the ring group/queue, the event will be published to the WebSocket Publish subscriber.
+
+- Provide a custom option allows includes the recording file ID in the CDR event JSON payload.
+
+- The REST API for list the CDR, call recording, black list is changed.
+
+- Fixed a crash bug if works with the MicroSIP App for presence.
 
 
 
@@ -137,6 +174,7 @@ Depending on the key features listed above, PortSIP PBX is able to run on PCs an
 +  Knowledge of Linux and Linux Internet administration
 +  Knowledge of Windows and Windows Internet administration
 +  A constant Internet connection to stun4.l.google.com on port 19302
++  Ensure server date time is synced correctly.
 
 
 
