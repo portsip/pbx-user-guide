@@ -106,9 +106,9 @@ Deploying PortSIP PBX in a Linux environment requires planning and knowledge of 
 
 **A popular Linux distribution:** 
 
-+ CentOS 7.6 higher (64-bit), doesn't support 8.x , 7.9 recommended
-+ Debian 9.5 higher (64-bit)
-+  Ubuntu 16.04 or higher (64-bit)
++ CentOS 7.9 (64-bit)
++ Debian 10.x (64-bit)
++  Ubuntu 18.04 or 20.04 (64-bit)
 +  Docker
 + IPv4/IPv6 
 + Systemd
@@ -217,7 +217,20 @@ You will get the installer after download completed.
 
 ### 2.2 Installing PortSIP PBX on Linux
 
- PortSIP PBX Linux edition is migrated to docker environment, which does not support RPM and Deb installer.
+PortSIP PBX Linux edition is migrated to docker environment, which does not support RPM and Deb installer.
+
+**The OS required:**
+
+- CentOS: 7.9
+- Ubuntu: 18.04, 20.04
+- Debian: 10.x
+- Only supports 64bit OS
+
+
+
+#### Important
+
+From v12.6.1, the PortSIP PBX requires running with the above Linux OS versions. If there already installed the PortSIP PBX which less than v12.6.1, and wish to upgrade to v12.6.1 or a later version, must upgrade the Linux OS to the above version before upgrade the PortSIP PBX.
 
 
 
@@ -381,7 +394,7 @@ If your current installation **is v12.2.x or v12.3.0, v12.3.1,** you can't upgra
 
 1. Go to **c:/programdata/portsip** folder, delete all ***.bak** files and folders
 2. Ensure your current installation **is v12.5.x or v12.4.0 or v12.3.2, or is already upgraded to 12.3.2**
-3. Download [PortSIP PBX v12.6.1 installer for Windows](https://www.portsip.com/downloads/pbx/v12/portsip-pbx-12.6.1.1491.exe) 
+3. Download [PortSIP PBX v12.6.1 installer for Windows](https://www.portsip.com/download-portsip-pbx/) 
 4. After downloaded the v12.6.1 installer for Windows, you only need to double-click the installer, which will guide you through the upgrade process.
 
 

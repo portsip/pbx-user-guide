@@ -104,9 +104,9 @@ PortSIP PBX 不仅仅拥有和传统硬件 PBX 一样的功能，还包括更多
 
 **主流 Linux 版本：** 
 
-+ CentOS 7.5以上，8.0 以下版本（64 位）
-+ Debian 9 或更高版本（64 位）
-+  Ubuntu 16.04 或更高版本（64 位）
++ CentOS 7.9 版本（64 位）
++ Debian 10.x（64 位）
++  Ubuntu 18.04 或 20.04（64 位）
 +  Docker
 + IPv4/IPv6 
 + Systemd
@@ -215,6 +215,21 @@ PortSIP PBX 可以在没有域名的机器上运行，但是我们推荐使用�
 ### 2.2 在 Linux 上安装 PortSIP PBX
 
 > > **自 PortSIP PBX v12 起，PortSIP PBX Linux 版将迁移到 Docker 环境，不再支持 RPM 和 Deb 安装。**
+
+
+
+**支持的操作系统如下：**
+
+- CentOS 7.9
+- Debian 10.x
+- Ubuntu18.04, 20.04
+- 以上系统都必须是 64 位
+
+
+
+#### 重要事项
+
+从 12.6.1 开始，必须在上述 Linux 系统版本商才能成功 PortSIP PBX。如果之前安装了低于 12.6.1 版本的 PortSIP PBX，现在想升级到 12.6.1 或者之后的版本，必须先把 Linux 系统升级到上述指定的版本，然后再升级 PortSIP PBX。
 
 
 
@@ -361,7 +376,7 @@ PortSIP PBX 的系统服务将在安装成功完成后自动运行，以及在�
 
 2. 确认您当前安装的 PortSIP PBX 已经是 **v12.3.2**或者已经升级到 **v12.3.2**，或者你当前安装的版本已经是**v12.4 或者 v12.5.x**。
 
-3. 下载 v12.6.1 安装包 [PortSIP PBX v12.6.1 Windows 安装包](http://www.portsip.cn/downloads/pbx/v12/portsip-pbx-12.6.1.1491.exe) 。
+3. 下载 v12.6.1 安装包 [PortSIP PBX v12.6.1 Windows 安装包](http://www.portsip.cn/download-portsip-pbx/) 。
 
 4. 双击安装包进行安装。
 
