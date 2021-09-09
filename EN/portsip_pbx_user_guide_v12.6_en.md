@@ -3,9 +3,9 @@
 # <center>PortSIP PBX User Guide</center>
 
 
-Version: v12.6.1
+Version: v12.6.2
 
-Date: July 08, 2021
+Date: Sep 15, 2021
 
 
 
@@ -109,7 +109,7 @@ Deploying PortSIP PBX in a Linux environment requires planning and knowledge of 
 + CentOS 7.9 (64-bit)
 + Debian 10.x (64-bit)
 +  Ubuntu 18.04 or 20.04 (64-bit)
-+  Docker
++  Docker 20.10 or higher
 + IPv4/IPv6 
 + Systemd
 + IP tables 
@@ -407,6 +407,21 @@ Please perform below commands to upgrade.
 >
 > + The **IP_ADDRESS** is the IP address of your PBX server. In this case it is 66.175.222.20, you will need to change it by yourself, if your server is on public internet network, this IP should be the public IP.
 > + The **POSTGRES_PASSWORD** is used to specify the PortSIP DB password. In this case we will use 123456, you can change it by yourself. 
+
+
+
+> **The OS required:**
+>
+> - CentOS: 7.9
+> - Ubuntu: 18.04, 20.04
+> - Debian: 10.x
+> - Only supports 64bit OS
+>
+> 
+>
+> #### Important
+>
+> From v12.6.1, the PortSIP PBX requires running with the above Linux OS versions. If there already installed the PortSIP PBX which less than v12.6.1, and wish to upgrade to v12.6.1 or a later version, must upgrade the Linux OS to the above version before upgrade the PortSIP PBX.
 
 
 
@@ -2602,6 +2617,27 @@ To allow or disallow the country code, please click the “**Blacklist and Codes
 User may use this feature to block the calls made on the trunks by specified prefix.
 
 Go to "**Blacklist and Codes > Codes and E164**" menu, select the "**Disallowed Codes**" tab, you can add the disallowed number prefix by click the "**Add**" button.
+
+
+
+#### Number Processing
+
+**Select country:** Pretty straight forward. Select the country you are in so the system knows your country code. For our examples lets use US as our country.
+
+**Remove if same country:** When this option is selected and you try calling the same country using the E164 format the country code will be removed from the called number.
+Example: Number dialed as +12345678910 will be converted to 2345678910.
+
+**International Dial Code:** If you call a different country using the E164 format then the number will be converted and the international dial code will be added. If you are in the US for example this will be 011. This will enable you to make international calls without the "+".
+Example: Number dialed as +44123456789 will be converted to 01144123456789.
+
+**Area Code**: Here you can add your area code so if you are making calls within your area and the area code is not required then you can strip it if the "Remove if same Area Code" is selected.
+Example: Our area code is set to 813. Number dialed as +181345678910 will be converted to 45678910.
+
+**National Code:** If you need to add a national code to make calls then you can add a national code here and it will be prepended to the number during the processing.
+Example: National code set to 8. Number dialed as +12345678910 will be converted to 82345678910.
+
+**Add Prefix:** A prefix can be added in case it is needed or if you want to use it to select an outbound rule. E164 rules are processed before the outbound rules.
+Example: Prefix is set to 2. Number dialed as +12345678910 will be converted to 22345678910.
 
 
 
