@@ -5,7 +5,7 @@
 
 Version: v12.6.2
 
-Date: Sep 15, 2021
+Date: Sep 16, 2021
 
 
 
@@ -47,6 +47,26 @@ PortSIP and/or its respective suppliers make no representations about the suitab
 
 
 
+#### Changes for Release v12.6.2
+
+This release includes the following changes:
+
+- Support capture the SIP message and analyze it for troubleshooting on the Web UI with PortSIP Trace Server
+- Force the extension and tenant use the strong password
+- When an admin/tenant/extension changes his password, must enter the current password.
+- Add the **queue_member_state**  message event of topic **QUEUE_EVENTS** for the WebSocket Publisher, when an agent of the call queue changed his state to ready/not-ready by REST API     or dial code, this event will be pushed.
+- Password settings in the Web Portal have been moved to a menu that appears when you click on the avatar.
+- Remove the log file path from the log file list view
+- Allow users to set a wildcard * for the "**Exceptions**" of extension forwarding rules, allowing them to designate a break time during business hours.
+- Fix the BASIC authorization bug for CDR events and Extension events
+- Fix the crash bug that occurs when two extensions set forward calls to each other when one of them is busy
+- Fix the bug if caller make call to extension from PSTN, and caller hold the call, the MOH is not affected
+- Set the minimize of registration time to 300 seconds
+- Add the parameter "**member_number**" of REST API "**api/call_queues/member_state/update**" to instead of the parameter **extension_id**
+- Improve the WebRTC client and Windows client App
+
+
+
 #### Changes for Release v12.6.1
 
 This release includes the following changes:
@@ -77,6 +97,8 @@ This release includes the following changes:
 - The REST API for list the CDR, call recording, black list is changed.
 
 - Fixed a crash bug if works with the MicroSIP App for presence.
+
+
 
 
 
@@ -182,9 +204,9 @@ Depending on the key features listed above, PortSIP PBX is able to run on PCs an
 
 Although PortSIP PBX is designed to be able to run on servers without FQDN specified, we recommend to specify FQGN with following advantages:
 
-+ Easier access to management console for PortSIP PBX
++ Easier access to Web Portal for PortSIP PBX
 + Easier management of IP phones and clients after IP address change for PBX
-+ Convenient access to HTTPS when accessing management console
++ Convenient access to HTTPS when accessing Web Portal
 + Avoid browser warning when access the WebRTC Client
 
 The FQDN you are using must be able to be resolved correctly into the server with PortSIP PBX installed in LAN. If PortSIP PBX is installed on public network, FQDN must be resolved correctly into the public network address for server with PBX installed.
@@ -268,9 +290,9 @@ Tasks that MUST be completed before installing PortSIP PBX:
   
   
 
-#### Installing a fresh PortSIP PBX v12.6.1 for Linux
+#### Installing a fresh PortSIP PBX v12.6.2 for Linux
 
-To install the PortSIP PBX for Linux, please refer to: [Setup PortSIP PBX for Linux](https://www.portsip.com/knowledge-base/setup-portsip-pbx-for-linux/)
+To install the PortSIP PBX for Linux, please refer to: [Setup PortSIP PBX for Linux](https://support.portsip.com/knowledge-base/setup-portsip-pbx-linux)
 
 
 
@@ -335,7 +357,7 @@ Tasks that MUST be completed before installing PortSIP PBX.
 
 
 
-#### Installing a fresh PortSIP PBX v12.6.1 for Windows
+#### Installing a fresh PortSIP PBX v12.6.2 for Windows
 
 To install PortSIP PBX, you only need to double-click the installer, which will guide you through the installation process.
 
@@ -369,33 +391,33 @@ You also need to open the port that you are using for adding new transport:
 
 
 
-### 2.4 Preparing for upgrading to 12.6.1 from old versions on Windows
+### 2.4 Preparing for upgrading to 12.6.2 from old versions on Windows
 
-If your installation is PortSIP PBX Linux edition, please ignore this section 2.4.
+If your installation is PortSIP PBX Linux edition, please ignore this **section 2.4.**
 
 **Upgrade from v12.0/12.1**
 
-If your current installation **is v12.0/v12.1,** you can't upgrade it to v12.6.1 directly, you have to upgrade to v12.3.2 first. Please read this link to upgrade:  [Upgrade PortSIP PBX from v12.0 / v12.1 to v12.3.2](https://www.portsip.com/knowledge-base/upgrade-portsip-pbx-12-to-13-windows/)
+If your current installation **is v12.0/v12.1,** you can't upgrade it to v12.6.2 directly, you have to upgrade to v12.3.2 first. Please read this link to upgrade:  [Upgrade PortSIP PBX from v12.0 / v12.1 to v12.3.2](https://www.portsip.com/knowledge-base/upgrade-portsip-pbx-12-to-13-windows/)
 
 
 
 **Upgrade from v12.2.x/12.3.0, 12.3.1**
 
-If your current installation **is v12.2.x or v12.3.0, v12.3.1,** you can't upgrade it to v12.6.1 directly, you have to upgrade to v12.3.2 first. Please follow up below steps to upgrade:
+If your current installation **is v12.2.x or v12.3.0, v12.3.1,** you can't upgrade it to v12.6.2 directly, you have to upgrade to v12.3.2 first. Please follow up below steps to upgrade:
 
 1. Download [PortSIP PBX v12.3.2 installer for Windows](https://www.portsip.com/downloads/pbx/v12/portsip-pbx-12.3.2.796.exe) 
 2. Double click it to install for upgrade to v12.3.2
 
 
 
-### 2.5 Upgrading
+### 2.5 Start upgrading
 
 #### **Windows**
 
 1. Go to **c:/programdata/portsip** folder, delete all ***.bak** files and folders
-2. Ensure your current installation **is v12.5.x or v12.4.0 or v12.3.2, or is already upgraded to 12.3.2**
-3. Download [PortSIP PBX v12.6.1 installer for Windows](https://www.portsip.com/download-portsip-pbx/) 
-4. After downloaded the v12.6.1 installer for Windows, you only need to double-click the installer, which will guide you through the upgrade process.
+2. Ensure your current installation **is v12.6.x/v12.5.x/v12.4.0/v12.3.2**
+3. Download [PortSIP PBX v12.6.2 installer for Windows](https://www.portsip.com/download-portsip-pbx/) 
+4. After downloaded the v12.6.2 installer for Windows, you only need to double-click the installer, which will guide you through the upgrade process.
 
 
 
@@ -428,13 +450,14 @@ Please perform below commands to upgrade.
 **CentOS / Debian / Ubuntu:**
 
 ```shell
-$ docker stop -t 120 portsip-pbx
-$ docker rm -f portsip-pbx
-$ cd /var/lib/portsip
-$ sudo rm -rf *.bak
-$ sudo curl https://raw.githubusercontent.com/portsip/portsip-pbx-sh/master/v12.6.x/install_pbx_docker.sh|bash
-$ docker pull portsip/pbx:12
-$ docker container run -d --name portsip-pbx --restart=always --cap-add=SYS_PTRACE --network=host -v /var/lib/portsip:/var/lib/portsip -v /etc/localtime:/etc/localtime:ro -e POSTGRES_PASSWORD="123456" -e POSTGRES_LISTEN_ADDRESSES="*" -e IP_ADDRESS="66.175.222.20" portsip/pbx:12
+# su root
+# docker stop -t 120 portsip-pbx
+# docker rm -f portsip-pbx
+# cd /var/lib/portsip
+# sudo rm -rf *.bak
+# sudo curl https://raw.githubusercontent.com/portsip/portsip-pbx-sh/master/v12.6.x/install_pbx_docker.sh|bash
+# docker pull portsip/pbx:12
+# docker container run -d --name portsip-pbx --restart=always --cap-add=SYS_PTRACE --network=host -v /var/lib/portsip:/var/lib/portsip -v /etc/localtime:/etc/localtime:ro -e POSTGRES_PASSWORD="123456" -e POSTGRES_LISTEN_ADDRESSES="*" -e IP_ADDRESS="66.175.222.20" portsip/pbx:12
 ```
 
 
@@ -442,10 +465,10 @@ $ docker container run -d --name portsip-pbx --restart=always --cap-add=SYS_PTRA
 
 ### 2.6 Avoiding HTTPS Certificate Security Warnings
 
-PortSIP PBX listens on 8888 port for providing HTTP portal to access the PBX Management Console.
+PortSIP PBX listens on 8888 port for providing HTTP portal to access the PBX Web Portal.
 Assume your server IP is 172.217.14.16, you should open this URL: http://172.217.14.16:8888 by your browser. Note: Chrome and Firefox is recommended, please don’t use IE.
 
-PortSIP PBX listens on 8887 port for providing HTTPS portal to access the PBX Management Console.
+PortSIP PBX listens on 8887 port for providing HTTPS portal to access the PBX Web Portal.
 
 Assume your server IP is 172.217.14.16, you should open this URL: https://172.217.14.16:8887 by your browser. Note: Chrome and Firefox is recommended. Please do not use IE.
 
@@ -488,12 +511,12 @@ After successful installation of PortSIP PBX with setup wizard, all you need is 
 #### Running the PortSIP PBX Configuration Wizard
 
 The PortSIP PBX configuration wizard will guide you through a number of essential tasks to get your system up and running.
-PortSIP PBX listens on 8888 port for providing HTTP portal to access the PBX Management Console, and listens on 8887 port for providing HTTPS portal. More details please read the [2.6 section](#2.6 Avoid HTTPS Certificate Security Warnings). 
+PortSIP PBX listens on 8888 port for providing HTTP portal to access the PBX Web Portal, and listens on 8887 port for providing HTTPS portal. More details please read the [2.6 section](#2.6 Avoid HTTPS Certificate Security Warnings). 
 
-+ Access the PBX Management Console by visiting http://172.217.14.16:8888 or http://mypbx.com:8888 if you resolved your PBX web domain to PBX IP.
++ Access the PBX Web Portal by visiting http://172.217.14.16:8888 or http://mypbx.com:8888 if you resolved your PBX web domain to PBX IP.
 + Enter the Username and Password (defaulted as ”**admin**” for both) and click the “**Sign in**” button. Note that both the Username and Password are case sensitive. The “**Setup Wizard**” will be displayed which will guide you through the initial configuration step by step
 
-You may change the default Username and Password for "**admin**" by navigating to "**Profile**" > "**General**" in PortSIP PBX Management Console.
+You may change the default Username and Password for "**admin**" by navigating to "**Profile**" > "**General**" in PortSIP PBX Web Portal.
 
 
 
@@ -509,7 +532,7 @@ Assuming that PortSIP PBX is deployed in LAN with Internet connection, the serve
 
 **Step 1:**
 
- If you want to use the **HTTPS** with **PortSIP PBX Web management console** and **WebRTC client**,, you must set up the "**Web Domain**" here, and prepare a SSL certificate for this "**Web Domain**" since the browser is requires a trusted certificates otherwise it will block the **HTTPS** and **WebRTC Client**. In case we use the **mypbx.com**.  You will also need resolve your  Web domain **mypbx.com **to your PBX server IP.
+ If you want to use the **HTTPS** with **PortSIP PBX Web Portal** and **WebRTC client**,, you must set up the "**Web Domain**" here, and prepare a SSL certificate for this "**Web Domain**" since the browser is requires a trusted certificates otherwise it will block the **HTTPS** and **WebRTC Client**. In case we use the **mypbx.com**.  You will also need resolve your  Web domain **mypbx.com **to your PBX server IP.
 
 Enter the Public IPv4 if you have a **static public IP** of your LAN. Do not enter the Public IPv4 if your public IP is dynamic.
 
@@ -540,7 +563,7 @@ After setting up the SIP domain (in this case it is portsip.io), the extension S
 **Step 3:**
 
  You can set transport layer protocol for the SIP signaling here, with the default transport UDP on port 5060.
-**Note:** You can add more transports in PortSIP PBX Management Console after this Wizard.
+**Note:** You can add more transports in PortSIP PBX Web Portal after this Wizard.
 
 
 
@@ -550,7 +573,7 @@ After setting up the SIP domain (in this case it is portsip.io), the extension S
 
 **Step 4:**
 
- If you want to use the **HTTPS** with **PortSIP PBX Web management console** and **WebRTC client**, you **must** upload the SSL certificates file here for **WSS transport**, by default the PBX listens **5065** port for WSS transport which communicates with the WebRTC client.
+ If you want to use the **HTTPS** with **PortSIP PBX Web Portal** and **WebRTC client**, you **must** upload the SSL certificates file here for **WSS transport**, by default the PBX listens **5065** port for WSS transport which communicates with the WebRTC client.
 
 **Note**: You can use the self-signed certificates here but it will cause browser pop ups the warning when you open the WebRTC client, you can purchase a trusted certificate to avoid the browser blocking and warning. More details please read the [2.6 section](#2.6 Avoid HTTPS Certificate Security Warnings). 
 
@@ -562,7 +585,7 @@ Setup mail server. You may set up the SMTP mail server in this step for receivin
 
 **Note:** This step is not mandatory. You may choose to setup SMTP server whenever necessary.
 
-By clicking the “**Apply**” button, you have now completed the initial configuration of PortSIP PBX. You will be redirected to Management Console.
+By clicking the “**Apply**” button, you have now completed the initial configuration of PortSIP PBX. You will be redirected to Web Portal.
 
 
 
@@ -586,7 +609,7 @@ $ supervisorctl start gateway
 
 Restart the Windows Server directly.
 
-After restarted,  you can sign in PortSIP PBX Management Console by URL https://mypbx.com:8887
+After restarted,  you can sign in PortSIP PBX Web Portal by URL https://mypbx.com:8887
 
 If you don't use trusted certificate files for the WSS transport, you will get the browser warning and blocked when you use WebRTC client.
 
@@ -612,7 +635,7 @@ Please refer to [Creating an AWS account](https://aws.amazon.com/premiumsupport/
 
 **Step 1:** 
 
-On the left bar of AWS EC2 Management Console, choose “**Elastic IPs**”. As you see the “**Elastic IP**”, please write it down for future use. If the “**Elastic IPs**” does not exist, click “**Allocate New Address**”, and associate the Elastic IP to your instance.
+On the left bar of AWS EC2 Web Portal, choose “**Elastic IPs**”. As you see the “**Elastic IP**”, please write it down for future use. If the “**Elastic IPs**” does not exist, click “**Allocate New Address**”, and associate the Elastic IP to your instance.
 
 
 
@@ -671,7 +694,7 @@ In this page we can have an overview of the PBX statistics:
 
 
 
-You may navigate to “**Home > Service Status**” menu in the PortSIP PBX System Management Console to quickly view if all PortSIP PBX system services are working correctly.
+You may navigate to “**Home > Service Status**” menu in the PortSIP PBX System Web Portal to quickly view if all PortSIP PBX system services are working correctly.
 
 
 
@@ -683,7 +706,7 @@ This section provides an overview of the general network configurations of PBX, 
 
 ### 4.4 System extensions
 
-PortSIP PBX defines services such as Virtual Receptionist (auto attendant), Conferencing, Ring Group, Call Queue, voicemail and Music on Hold as system extensions, which could be used by PBX only. To check if the system services are correctly registered to PBX, please go to “**Home > System Extensions**” menu in the PortSIP PBX System Management Console.
+PortSIP PBX defines services such as Virtual Receptionist (auto attendant), Conferencing, Ring Group, Call Queue, voicemail and Music on Hold as system extensions, which could be used by PBX only. To check if the system services are correctly registered to PBX, please go to “**Home > System Extensions**” menu in the PortSIP PBX System Web Portal.
 
 
 
@@ -691,13 +714,13 @@ PortSIP PBX defines services such as Virtual Receptionist (auto attendant), Conf
 
 ## Chapter 5. Call Manager
 
-After completing the Configuration Wizard, you may manage PortSIP PBX in the Management Console.
+After completing the Configuration Wizard, you may manage PortSIP PBX in the Web Portal.
 
 ### 5.1 Domain and Transport
 
 The SIP domain is used during client registration and calling, and it should match the domain part of your own SIP address on your phone - i.e. if other people are going to call your phone, they must use that domain name as part of the SIP address they use to reach you. The domain can be a FQDN or the IP address, for example “**portsip.io**” or “**192.168.0.16**”.
 
-The SIP domain is configured within “**Setup Wizard**” when you sign into Management Console for the first time. To modify a SIP domain, go to “**Call Manager > Domain and Transport**”, and click “**Edit**” button to enter new SIP domain and save.
+The SIP domain is configured within “**Setup Wizard**” when you sign into Web Portal for the first time. To modify a SIP domain, go to “**Call Manager > Domain and Transport**”, and click “**Edit**” button to enter new SIP domain and save.
 
 
 
@@ -776,7 +799,7 @@ $ supervisorctl start gateway
 
 Restart the Windows Server directly.
 
-After restarted,  you can sign in PortSIP PBX Management Console by URL https://mypbx.com:8887
+After restarted,  you can sign in PortSIP PBX Web Portal by URL https://mypbx.com:8887
 
 If you don't use trusted certificate files for the WSS transport, you will get the browser warning and blocked when you use WebRTC client.
 
@@ -810,7 +833,7 @@ Once PortSIP PBX is installed, you can configure your IP phones and assign an ex
 
 Phones can be configured one by one manually using their web interface, which is time consuming and leads to many errors; Or by using phone provisioning feature offered by PortSIP PBX, which makes it possible to manage phones centrally and remotely and without having to login to the phone’s web interface one by one. Using this method you instruct the phone to retrieve its configuration from PortSIP PBX.
 
-Phone provisioning greatly eases day to day management of IP phones. It makes it easy to change extension passwords, BLF lights and so on because you can do it centrally for all phones from the PortSIP PBX Management Console and then push the changes to the phone. The following provisioning methods are supported:
+Phone provisioning greatly eases day to day management of IP phones. It makes it easy to change extension passwords, BLF lights and so on because you can do it centrally for all phones from the PortSIP PBX Web Portal and then push the changes to the phone. The following provisioning methods are supported:
 
 + Plug and Play - Supported IP phones can be provisioned automatically using plug and play (Applicable for phones on the local LAN)
 + Via RPS - For the Yealink, Fanvil, Htek IP Phones, they can be provisioned by the RPS
@@ -835,14 +858,14 @@ To auto provision phones using Plug and Play:
 
 1. Plug the phone into the network
 2. The phone will send a multicast message across the LAN, this will be picked up by PortSIP PBX
-3. The phone will show up in the “**Call Manager > Phones**” menu in the PortSIP PBX Management Console as a new phone
+3. The phone will show up in the “**Call Manager > Phones**” menu in the PortSIP PBX Web Portal as a new phone
 4. Assign the phone to an existing extension or create a new one for the phone
 5. Go to the extension’s “**Phone Provisioning**” tab and specify other configuration settings for the phone
 6. Enter the password for access IP Phone web UI
 7. Select “**Phone Display Language**” and “**Timezone**” for the phone
 8. Click “**OK**”
 9. The PBX send the configuration file URL to IP Phone, IP phone will download the configuration file
-10. The phone will apply the settings and connect to PortSIP PBX. The IP phone will be manageable from within the PortSIP PBX Management Console
+10. The phone will apply the settings and connect to PortSIP PBX. The IP phone will be manageable from within the PortSIP PBX Web Portal
 
 
 
@@ -850,7 +873,7 @@ To auto provision phones using Plug and Play:
 
 Remote phones that are not in same LAN with PortSIP PBX, it must be configured manually by the provisioning link. To provision a remote phone:
 
-1. From the “**Call Manager > Phones**”  menu in the PortSIP PBX Management Console, select “**Add Phone**”.
+1. From the “**Call Manager > Phones**”  menu in the PortSIP PBX Web Portal, select “**Add Phone**”.
 2. Select the extension that the phone uses.
 3. Enter the MAC address of the phone (which can be found at the bottom of the phone).
 4. Select the appropriate phone model from the drop down menu.
@@ -873,7 +896,7 @@ Remote phones that are not in same LAN with PortSIP PBX, it must be configured m
 In the case PortSIP PBX locates in cloud, IP Phones can be auto provisioned via RPS (RPS is a service provided by IP Phone vendors). PortSIP PBX supports for Yealink, Htek, and Fanvil RPS. If you are using the IP Phone from one of the providers above, you may configure your IP Phone in a very easy way, without the need to manually copy the auto provisioning link (in this scenario the PnP mode is unavailable).
 
 
-1. From the “**Call Manager** > **Phones**” menu in the PortSIP PBX Management Console, select “**Add Phone**”.
+1. From the “**Call Manager** > **Phones**” menu in the PortSIP PBX Web Portal, select “**Add Phone**”.
 2. Select the extension that the phone uses.
 3. Enter the MAC address of the phone (which can be found at the bottom of the phone).
 4. Select the appropriate phone model from the drop down menu.
@@ -938,7 +961,7 @@ See the list of [Supported IP Phones](https://www.portsip.com/portsip-pbx-suppor
 
 ### 5.3 Managing Phones
 
-PortSIP PBX provides an easy way to monitor and manage your phones and softphones throughout your network. The “**Call manager > Phones**” menu in the PortSIP PBX Management Console allows you to:
+PortSIP PBX provides an easy way to monitor and manage your phones and softphones throughout your network. The “**Call manager > Phones**” menu in the PortSIP PBX Web Portal allows you to:
 
 + View all the phones in the network, including IP and MAC.
 
@@ -1043,7 +1066,7 @@ This section explains how to create and configure extensions in PortSIP PBX. The
 
 
 
-To configure an extension, click on “**Call Manager > Extension**s” in the PortSIP PBX Management Console. Click on “**Add**” to create a new one, or select an existing extension and click the **Edit** button to configure or manage the existing extension users. “**Web Access Password**” is used by extension users to log into Web management console.
+To configure an extension, click on “**Call Manager > Extension**s” in the PortSIP PBX Web Portal. Click on “**Add**” to create a new one, or select an existing extension and click the **Edit** button to configure or manage the existing extension users. “**Web Access Password**” is used by extension users to log into Web Portal.
 
 
 
@@ -1051,7 +1074,7 @@ To configure an extension, click on “**Call Manager > Extension**s” in the P
 
 In the section of “**General**”, you can enter the extension number, password, first name, last name and the email address of the user. The extension number can be numerals or letters; the extension number and password are required. A welcome email with information on the extension created, as well as voicemail and missed call notifications (configurable) will be sent to the specified email address.
 
-The field “**Web Access Password**” is used for the extension to sign in Management Console.
+The field “**Web Access Password**” is used for the extension to sign in Web Portal.
 
 If the SMTP server is configured, once an extension is successfully created and the its email is set, PortSIP PBX will send an email to the extension's email which includes the extension information and PBX parameters such as PBX SIP Domain, PBX IP, and the QR code. User can use the PortSIP UC App to scan the QR code to login to PBX without enter the details.
 
@@ -1061,7 +1084,7 @@ In the “**Direct Inbound Dialing (DID)**” section, you can select a DID for 
 
 “**Exceptions**” - create exceptions by entering the “**Caller ID**”, selecting the time frame in “**Received During**” and chose the action in “**Action**” to bypass the extension forward rules.
 
-**Note:** The email that you entered should be unique, duplicated email is not allowed since PortSIP PBX v12, user can use extension's email to sign in the PortSIP PBX Management Console.
+**Note:** The email that you entered should be unique, duplicated email is not allowed since PortSIP PBX v12, user can use extension's email to sign in the PortSIP PBX Web Portal.
 
 
 
@@ -1103,7 +1126,7 @@ The “**Options**” tab allows you to configure options, restrictions and acce
 +  Enabled – If un-checked, the extension will be disabled.
 + Allow Paging/Intercom – If checked, the extension will be allowed to make Paging/Intercom calls. This options can't be changed since it is inherited from the "**Extension Groups**".
 + Allow External Calls – If  checked, the extension will be allowed to make call to external number via configured VoIP Provider/SIP Trunk. This options can't be changed since it is inherited from the "**Extension Groups**".
-+ Allow Management Console Access – If checked, the extension will have the access to PBX Management Console. This options can't be changed since it is inherited from the "**Extension Groups**".
++ Allow Web Portal Access – If checked, the extension will have the access to PBX Web Portal. This options can't be changed since it is inherited from the "**Extension Groups**".
 + Belonged groups - It indicates the extension groups that this extension belongs with.
 
 
@@ -1163,11 +1186,11 @@ Users can be assigned permission to view details about other members in their gr
 
 #### Creating Extension Groups
 
-On the left menu of Management Console, select "**Call Manager > Extension Groups**", and click **Add ** button. Fill in the Group Name and Group Description in Group Information, and choose the Group Member Rights to be set.
+On the left menu of Web Portal, select "**Call Manager > Extension Groups**", and click **Add ** button. Fill in the Group Name and Group Description in Group Information, and choose the Group Member Rights to be set.
 
 By clicking **"Group Members"** tab, you could add existing extension users into the group. Once finished, click the **Apply** button to complete the creation of group.
 
-Once an extension group is granted the permission “**Allow Access to Management Console**”, all extensions in this group could sign in PortSIP PBX Management Console. Assume the "**web access password**" for extension 101 is 111111, the SIP domain set in PBX system is **portsip.io**, and the extension 101 belongs to default group which has been granted with login permission to the system Management Console, extension 101 could login with below info:
+Once an extension group is granted the permission “**Allow Access to Web Portal**”, all extensions in this group could sign in PortSIP PBX Web Portal. Assume the "**web access password**" for extension 101 is 111111, the SIP domain set in PBX system is **portsip.io**, and the extension 101 belongs to default group which has been granted with login permission to the system Web Portal, extension 101 could login with below info:
 
 + Choose "**Sign in with Extension Number**"
 + Extension number: 101
@@ -1273,7 +1296,7 @@ Please follow the below steps to config the E1/T1 register to the cloud PortSIP 
 
 8. After applied the settings, now you can configure the E1/T1 gateway to let it register to the could PortSIP PBX. In the E1/T1 settings, set up the step3 "**Host**" as **"SIP Domain/SIP Server"**, for example **portsiptrunk1.io**, set up the cloud PBX public static IP as "**Outbound Proxy Server**"，set up the PortSIP PBX transport port as the "**Outbound Proxy Server port**", set up the step 5, 6 **Authorization name** and **Password** as the **username** and **password**, then the E1/T1 gateway can register to cloud PortSIP PBX.
 
-9. You can sign in to the PortSIP PBX Web Management Console to create the inbound & outbound rule base on this E1/T1 gateway trunk.
+9. You can sign in to the PortSIP PBX Web Portal to create the inbound & outbound rule base on this E1/T1 gateway trunk.
 
 
 
@@ -1309,7 +1332,7 @@ You have to configure one VoIP provider/SIP Trunk before adding the inbound rule
 
 To add Inbound Rule:
 
-+ From the PortSIP PBX Management Console, select "**Call Manager > Inbound Rules > Add**"
++ From the PortSIP PBX Web Portal, select "**Call Manager > Inbound Rules > Add**"
 
 + Enter a friendly name for the rule
 
@@ -1357,7 +1380,7 @@ If "**Use specific Office Hours**" is selected, customized office hours rules ap
 #### Exporting and Importing Inbound Rules
 If you need to export your Inbound Rules to a .CSV file either for backup or to make any updates, follow these steps:
 
-1. Sign in the PortSIP PBX Management Console
+1. Sign in the PortSIP PBX Web Portal
 
 2. Click on the “**Call Manager > Inbound Rules**”
 
@@ -1370,7 +1393,7 @@ If you need to export your Inbound Rules to a .CSV file either for backup or to 
 To create multiple inbound rules, insert necessary fields on a CSV file by using correct format, and then import them back into PortSIP PBX by using the import function.
 To import your inbound rules into PortSIP PBX from a CSV file:
 
-1. Sign in the PortSIP PBX Management Console.
+1. Sign in the PortSIP PBX Web Portal.
 2. Click on the “**Call Manager > Inbound Rules**", click the "**Import**”
 3. Browse to the file that you want to import, select it and click “**Open**”
 4. The rules will be imported into PortSIP PBX
@@ -1385,7 +1408,7 @@ The rule is decided by the user/extension who is making the call, the number tha
 
 To add outbound rules:
 
-+ From the PortSIP PBX Management Console menu, navigate to "**Call Manager > Outbound Rules**" and click  "**Add** " button. Enter a name for the new rule in the prompted box.
++ From the PortSIP PBX Web Portal menu, navigate to "**Call Manager > Outbound Rules**" and click  "**Add** " button. Enter a name for the new rule in the prompted box.
 
 + Specify the criteria that should be matched for this outbound rule to be triggered with. In the “**Apply this rule to below calls**” section, specify any of the following options:
 
@@ -1431,7 +1454,7 @@ A ring group allows you to direct calls to a group of extensions. For example, y
 
 To add a Ring Group:
 
-+ In the PortSIP PBX Management Console, select "**Call Manager** > **Ring Groups**" and click the "**Add**" button
++ In the PortSIP PBX Web Portal, select "**Call Manager** > **Ring Groups**" and click the "**Add**" button
 + Now enter the ring group fields:
    + **Ring Group Number** – This number identifies the ring group from other extensions. Specify a new one as needed. Do not specify an existing extension number
    + **Ring Group Name** – Enter a friendly name for the ring group
@@ -1465,7 +1488,7 @@ If the extension user wants to talk with the caller, he/she should press the “
 #### Important
 Before using the Paging or Intercom feature, make sure you have specified the paging/intercom prefix number by:
 
-1. From the PortSIP PBX Management Console, select “**Advanced > Settings**" menu, click “**Advanced**” tab to add the paging prefix in the “**Dial code**” field (*11 for example)
+1. From the PortSIP PBX Web Portal, select “**Advanced > Settings**" menu, click “**Advanced**” tab to add the paging prefix in the “**Dial code**” field (*11 for example)
 
 2. Make sure that the user who is trying to page/intercom a group has the permission to do so. If a certain extension user would like to start paging/intercom, select “**Call Manager > Extension Groups**”, edit the group to which the extension belongs, click “**Group Member Rights**” table, and check the “**Allow Paging/Intercom**” option
 
@@ -1502,7 +1525,7 @@ You can create multiple digital receptionists and link them to a particular line
 
 To create a virtual receptionist:
 
-+ In the Management Console menu, click “**Call Manager > Virtual Receptionist**", click "**Add** "
++ In the Web Portal menu, click “**Call Manager > Virtual Receptionist**", click "**Add** "
 + Specify the name and extension number for the digital receptionist.
 + By default, PBX uses the system-defined “**Default.WAV**” for prompt. Click on the “**Browse**” button to select a file that you previously recorded for prompt menu. You must save the file in WAV format in PCM,  16kHz/32kHz/48 kHz, 16 bit, Mono format. (In Windows Sound Recorder you must use the "**Save as**" option to save this format). Besides, user may also choose prompt language for virtual receptionist in “**Virtual Receptionist Language**”
 + The prompt when call is transferring - The prompt file which will be played when the call is transferring after caller pressed DTMF.
@@ -1921,21 +1944,21 @@ PortSIP PBX is designed as Multi-Tenant, which means one PortSIP PBX installatio
 
 To create a new tenant, select the left menu “**Tenant**” and click the “**Add**”.
 
-When creating a tenant, you can specify the tenant profile details such as username, password, sip domain and office hours. A tenant can modify his profile after signing into the Management Console.
+When creating a tenant, you can specify the tenant profile details such as username, password, sip domain and office hours. A tenant can modify his profile after signing into the Web Portal.
 
 You can also limit the resource the tenant uses by clicking the “**Options**” tab. The “**Capability**” section under this tab allows you to set the maximum extensions, maximum concurrent calls, maximum ring groups etc.
 
 In the "**General**" tab  allows to set below parameters:
 
-+ **Username** - The tenant username that is used to sign in the management console. It should be unique.
++ **Username** - The tenant username that is used to sign in the Web Portal. It should be unique.
 
 + **Domain** - The SIP domain for this tenant. It should be unique.
 
-+ **Extension is not allowed to delete recordings** - If it's selected, the extension can't delete the recording files even if he signs in the PBX management console.
++ **Extension is not allowed to delete recordings** - If it's selected, the extension can't delete the recording files even if he signs in the PBX Web Portal.
 
 + **Enable this Tenant** - If this option is deselected, this tenant will be disabled, and all extensions of this tenant will no longer be valid.
 
-+ **Allow concurrent logins** - If this option is selected, the tenant can sign in management console from multiple devices. If deselected, once tenant signs in, the login in another PC/mobile phone will be invalid.
++ **Allow concurrent logins** - If this option is selected, the tenant can sign in Web Portal from multiple devices. If deselected, once tenant signs in, the login in another PC/mobile phone will be invalid.
 
 + **Allow display extension password in local** - If selected, when editing extension in the "**Call Manager > Extension > General**", the extension password will be displayed.
 
@@ -1987,7 +2010,7 @@ To delete an existing tenant, select the left menu “**Tenant**”, and all ten
 
 ### 6.4 Managing tenant
 
-PortSIP allows administrator to manage tenant and its settings including extension users. To do this, please go to Management Console, navigate to “**Tenant**” menu, select a tenant to be managed and click “**...**” button and choose "**Manage**". Now user may setup or modify the settings for the tenant and manage its extensions.
+PortSIP allows administrator to manage tenant and its settings including extension users. To do this, please go to Web Portal, navigate to “**Tenant**” menu, select a tenant to be managed and click “**...**” button and choose "**Manage**". Now user may setup or modify the settings for the tenant and manage its extensions.
 Once completed, user may click avatar on the top right of page to display the menu and choose  “**Switch to Administrator**” to switch back to administrator account, without the need to logout of tenant account and re-login to administrator account.
 
 
@@ -2132,7 +2155,7 @@ By navigating to "**Contacts**" menu, and clicking the "**Add**" button, you can
 
 You can import contact entries from a CSV file with the column headers on the first line, and each contact entry on a single line with fields separated by a comma. You may find the [example CSV file at PortSIP Website](https://www.portsip.com/downloads/apps/contacts_sample.csv).
 
-After you have downloaded that sample CSV file, you can fill in it with your contact entries. To import the company contact entries into the PortSIP PBX, sign in the Management Console:
+After you have downloaded that sample CSV file, you can fill in it with your contact entries. To import the company contact entries into the PortSIP PBX, sign in the Web Portal:
 
 1. Navigate to “**Contacts**” menu and click “**Import**” button.
 
@@ -2181,7 +2204,7 @@ You can download the log files of the PBX and analyze it locally.
 
 ## Chapter 11. Advanced
 
-After successful installation, the PortSIP PBX Configuration Wizard will guide the user go through a series of settings that elicit basic configuration data. After completing basic configuration with the Configuration Wizard, you can commit detailed configuration by using "**Advanced**" menu in Management Console of PortSIP PBX.
+After successful installation, the PortSIP PBX Configuration Wizard will guide the user go through a series of settings that elicit basic configuration data. After completing basic configuration with the Configuration Wizard, you can commit detailed configuration by using "**Advanced**" menu in Web Portal of PortSIP PBX.
 
 **Important Note:** only the administrator is allowed to access the “**Settings**” menu to change the settings. Neither the tenant nor extension could change the settings.
 
@@ -2191,7 +2214,7 @@ After successful installation, the PortSIP PBX Configuration Wizard will guide t
 
 #### General
 
-You can change the general settings by selecting "**Advanced > Setting**" in PortSIP PBX Management Console.
+You can change the general settings by selecting "**Advanced > Setting**" in PortSIP PBX Web Portal.
 
 Note: Usually we recommend NOT to change the default settings. 
 
@@ -2241,13 +2264,13 @@ Note: Usually we recommend NOT to change the default settings.
 
 #### Port Range
 
-You can change the Media server RTP range by selecting "**Advanced**  > **Port Range**" in PortSIP PBX Management Console.
+You can change the Media server RTP range by selecting "**Advanced**  > **Port Range**" in PortSIP PBX Web Portal.
 
 
 
 #### Advanced
 
-You can change the advanced settings by selecting "Advanced  > Settings" in PortSIP PBX Management Console.
+You can change the advanced settings by selecting "Advanced  > Settings" in PortSIP PBX Web Portal.
 
 + **Dial code**: Specify the prefix for making the Paging/Intercom call. With this prefix specified, when the calling number is prefixed with dial code, the PBX will process the call as Paging/Intercom. For more information, please see Section “**Paging**” and “**Intercom**”.
 + **Alert-Info header for Auto Answer**: Choose the “**Alert-Info**” header’s value, which will be inserted into the SIP INVITE message when making Paging/Intercom call.
@@ -2384,7 +2407,7 @@ You can add more media servers to handle the RTP packets relay in order to reduc
 
 
 
-Select the "**Advanced > Media Server**" menu in PortSIP PBX Management Console, click “**Add**” and enter a friendly name for the new Media server, and the IP of new Media Server (it could be IPv4 or IPv6), and port number (default is 8896). Also please specify the maximum of call sessions the media server could support on RTP data transportation.
+Select the "**Advanced > Media Server**" menu in PortSIP PBX Web Portal, click “**Add**” and enter a friendly name for the new Media server, and the IP of new Media Server (it could be IPv4 or IPv6), and port number (default is 8896). Also please specify the maximum of call sessions the media server could support on RTP data transportation.
 
 
 
@@ -2420,7 +2443,7 @@ You can add more conference servers to handle the conference in order to reduce 
 
 ![conf_5](..\images\conf_5.png)
 
-In PortSIP PBX Management Console, select the "**Advanced > Conference Server**" menu, click "**Add**" button, and enter a friendly name for the new Conference Server, the IP of new Conference Server (could be IPv4 or IPv6), and conference server port 8886. Also please enter the maximum conference rooms and maximum participants, and click “**Apply**” button.
+In PortSIP PBX Web Portal, select the "**Advanced > Conference Server**" menu, click "**Add**" button, and enter a friendly name for the new Conference Server, the IP of new Conference Server (could be IPv4 or IPv6), and conference server port 8886. Also please enter the maximum conference rooms and maximum participants, and click “**Apply**” button.
 
 
 
@@ -2457,7 +2480,7 @@ PortSIP UC Client app has built-in push service enabled by default in PortSIP PB
 
 Configure PortSIP PBX for Mobile PUSH Notifications
 
-1. Login to the PortSIP PBX Management console.
+1. Login to the PortSIP PBX Web Portal.
 2. Navigate to “**Advanced > Mobile PUSH > Add new APP**” for setting up a new app for receiving PUSH notifications.
 3. Check “**Enable**” to enable PUSH notification.
 4. Enter the App ID.
@@ -2542,7 +2565,7 @@ To migrate the PortSIP PBX from one machine to another:
 
 1. Backup the PBX as described in [above steps](#Backup), and download the backup file to local.
 2. In the new machine which has the PortSIP PBX installed,  copy that downloaded backup file to the **c:\ProgramData\PortSIP\backups** folder of new PBX server (The **c:\ProgramData** is hidden folder) 
-3. Sign in Web Management Console of PortSIP PBX Click menu "**Advanced > Backup**", you will see that  backup file.
+3. Sign in Web Portal of PortSIP PBX Click menu "**Advanced > Backup**", you will see that  backup file.
 4. Click the "**...**" button of this back file to expand the menu, choose "**Restore**"
 5. Once the restoration is completed, you will be redirected to the Sign-in page. Sign in again (If you fail to sign in, please wait a while as the restoration is not completed yet)
 
@@ -2560,7 +2583,7 @@ To migrate the PortSIP PBX from one machine to another:
 
    > sudo chown 888:888 /var/lib/portsip/backups/backupfile.ar
 
-4. Sign in Web Management Console of PortSIP PBX, click the menu "**Advanced > Backup**", you will see that  backup file.
+4. Sign in Web Portal of PortSIP PBX, click the menu "**Advanced > Backup**", you will see that  backup file.
 
 5. Click the "**...**" button of this back file to expand the menu, choose "**Restore**"
 
@@ -2647,7 +2670,7 @@ PortSIP PBX allows you to block certain number. All requests associated with bla
 
 To add the number into blacklist:
 
-1. Sign in the PortSIP PBX Management Console
+1. Sign in the PortSIP PBX Web Portal
 2. Click on “**Blacklist and Codes > Number Blacklist**” from the left menu
 3. Click “**Add**” to add a new entry
 4. Enter the number that you want to block and enter the description
@@ -2665,7 +2688,7 @@ Assume that you have a remote office connected to your PortSIP PBX. Your remote 
 
 ![blacklist_1](..\images\blacklist_1.png)
 
-1. Sign in the PortSIP PBX Management Console. 
+1. Sign in the PortSIP PBX Web Portal. 
 
 2. Click on “**Blacklist and Codes**” > “**IP Blacklist**”. 
 
@@ -2693,7 +2716,7 @@ You would, however, want to blacklist all the range, since you are sure that you
 
 
 
-1. Sign in the PortSIP PBX Management Console
+1. Sign in the PortSIP PBX Web Portal
 2. Click on “**Blacklist and Codes > IP Blacklist**”
 3. Click “**Add**” to add an entry
 4. In the “**IP address**” enter the first address of the network range you want to block. For this example we will enter 41.202.0.0
@@ -2711,7 +2734,7 @@ When configuring a range of IP addresses in the Blacklist, you should also ensur
 
 ## Chapter 13. Profile
 
-The admin and tenant user can manage their profile by selecting the “**Profile**” menu from the PortSIP PBX Management Console.
+The admin and tenant user can manage their profile by selecting the “**Profile**” menu from the PortSIP PBX Web Portal.
 
 
 
@@ -2724,8 +2747,8 @@ Username: The username for the admin or tenant user.
 
 #### General Information
 
-+ **Username**: You can change the username (used for signing into web management console)
-+ **Password**: If the password was modified, the admin or tenant user must use new password to login to management console.
++ **Username**: You can change the username (used for signing into Web Portal)
++ **Password**: If the password was modified, the admin or tenant user must use new password to login to Web Portal.
 + **Domain**: The SIP domain for the tenant.
 + **Company name and company website**: The company name and company website for the admin or tenant user. The extension’s company name and company website is inherited from the admin/tenant user who created the extension.
 + **Email**: The email for admin or tenant user, which is used for receiving notification from PBX.
@@ -2756,7 +2779,7 @@ This section will display the capability of the admin/tenant. The tenant cannot 
 + **Enable extension video recording**: If selected, the extension video calls will be recorded as AVI video file
 + **Record the call as dual tracks:** If selected, the PBX will record the caller and callee voice into dual tracks in the audio file, one track store the caller voice, another track store the calee ovice.
 + **Extension is not allowed to delete recordings**: If selected, the extension cannot delete the recording files
-+ **Allow concurrent logins**: If this option is selected, the tenant can sign in management console from multiple devices. If deselected, once tenant signs in, the login in another PC/mobile phone will be invalid
++ **Allow concurrent logins**: If this option is selected, the tenant can sign in Web Portal from multiple devices. If deselected, once tenant signs in, the login in another PC/mobile phone will be invalid
 + **Allow display extension password in local**: If selected, when editing extension in the "**Call Manager > Extension > General**", the extension password will be displayed
 + **Allow extension to create temporary meeting**: If selected, the extensions of this tenant will be able to create temporary meetings via REST API
 
@@ -2821,7 +2844,7 @@ You also need to select SSL or TLS security protocol if you’re using Google SM
 
 #### Event URL
 
-By setting up Event URL, PortSIP PBX is able to send CDR (Call Detail Report) and Extension activity details to 3rd server by of HTTP request in POST method(Web Hook). The CDR is formatted in JSON. To setup, please go to “**Profile > Event URL**” of Management Console.
+By setting up Event URL, PortSIP PBX is able to send CDR (Call Detail Report) and Extension activity details to 3rd server by of HTTP request in POST method(Web Hook). The CDR is formatted in JSON. To setup, please go to “**Profile > Event URL**” of Web Portal.
 
 
 
@@ -2930,7 +2953,7 @@ Click the menu "**Profile**" and choose the "**Rebranding**" tab, in this page, 
 
 Each Tenant can customize the PBX with his own brand name, logo.
 
-If the tenant wish to display his own brand information, should open the web management console as this way:
+If the tenant wish to display his own brand information, should open the Web Portal as this way:
 
 http://192.168.0.16:8888/login?tenantname=test
 
@@ -2944,7 +2967,7 @@ PortSIP PBX offers the rich REST APIs. It allows you to implement your own web m
 
 You can access the [REST API user guide](https://www.portsip.com/portsip-pbx-rest-api-manual/) to learn more.
 
-**Note**: The PortSIP PBX Web Management Console is built based on REST APIs.
+**Note**: The PortSIP PBX Web Portal is built based on REST APIs.
 
 
 
@@ -3097,12 +3120,12 @@ This scenario requires the PBX server has a public static IP. When running the "
 
 ### 17.3 Solve the self-signed certificates warning
 
-After you completed the PBX setting up, if get the self-signed certificates warning in browser when you access PBX Web Management Console by HTTPS or access the WebRTC client, please follow up below steps to solve it.
+After you completed the PBX setting up, if get the self-signed certificates warning in browser when you access PBX Web Portal by HTTPS or access the WebRTC client, please follow up below steps to solve it.
 
 1. Purchase a Domain from the domain provider for your PBX, for example Godaddy.
 2. Add the an A record in the Domain DNS zone, resolve the Domain to your PBX IP.
 3. Purchase a certificate from the trust certificate provider, for example Digicert, Thawte, GeoTrust, usually you will have two files, one is certificate, another one is private key. **Note**, please check the certificates for Nginx.
-4. Sign in the PortSIP PBX Web Management Console.
+4. Sign in the PortSIP PBX Web Portal.
 5. Click left menu "**Home > Summary**", then click the "**Setup Wizard**", in the step 1, enter your domain for the "**Web Domain**", click **Next** button to complete the wizard.
 6. Click the left menu "**Home > Call Manager > Domain and Transport**",  if there has the TLS, WSS transport added, just delete the TLS and WSS transport.
 7. Add the WSS and TLS transport with upload the purchased certificate files.
@@ -3119,7 +3142,7 @@ $ supervisorctl start gateway
 
 
 
-After restarted,  you can sign in PortSIP PBX Management Console by URL https://yourdomain.com:8887
+After restarted,  you can sign in PortSIP PBX Web Portal by URL https://yourdomain.com:8887
 
 If you don't use trusted certificate files for the WSS transport, you will get the browser warning and blocked when you use WebRTC client.
 

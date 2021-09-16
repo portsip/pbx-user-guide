@@ -4,9 +4,9 @@
 
 # <center>PortSIP PBX 用户手册</center>
 
-版本：v12.6.1
+版本：v12.6.2
 
-日期：2021 年 7 月 8 日
+日期：2021 年 9 月 16 日
 
 
 
@@ -48,6 +48,30 @@ PortSIP® 以及与 PortSIP 产品相关的名称和标记均为博瞻信息技�
 
 
 ## 版本功能变更记录
+
+
+
+#### V12.6.2 功能变更
+
+PortSIP PBX v12.6.1 包括如下功能变动：
+
+This release includes the following changes:
+
+- 提供 PortSIP Trace Server，支持对 PortSIP PBX 进行抓包，并在 Web 界面上进行可视化排障和呼叫信令流程跟踪
+- 强制 Extension，租户以及管理员使用强密码策略
+- 当 Extension, 租户以及管理员修改自己密码的时候，必须提供原密码才能修改成功
+- 在“**QUEUE_EVENTS**” 消息主题下新增 **queue_member_state**  事件消息，当分机用户通过 REST API 或者拨号代码更改自己的队列状态时，PBX 将发送 **queue_member_state**  事件消息到 WebSocket the WebSocket Publisher 并推送给订阅者
+- 修改密码的设置移动到用户头像菜单处，修改密码时，点击右上角用户头像，选择 “**修改密码**” 菜单即可。
+- 在日志文件列表出，移除日志文件路径
+- 分机用户的 “**转发规则**”的“**例外规则**”设置处，用户可以创建路由例外规则时，可以指定通配符 \* 用以匹配所有的来电，从而实现工作时间内午休，临时外出等功能
+- 修复 CDR 事件和分机事设置中，BASIC authorization 没有生效的 bug
+- 修复两个分机将遇忙转移规则互相设置为对方的时候，有通话进来导致崩溃的 bug
+- 修复外线呼叫分机，外线 HOLD 通话， Music on Hold 没有生效的 bug
+- 将 PBX 允许的最小注册时间修改为 300 秒
+- 给 REST API： "**api/call_queues/member_state/update**" 新增一个参数 "**member_number**"，用以取代 **extension_id**，使用更方便。
+- 提升和完善 WebRTC 客户端以及 Windows 客户端 App
+
+
 
 #### V12.6.1 功能变更
 
@@ -204,7 +228,7 @@ PortSIP PBX 可以在没有域名的机器上运行，但是我们推荐使用�
 
 ### 2.1 下载 PortSIP PBX
 
-您可以从 PortSIP 官网 免费下载最新版本的 PortSIP PBX。PortSIP PBX 分为 Windows 版本 和 Linux 版本，只支持 64 位系统。
+您可以从 PortSIP 官网 免费下载最新版本的 [PortSIP PBX](http://www.portsip.cn/download-portsip-pbx/)。PortSIP PBX 分为 Windows 版本 和 Linux 版本，只支持 64 位系统。
 
 免费版的 PortSIP PBX 最大支持 3 路并发通话和最大10个分机, 无功能限制。如果您需要更多的并发通话数量和注册支持，请参阅 [11.10 许可证](#11.10 许可证) 一节。
 
@@ -255,9 +279,9 @@ PortSIP PBX 可以在没有域名的机器上运行，但是我们推荐使用�
 
 
 
-#### **在 Linux 上全新安装 PortSIP PBX v12.6.1**
+#### **在 Linux 上全新安装 PortSIP PBX v12.6.2**
 
-如需全新安装 PortSIP PBX for Linux，请参考：[安装 PortSIP PBX for Linux](http://www.portsip.cn/knowledge-base/setup-portsip-pbx-v12-linux/)
+如需全新安装 PortSIP PBX for Linux，请参考：[安装 PortSIP PBX for Linux](https://support.portsip.com/knowledge-base/setup-portsip-pbx-linux)
 
 
 
@@ -307,7 +331,7 @@ PortSIP PBX 可以在没有域名的机器上运行，但是我们推荐使用�
 
 
 
-#### **在 Windows 主机上全新安装 PortSIP PBX v12.6.1**
+#### **在 Windows 主机上全新安装 PortSIP PBX v12.6.2*
 
 要安装 PortSIP PBX，您只需要双击安装程序文件，然后根据安装程序的提示进行安装。 
 
@@ -343,21 +367,21 @@ PortSIP PBX 的系统服务将在安装成功完成后自动运行，以及在�
 
 
 
-### 2.4 准备从 v12.0/v12.1 升级到 v12.6.1
+### 2.4 准备从 v12.0/v12.1 升级到 v12.6.2
 
-如果您安装的是 Linux 版本的 PortSIP PBX，请忽略本小节。
+如果您安装的是 Linux 版本的 PortSIP PBX，请忽略本 **2.4 小节**。
 
 
 
 **从 v12.0/v12.1.0 升级到 v12.3.2**
 
-如果您当前安装的 PortSIP PBX 版本是 v12.0/v12.1.0，那么不能直接升级到 v12.6.1，必须先升级到 v12.3.2版本。请按照  [从 PortSIP PBX v12.0 / v12.1 升级到 v12.3.2](http://www.portsip.cn/knowledge-base/upgrade-portsip-pbx-12-to-13-windows/) 进行升级。
+如果您当前安装的 PortSIP PBX 版本是 v12.0/v12.1.0，那么不能直接升级到 v12.6.2，必须先升级到 v12.3.2版本。请按照  [从 PortSIP PBX v12.0 / v12.1 升级到 v12.3.2](http://www.portsip.cn/knowledge-base/upgrade-portsip-pbx-12-to-13-windows/) 进行升级。
 
 
 
 **从 v12.2.x/v12.3.0/v12.3.1 升级到 v12.3.2**
 
-如果您当前安装的 PortSIP PBX 版本是 v12.2.x/v12.3.0/v12.3.1，那么不能直接升级到 v12.6.1，必须先升级到 v12.3.2版本。请按照下述步骤进行升级。
+如果您当前安装的 PortSIP PBX 版本是 v12.2.x/v12.3.0/v12.3.1，那么不能直接升级到 v12.6.2，必须先升级到 v12.3.2版本。请按照下述步骤进行升级。
 
 1. 下载 v12.3.2 安装包[PortSIP PBX v12.3.2 Windows 安装包](http://www.portsip.cn/downloads/pbx/v12/portsip-pbx-12.3.2.796.exe) 。
 2. 双击安装包进行安装。
@@ -368,15 +392,15 @@ PortSIP PBX 的系统服务将在安装成功完成后自动运行，以及在�
 
 
 
-### 2.5 升级当前版本到 v12.6.1
+### 2.5 升级当前版本到 v12.6.2
 
 #### Windows 升级
 
 1. 进入 **c:/programdata/portsip** 目录, 删除所有以 **.bak** 结束的文件和文件夹。
 
-2. 确认您当前安装的 PortSIP PBX 已经是 **v12.3.2**或者已经升级到 **v12.3.2**，或者你当前安装的版本已经是**v12.4 或者 v12.5.x**。
+2. 确认您当前安装的 PortSIP PBX 已经是 **v12.3.2**或者已经升级到 **v12.3.2**，或者你当前安装的版本已经是**v12.4 或者 v12.5.x或者 12.6.x**。
 
-3. 下载 v12.6.1 安装包 [PortSIP PBX v12.6.1 Windows 安装包](http://www.portsip.cn/download-portsip-pbx/) 。
+3. 下载 v12.6.2 安装包 [PortSIP PBX v12.6.2 Windows 安装包](http://www.portsip.cn/download-portsip-pbx/) 。
 
 4. 双击安装包进行安装。
 
@@ -393,16 +417,32 @@ PortSIP PBX 的系统服务将在安装成功完成后自动运行，以及在�
 
 
 
+> **支持的操作系统:**
+>
+> - CentOS: 7.9
+> - Ubuntu: 18.04, 20.04
+> - Debian: 10.x
+> - Only supports 64bit OS
+>
+> 
+>
+> #### 重要提示
+>
+> 从v12.6.1 版本开始, PortSIP PBX 要求运行在上述 PBX 上，如果您之前安装的 PBX 版本低于 v12.6.1，并且想升级到最新版本，您必须先升级您的 Linux 系统到上述版本然后再升级 PortSIP PBX。
+
+
+
 **CentOS / Debian / Ubuntu:**
 
 ```shell
-$ docker stop -t 120 portsip-pbx
-$ docker rm -f portsip-pbx
-$ cd /var/lib/portsip
-$ sudo rm -rf *.bak
-$ sudo curl http://portsip.cn/downloads/portsip-pbx-sh/v12.6.x/install_pbx_docker_cn.sh|bash
-$ docker pull registry.cn-hangzhou.aliyuncs.com/portsip/pbx:12
-$ docker container run -d --name portsip-pbx --restart=always --cap-add=SYS_PTRACE --network=host -v /var/lib/portsip:/var/lib/portsip -v /etc/localtime:/etc/localtime:ro -e POSTGRES_PASSWORD="123456" -e POSTGRES_LISTEN_ADDRESSES="*" -e IP_ADDRESS="66.175.222.20" registry.cn-hangzhou.aliyuncs.com/portsip/pbx:12
+# su root
+# docker stop -t 120 portsip-pbx
+# docker rm -f portsip-pbx
+# cd /var/lib/portsip
+# sudo rm -rf *.bak
+# sudo curl https://raw.githubusercontent.com/portsip/portsip-pbx-sh/master/v12.6.x/install_pbx_docker.sh|bash
+# docker pull portsip/pbx:12
+# docker container run -d --name portsip-pbx --restart=always --cap-add=SYS_PTRACE --network=host -v /var/lib/portsip:/var/lib/portsip -v /etc/localtime:/etc/localtime:ro -e POSTGRES_PASSWORD="123456" -e POSTGRES_LISTEN_ADDRESSES="*" -e IP_ADDRESS="66.175.222.20" portsip/pbx:12
 ```
 
 
