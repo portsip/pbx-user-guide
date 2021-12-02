@@ -4,9 +4,9 @@
 
 # <center>PortSIP PBX 用户手册</center>
 
-版本：v12.6.2
+版本：v12.6.3
 
-日期：2021 年 9 月 16 日
+日期：2021 年 12 月 2 日
 
 
 
@@ -49,13 +49,43 @@ PortSIP® 以及与 PortSIP 产品相关的名称和标记均为博瞻信息技�
 
 ## 版本功能变更记录
 
+#### V12.6.3 功能变更
 
+PortSIP PBX v12.6.3 包括如下功能变动：
+
+- 不再支持 SSv2, v3, TLS 1.0, 1.1
+
+- 对于 blind transfer，CDR 和录音文件合并为一条
+
+- 对于代接正在振铃的通话，CDR 和录音文件合并为一条
+
+- 新增 "**no_external_recording**" 自定义选项，允许在通话建立在两个外部号码的时候停止录音
+
+- 新增 "**www-authentication**" 自定义选项，支持  "**www-authentication**" 认证机制
+
+- 新增功能：WebSocket Interface (WSI) 支持同一个订阅者从多个不同的终端订阅事件
+
+- 当振铃组/队列成员收到来自振铃组/队列的通话时，可以从 Remote-Party-ID 和 P-Asserted-Identity 消息头里获取到振铃组/队列的号码
+
+- 提升 HA 性能，当主节点崩溃或者断网后，通话声音不会中断
+
+- 不再在 Web 界面显示分机的 HOLD 状态
+
+- 修复安卓推送导致的崩溃 bug
+
+- 修复在 HA 部署模式下，WebRTC 客户端没有声音的 bug
+
+- 修复当被叫方反复 HOLD/HOLD 通话后，主叫方无法听到 MOH 音乐的 bug
+
+- 修复 REST API /api/comm_message/update 和 /api/comm_message/list 参数没有生效的 bug
+
+- 修复长时间运行后，PBX 停止发送邮件通知的 bug
+
+  
 
 #### V12.6.2 功能变更
 
-PortSIP PBX v12.6.1 包括如下功能变动：
-
-This release includes the following changes:
+PortSIP PBX v12.6.2 包括如下功能变动：
 
 - 提供 PortSIP Trace Server，支持对 PortSIP PBX 进行抓包，并在 Web 界面上进行可视化排障和呼叫信令流程跟踪
 - 强制 Extension，租户以及管理员使用强密码策略
@@ -253,7 +283,7 @@ PortSIP PBX 可以在没有域名的机器上运行，但是我们推荐使用�
 
 #### 重要事项
 
-从 12.6.1 开始，必须在上述 Linux 系统版本商才能成功 PortSIP PBX。如果之前安装了低于 12.6.1 版本的 PortSIP PBX，现在想升级到 12.6.1 或者之后的版本，必须先把 Linux 系统升级到上述指定的版本，然后再升级 PortSIP PBX。
+从 12.6.1 开始，必须在上述 Linux 系统版本上才能成功 安装 PortSIP PBX。如果之前安装了低于 12.6.1 版本的 PortSIP PBX，现在想升级到 12.6.1 或者之后的版本，必须先把 Linux 系统升级到上述指定的版本，然后再升级 PortSIP PBX。
 
 
 
@@ -279,7 +309,7 @@ PortSIP PBX 可以在没有域名的机器上运行，但是我们推荐使用�
 
 
 
-#### **在 Linux 上全新安装 PortSIP PBX v12.6.2**
+#### **在 Linux 上全新安装 PortSIP PBX v12.6.3**
 
 如需全新安装 PortSIP PBX for Linux，请参考：[安装 PortSIP PBX for Linux](https://support.portsip.com/knowledge-base/setup-portsip-pbx-linux)
 
@@ -331,7 +361,7 @@ PortSIP PBX 可以在没有域名的机器上运行，但是我们推荐使用�
 
 
 
-#### **在 Windows 主机上全新安装 PortSIP PBX v12.6.2*
+#### **在 Windows 主机上全新安装 PortSIP PBX v12.6.3**
 
 要安装 PortSIP PBX，您只需要双击安装程序文件，然后根据安装程序的提示进行安装。 
 
@@ -367,7 +397,7 @@ PortSIP PBX 的系统服务将在安装成功完成后自动运行，以及在�
 
 
 
-### 2.4 准备从 v12.0/v12.1 升级到 v12.6.2
+### 2.4 准备从 v12.0/v12.1 升级到 v12.6.3
 
 如果您安装的是 Linux 版本的 PortSIP PBX，请忽略本 **2.4 小节**。
 
@@ -375,13 +405,13 @@ PortSIP PBX 的系统服务将在安装成功完成后自动运行，以及在�
 
 **从 v12.0/v12.1.0 升级到 v12.3.2**
 
-如果您当前安装的 PortSIP PBX 版本是 v12.0/v12.1.0，那么不能直接升级到 v12.6.2，必须先升级到 v12.3.2版本。请按照  [从 PortSIP PBX v12.0 / v12.1 升级到 v12.3.2](http://www.portsip.cn/knowledge-base/upgrade-portsip-pbx-12-to-13-windows/) 进行升级。
+如果您当前安装的 PortSIP PBX 版本是 v12.0/v12.1.0，那么不能直接升级到 v12.6.3，必须先升级到 v12.3.2版本。请按照  [从 PortSIP PBX v12.0 / v12.1 升级到 v12.3.2](http://www.portsip.cn/knowledge-base/upgrade-portsip-pbx-12-to-13-windows/) 进行升级。
 
 
 
 **从 v12.2.x/v12.3.0/v12.3.1 升级到 v12.3.2**
 
-如果您当前安装的 PortSIP PBX 版本是 v12.2.x/v12.3.0/v12.3.1，那么不能直接升级到 v12.6.2，必须先升级到 v12.3.2版本。请按照下述步骤进行升级。
+如果您当前安装的 PortSIP PBX 版本是 v12.2.x/v12.3.0/v12.3.1，那么不能直接升级到 v12.6.3，必须先升级到 v12.3.2版本。请按照下述步骤进行升级。
 
 1. 下载 v12.3.2 安装包[PortSIP PBX v12.3.2 Windows 安装包](http://www.portsip.cn/downloads/pbx/v12/portsip-pbx-12.3.2.796.exe) 。
 2. 双击安装包进行安装。
@@ -392,7 +422,7 @@ PortSIP PBX 的系统服务将在安装成功完成后自动运行，以及在�
 
 
 
-### 2.5 升级当前版本到 v12.6.2
+### 2.5 升级当前版本到 v12.6.3
 
 #### Windows 升级
 
@@ -400,7 +430,7 @@ PortSIP PBX 的系统服务将在安装成功完成后自动运行，以及在�
 
 2. 确认您当前安装的 PortSIP PBX 已经是 **v12.3.2**或者已经升级到 **v12.3.2**，或者你当前安装的版本已经是**v12.4 或者 v12.5.x或者 12.6.x**。
 
-3. 下载 v12.6.2 安装包 [PortSIP PBX v12.6.2 Windows 安装包](http://www.portsip.cn/download-portsip-pbx/) 。
+3. 下载 v12.6.3 安装包 [PortSIP PBX v12.6.3 Windows 安装包](http://www.portsip.cn/download-portsip-pbx/) 。
 
 4. 双击安装包进行安装。
 

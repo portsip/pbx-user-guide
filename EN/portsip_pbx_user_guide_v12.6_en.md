@@ -3,9 +3,9 @@
 # <center>PortSIP PBX User Guide</center>
 
 
-Version: v12.6.2
+Version: v12.6.3
 
-Date: Sep 16, 2021
+Date: Dec 02, 2021
 
 
 
@@ -45,6 +45,24 @@ PortSIP and/or its respective suppliers make no representations about the suitab
 
 ## Summary of Changes
 
+#### Changes for Release v12.6.3
+
+This release includes the following changes:
+
+- SSv2, v3, TLS 1.0, 1.1 have been disabled
+- For the blind transfer and picked ringing call, combine the CDR and recording file into a single record
+- Add a custom option "**no external recording**" to stop call recording when a call is made between two external numbers.
+- Add a custom option called "**www-authentication**" that allows the PBX to use the www-authentication mechanism
+- The call hold status is no longer displayed on the Web Portal
+- For Android, fix the crash bug with push notifications
+- In the HA deployment, fix the bug where the WebRTC client has no voice
+- The WebSocket Interface (WSI) now allows a subscriber to subscribe from multiple locations
+- When a queue/group member receives a call from a ring group/queue, add the queue number/group number to the Remote-Party-ID and P-Asserted-Identity headers
+- Enhance High Availability, voice will no longer be interrupted if the master server is unavailable
+- Fix the but the caller will no longer hear the MOH if the callee repeats hold/unhold the call a few times
+- Fix the bug of **/api/comm_message/update** and **/api/comm_message/list** 
+- Fix the bug that for long time running, the PBX stopped to send the email notification
+
 
 
 #### Changes for Release v12.6.2
@@ -57,7 +75,7 @@ This release includes the following changes:
 - Add the **queue_member_state**  message event of topic **QUEUE_EVENTS** for the WebSocket Publisher, when an agent of the call queue changed his state to ready/not-ready by REST API     or dial code, this event will be pushed.
 - Password settings in the Web Portal have been moved to a menu that appears when you click on the avatar.
 - Remove the log file path from the log file list view
-- Allow users to set a wildcard * for the "**Exceptions**" of extension forwarding rules, allowing them to designate a break time during business hours.
+- Allow users to set a wildcard * for the "**Exceptions**" of extension forwarding rules, allowing them to designate a break time during business hours
 - Fix the BASIC authorization bug for CDR events and Extension events
 - Fix the crash bug that occurs when two extensions set forward calls to each other when one of them is busy
 - Fix the bug if caller make call to extension from PSTN, and caller hold the call, the MOH is not affected
@@ -290,7 +308,7 @@ Tasks that MUST be completed before installing PortSIP PBX:
   
   
 
-#### Installing a fresh PortSIP PBX v12.6.2 for Linux
+#### Installing a fresh PortSIP PBX v12.6.3 for Linux
 
 To install the PortSIP PBX for Linux, please refer to: [Setup PortSIP PBX for Linux](https://support.portsip.com/knowledge-base/setup-portsip-pbx-linux)
 
@@ -357,7 +375,7 @@ Tasks that MUST be completed before installing PortSIP PBX.
 
 
 
-#### Installing a fresh PortSIP PBX v12.6.2 for Windows
+#### Installing a fresh PortSIP PBX v12.6.3 for Windows
 
 To install PortSIP PBX, you only need to double-click the installer, which will guide you through the installation process.
 
@@ -391,19 +409,19 @@ You also need to open the port that you are using for adding new transport:
 
 
 
-### 2.4 Preparing for upgrading to 12.6.2 from old versions on Windows
+### 2.4 Preparing for upgrading to 12.6.3 from old versions on Windows
 
 If your installation is PortSIP PBX Linux edition, please ignore this **section 2.4.**
 
 **Upgrade from v12.0/12.1**
 
-If your current installation **is v12.0/v12.1,** you can't upgrade it to v12.6.2 directly, you have to upgrade to v12.3.2 first. Please read this link to upgrade:  [Upgrade PortSIP PBX from v12.0 / v12.1 to v12.3.2](https://www.portsip.com/knowledge-base/upgrade-portsip-pbx-12-to-13-windows/)
+If your current installation **is v12.0/v12.1,** you can't upgrade it to v12.6.3 directly, you have to upgrade to v12.3.2 first. Please read this link to upgrade:  [Upgrade PortSIP PBX from v12.0 / v12.1 to v12.3.2](https://www.portsip.com/knowledge-base/upgrade-portsip-pbx-12-to-13-windows/)
 
 
 
 **Upgrade from v12.2.x/12.3.0, 12.3.1**
 
-If your current installation **is v12.2.x or v12.3.0, v12.3.1,** you can't upgrade it to v12.6.2 directly, you have to upgrade to v12.3.2 first. Please follow up below steps to upgrade:
+If your current installation **is v12.2.x or v12.3.0, v12.3.1,** you can't upgrade it to v12.6.3 directly, you have to upgrade to v12.3.2 first. Please follow up below steps to upgrade:
 
 1. Download [PortSIP PBX v12.3.2 installer for Windows](https://www.portsip.com/downloads/pbx/v12/portsip-pbx-12.3.2.796.exe) 
 2. Double click it to install for upgrade to v12.3.2
@@ -416,8 +434,8 @@ If your current installation **is v12.2.x or v12.3.0, v12.3.1,** you can't upgra
 
 1. Go to **c:/programdata/portsip** folder, delete all ***.bak** files and folders
 2. Ensure your current installation **is v12.6.x/v12.5.x/v12.4.0/v12.3.2**
-3. Download [PortSIP PBX v12.6.2 installer for Windows](https://www.portsip.com/download-portsip-pbx/) 
-4. After downloaded the v12.6.2 installer for Windows, you only need to double-click the installer, which will guide you through the upgrade process.
+3. Download [PortSIP PBX v12.6.3 installer for Windows](https://www.portsip.com/download-portsip-pbx/) 
+4. After downloaded the v12.6.3 installer for Windows, you only need to double-click the installer, which will guide you through the upgrade process.
 
 
 
