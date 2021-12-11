@@ -59,7 +59,8 @@ This release includes the following changes:
 - The WebSocket Interface (WSI) now allows a subscriber to subscribe from multiple locations
 - When a queue/group member receives a call from a ring group/queue, add the queue number/group number to the Remote-Party-ID and P-Asserted-Identity headers
 - Enhance High Availability, voice will no longer be interrupted if the master server is unavailable
-- Fix the but the caller will no longer hear the MOH if the callee repeats hold/unhold the call a few times
+- The recording files will be deleted after 180 days by default
+- Fix the bug the caller will no longer hear the MOH if the callee repeats hold/unhold the call a few times
 - Fix the bug of **/api/comm_message/update** and **/api/comm_message/list** 
 - Fix the bug that for long time running, the PBX stopped to send the email notification
 
@@ -409,74 +410,9 @@ You also need to open the port that you are using for adding new transport:
 
 
 
-### 2.4 Preparing for upgrading to 12.6.3 from old versions on Windows
+### 2.4 Upgrade the PortSIP PBX
 
-If your installation is PortSIP PBX Linux edition, please ignore this **section 2.4.**
-
-**Upgrade from v12.0/12.1**
-
-If your current installation **is v12.0/v12.1,** you can't upgrade it to v12.6.3 directly, you have to upgrade to v12.3.2 first. Please read this link to upgrade:  [Upgrade PortSIP PBX from v12.0 / v12.1 to v12.3.2](https://www.portsip.com/knowledge-base/upgrade-portsip-pbx-12-to-13-windows/)
-
-
-
-**Upgrade from v12.2.x/12.3.0, 12.3.1**
-
-If your current installation **is v12.2.x or v12.3.0, v12.3.1,** you can't upgrade it to v12.6.3 directly, you have to upgrade to v12.3.2 first. Please follow up below steps to upgrade:
-
-1. Download [PortSIP PBX v12.3.2 installer for Windows](https://www.portsip.com/downloads/pbx/v12/portsip-pbx-12.3.2.796.exe) 
-2. Double click it to install for upgrade to v12.3.2
-
-
-
-### 2.5 Start upgrading
-
-#### **Windows**
-
-1. Go to **c:/programdata/portsip** folder, delete all ***.bak** files and folders
-2. Ensure your current installation **is v12.6.x/v12.5.x/v12.4.0/v12.3.2**
-3. Download [PortSIP PBX v12.6.3 installer for Windows](https://www.portsip.com/download-portsip-pbx/) 
-4. After downloaded the v12.6.3 installer for Windows, you only need to double-click the installer, which will guide you through the upgrade process.
-
-
-
-#### Linux
-
-Please perform below commands to upgrade.
-
-> **Note:**
->
-> + The **IP_ADDRESS** is the IP address of your PBX server. In this case it is 66.175.222.20, you will need to change it by yourself, if your server is on public internet network, this IP should be the public IP.
-> + The **POSTGRES_PASSWORD** is used to specify the PortSIP DB password. In this case we will use 123456, you can change it by yourself. 
-
-
-
-> **The OS required:**
->
-> - CentOS: 7.9
-> - Ubuntu: 18.04, 20.04
-> - Debian: 10.x
-> - Only supports 64bit OS
->
-> 
->
-> #### Important
->
-> From v12.6.1, the PortSIP PBX requires running with the above Linux OS versions. If there already installed the PortSIP PBX which less than v12.6.1, and wish to upgrade to v12.6.1 or a later version, must upgrade the Linux OS to the above version before upgrade the PortSIP PBX.
-
-
-
-**CentOS / Debian / Ubuntu:**
-
-```shell
-# su root
-# docker stop -t 120 portsip-pbx
-# docker rm -f portsip-pbx
-# cd /var/lib/portsip
-# sudo rm -rf *.bak
-# sudo curl https://raw.githubusercontent.com/portsip/portsip-pbx-sh/master/v12.6.x/install_pbx_docker.sh|bash
-# docker pull portsip/pbx:12
-# docker container run -d --name portsip-pbx --restart=always --cap-add=SYS_PTRACE --network=host -v /var/lib/portsip:/var/lib/portsip -v /etc/localtime:/etc/localtime:ro -e POSTGRES_PASSWORD="123456" -e POSTGRES_LISTEN_ADDRESSES="*" -e IP_ADDRESS="66.175.222.20" portsip/pbx:12
-```
+Please follow this link to upgrade the PortSIP PBX:  [Upgrade PortSIP PBX](https://support.portsip.com/knowledge-base/upgrade-portsip-pbx) 
 
 
 
