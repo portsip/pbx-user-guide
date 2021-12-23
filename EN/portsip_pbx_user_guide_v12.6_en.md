@@ -3,9 +3,8 @@
 # <center>PortSIP PBX User Guide</center>
 
 
-Version: v12.6.3
-
-Date: Dec 02, 2021
+Version: v12.6.4
+Date: Dec 23, 2021
 
 
 
@@ -45,13 +44,24 @@ PortSIP and/or its respective suppliers make no representations about the suitab
 
 ## Summary of Changes
 
+#### Changes for Release v12.6.4
+
+This release includes the following changes:
+
+- When the PBX detects that the WSS/TLS/TCP client connection is down, the clean the established calls
+- Fix a bug where there is no voice when a call is transferred to a mobile app that has enabled push notifications
+- Fix a bug in the BYE message where the reason header format is wrong
+
+
+
+
 #### Changes for Release v12.6.3
 
 This release includes the following changes:
 
 - SSv2, v3, TLS 1.0, 1.1 have been disabled
 - For the blind transfer and picked ringing call, combine the CDR and recording file into a single record
-- Add a custom option "**no external recording**" to stop call recording when a call is made between two external numbers.
+- Add a custom option "**no_external_recording**" to stop call recording when a call is made between two external numbers.
 - Add a custom option called "**www-authentication**" that allows the PBX to use the www-authentication mechanism
 - The call hold status is no longer displayed on the Web Portal
 - For Android, fix the crash bug with push notifications
