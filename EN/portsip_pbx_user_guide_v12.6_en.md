@@ -21,7 +21,7 @@ PortSIP®, the PortSIP logo and the names and marks associated with PortSIP prod
 
 
 #### End User License Agreement
-By installing, copying, or otherwise using this product, you acknowledge that you have read, understand and agree to be bound by the terms and conditions of the [PortSIP End User License Agreement](https://www.portsip.com/portsip-end-user-license-agreement/) for this product.
+By installing, copying, or otherwise using this product, you acknowledge that you have read, understand and agree to be bound by the terms and conditions of the [PortSIP End User License Agreement](https://support.portsip.com/license-agreement/portsip-software-end-user-license-agreement) for this product.
 
 
 
@@ -336,7 +336,7 @@ Tasks that MUST be completed before installing PortSIP PBX:
   
   
 
-#### Installing a fresh PortSIP PBX v12.6.3 for Linux
+#### Installing a fresh PortSIP PBX v12.6.5 for Linux
 
 To install the PortSIP PBX for Linux, please refer to: [Setup PortSIP PBX for Linux](https://support.portsip.com/knowledge-base/setup-portsip-pbx-linux)
 
@@ -347,7 +347,7 @@ To install the PortSIP PBX for Linux, please refer to: [Setup PortSIP PBX for Li
 After having successfully installed PortSIP PBX, the PortSIP PBX ports has been opened with Linux firewall. 
 If your server has a firewall which is blocking the ports, you must open the below ports in order to make the PortSIP PBX working properly.
 
-+ UDP ports: **45000– 65000, 25000-  34999 **. These ports are used for the RTP sessions.
++ UDP ports: **45000– 65000, 25000-  34999**. These ports are used for the RTP sessions.
 + TCP: **8899– 8900、8887-8888、8881-8885**. These ports are used for the Server control and WebRTC client.
 + UDP: **5060**. This is the default UDP transport for SIP communications (to send and receive SIP signaling).
 + TCP: **5065.** This is the default WSS transport for SIP communications in browser (to send and receive SIP signaling).
@@ -403,7 +403,7 @@ Tasks that MUST be completed before installing PortSIP PBX.
 
 
 
-#### Installing a fresh PortSIP PBX v12.6.3 for Windows
+#### Installing a fresh PortSIP PBX v12.6.5 for Windows
 
 To install PortSIP PBX, you only need to double-click the installer, which will guide you through the installation process.
 
@@ -422,7 +422,7 @@ PortSIP PBX services will automatically start after successful installation (and
 After having successfully installed PortSIP PBX, the PortSIP PBX ports has been opened with Linux firewall. 
 If your server has a firewall which is blocking the ports, you must open the below ports in order to make the PortSIP PBX working properly.
 
-+ UDP ports: **45000– 65000, 25000-  34999 **. These ports are used for the RTP sessions.
++ UDP ports: **45000– 65000, 25000-  34999**. These ports are used for the RTP sessions.
 + TCP: **8899– 8900、8887-8888、8881-8885**. These ports are used for the Server control and WebRTC client.
 + UDP: **5060**. This is the default UDP transport for SIP communications (to send and receive SIP signaling).
 + TCP: **5065.** This is the default WSS transport for SIP communications in browser (to send and receive SIP signaling).
@@ -513,7 +513,7 @@ Assuming that PortSIP PBX is deployed in LAN with Internet connection, the serve
 
 **Step 1:**
 
- If you want to use the **HTTPS** with **PortSIP PBX Web Portal** and **WebRTC client**,, you must set up the "**Web Domain**" here, and prepare a SSL certificate for this "**Web Domain**" since the browser is requires a trusted certificates otherwise it will block the **HTTPS** and **WebRTC Client**. In case we use the **mypbx.com**.  You will also need resolve your  Web domain **mypbx.com **to your PBX server IP.
+ If you want to use the **HTTPS** with **PortSIP PBX Web Portal** and **WebRTC client**,, you must set up the "**Web Domain**" here, and prepare a SSL certificate for this "**Web Domain**" since the browser is requires a trusted certificates otherwise it will block the **HTTPS** and **WebRTC Client**. In case we use the **mypbx.com**.  You will also need resolve your  Web domain **mypbx.com**to your PBX server IP.
 
 Enter the Public IPv4 if you have a **static public IP** of your LAN. Do not enter the Public IPv4 if your public IP is dynamic.
 
@@ -833,7 +833,7 @@ You can find a list of supported and legacy phones here. Additional half an hour
 
 
 
-Note**: PnP provisioning requires that the PortSIP PBX runs on the default sip port 5060 and that the IP phones resides on the same local LAN subnet as PortSIP PBX.
+**Note**: PnP provisioning requires that the PortSIP PBX runs on the default sip port 5060 and that the IP phones resides on the same local LAN subnet as PortSIP PBX.
 
 To auto provision phones using Plug and Play:
 
@@ -1167,7 +1167,7 @@ Users can be assigned permission to view details about other members in their gr
 
 #### Creating Extension Groups
 
-On the left menu of Web Portal, select "**Call Manager > Extension Groups**", and click **Add ** button. Fill in the Group Name and Group Description in Group Information, and choose the Group Member Rights to be set.
+On the left menu of Web Portal, select "**Call Manager > Extension Groups**", and click **Add** button. Fill in the Group Name and Group Description in Group Information, and choose the Group Member Rights to be set.
 
 By clicking **"Group Members"** tab, you could add existing extension users into the group. Once finished, click the **Apply** button to complete the creation of group.
 
@@ -2078,7 +2078,7 @@ Before starting to use WebRTC Client, please ensure you have been read these sec
 
   
 
-If you used a trusted SSL certificates, please click left menu node "**WebRTC **", the browser will opens WebRTC client in a new browser tab (Note: Chrome, new Edge, Firefox are recommended), you will just need to enter the extension number and password to sign in.
+If you used a trusted SSL certificates, please click left menu node "**WebRTC**", the browser will opens WebRTC client in a new browser tab (Note: Chrome, new Edge, Firefox are recommended), you will just need to enter the extension number and password to sign in.
 
  Note: Chrome, new Edge, Firefox are recommended, and up to date.
 
@@ -2092,7 +2092,7 @@ If you used a trusted SSL certificates, please click left menu node "**WebRTC **
 
 ![image-20210331113030068](..\images\webrtc_1.png)
 
-**Step 2:**  please click left menu node "**WebRTC **", the browser will opens WebRTC client in a new browser tab, the browser will raises warning again, please just click the "**Proceed to 192.168.0.16(unsafe)**". then you will just need to enter the extension number and password to sign in.
+**Step 2:**  please click left menu node "**WebRTC**", the browser will opens WebRTC client in a new browser tab, the browser will raises warning again, please just click the "**Proceed to 192.168.0.16(unsafe)**". then you will just need to enter the extension number and password to sign in.
 
 
 
@@ -2325,7 +2325,7 @@ PortSIP PBX provides the "**Exclusive Agent**" feature allow set up one or more 
 
 - **Description:** A descriptive name for the exclusive agent being entered. For example, enter “**XXX Bank**” as the description for the bank caller.
 
-- **Caller number: **enter the caller number who will be assigned the exclusive agents. Once the call comes from this caller, the call will be distributed to the exclusive agent with highest priority. 
+- **Caller number:**enter the caller number who will be assigned the exclusive agents. Once the call comes from this caller, the call will be distributed to the exclusive agent with highest priority. 
 
   You can add more caller numbers by click the "**Add**" button.
 
