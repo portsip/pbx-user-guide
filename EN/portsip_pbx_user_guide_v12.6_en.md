@@ -3,12 +3,12 @@
 # <center>PortSIP PBX User Guide</center>
 
 
-Version: v12.6.4
-Date: Dec 23, 2021
+Version: v12.6.5
+Date: April 6, 2022
 
 
 
-Copyright ©2021, PortSIP Solutions, Inc. All rights reserved. No part of this document may be reproduced, translated into another language or format, or transmitted in any form or by any means, electronic or mechanical, for any purpose, without the express written permission of PortSIP Solutions, Inc.
+Copyright ©2022, PortSIP Solutions, Inc. All rights reserved. No part of this document may be reproduced, translated into another language or format, or transmitted in any form or by any means, electronic or mechanical, for any purpose, without the express written permission of PortSIP Solutions, Inc.
 
 
 
@@ -44,11 +44,28 @@ PortSIP and/or its respective suppliers make no representations about the suitab
 
 ## Summary of Changes
 
+
+#### Changes for Release v12.6.5
+
+This release includes the following changes:
+
+- Support the tel scheme 
+- Support mobile push notifications for the intercom group 
+- Replace the host IP in the Via header with the PBX public IP when the PBX sends a request to the trunk
+- Corrected a problem that prevented mutlple Timer tokens from being added to the Supported header
+- Fix the format of the Reason header
+- If a mobile app hasn't been registered with the PBX within a week, clear the push information
+- Fix an issue in which if the client register to PBX over TCP/TLS/WSS, the call would be hung up after 9-10 minutes
+- Correct a bug if the yealink phone performs an attended transfer, the call will not be hangup
+
+
+
+
 #### Changes for Release v12.6.4
 
 This release includes the following changes:
 
-- When the PBX detects that the WSS/TLS/TCP client connection is down, the clean the established calls
+- When the PBX detects that the WSS/TLS/TCP client connection is down, then clean the established calls
 - Fix a bug where there is no voice when a call is transferred to a mobile app that has enabled push notifications
 - Fix a bug in the BYE message where the reason header format is wrong
 
