@@ -52,12 +52,12 @@ This release includes the following changes:
 - Support the tel scheme 
 - Support mobile push notifications for the intercom group 
 - Replace the host IP in the Via header with the PBX public IP when the PBX sends a request to the trunk
-- Corrected a problem that prevented mutlple Timer tokens from being added to the Supported header
-- Fix the format of the Reason header
+- Corrected a problem that prevented multiple Timer tokens from being added to the Supported header
+- Fixed the format of the Reason header
 - If a mobile app hasn't been registered with the PBX within a week, clear the push information
 - Fix an issue in which if the client register to PBX over TCP/TLS/WSS, the call would be hung up after 9-10 minutes
-- Correct a bug if the yealink phone performs an attended transfer, the call will not be hangup
-
+- Fixed a bug if the yealink phone performs an attended transfer, the call will not be hangup
+- Fix a bug when send massive mobile push notifications cause PBX crashed
 
 
 

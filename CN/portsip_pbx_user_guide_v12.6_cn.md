@@ -65,6 +65,7 @@ PortSIP® 以及与 PortSIP 产品相关的名称和标记均为博瞻信息技�
 - 修复 BUG： 当客户端以 TCP/TLS/WSS 登录到 PBX， 通话可能会在持续 9 - 10分钟后被自动挂断
 
 - 修复 BUG: 使用 YEALINK 话机执行 ATTENDED TRANSFER 之后，话机原来的通话没有被挂断
+- 修复 BUG： 在大量发送 ANROID 移动推送通知时可能导致 PBX 崩溃
 
 
 
