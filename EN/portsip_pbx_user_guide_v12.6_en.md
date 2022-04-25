@@ -3,8 +3,8 @@
 # <center>PortSIP PBX User Guide</center>
 
 
-Version: v12.6.5
-Date: April 6, 2022
+Version: v12.6.6
+Date: April 25, 2022
 
 
 
@@ -43,6 +43,19 @@ PortSIP and/or its respective suppliers make no representations about the suitab
 
 
 ## Summary of Changes
+#### Changes for Release v12.6.6
+
+This release includes the following changes:
+
+- OpenSSL was updated to 1.1.1n to avoid CVE-2022-0778
+- Resolve an issue where the SIP scanner generates ghost calls (calls that cannot be established but generate spam CDR)
+- Fix an issue that might cause the media server to crash if there were a large number of calls on the PBX for a lengthy period of time - a few weeks
+- Fix a bug that in some scenarios let the holiday appear as an office hour
+- By default, the Flow-Timer(RFC5626) header is disabled
+- Fix the CANCEL reason header format issue
+- Before the delete operation, a message box pops up for the user to confirm
+- Enhancement of performance
+
 
 
 #### Changes for Release v12.6.5
