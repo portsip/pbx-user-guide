@@ -4,9 +4,9 @@
 
 # <center>PortSIP PBX 用户手册</center>
 
-版本：v12.7.0
+版本：v12.7.1
 
-日期：2022 年 6 月 1 日
+日期：2022 年 6 月 16 日
 
 
 
@@ -48,6 +48,11 @@ PortSIP® 以及与 PortSIP 产品相关的名称和标记均为博瞻信息技�
 
 
 ## 版本功能变更记录
+
+#### V12.7.1 功能变更
+
+- 允许 extension 访问所有的联系人
+- 其他性能优化
 
 #### V12.7.0 功能变更
 
@@ -362,7 +367,7 @@ PortSIP PBX 可以在没有域名的机器上运行，但是我们推荐使用�
 
 
 
-#### **在 Linux 上全新安装 PortSIP PBX v12.6.5**
+#### **在 Linux 上全新安装 PortSIP PBX v12.x**
 
 如需全新安装 PortSIP PBX for Linux，请参考：[安装 PortSIP PBX for Linux](https://support.portsip.com/knowledge-base/setup-portsip-pbx-linux)
 
@@ -414,7 +419,7 @@ PortSIP PBX 可以在没有域名的机器上运行，但是我们推荐使用�
 
 
 
-#### **在 Windows 主机上全新安装 PortSIP PBX v12.6.5**
+#### **在 Windows 主机上全新安装 PortSIP PBX v12.x**
 
 要安装 PortSIP PBX，您只需要双击安装程序文件，然后根据安装程序的提示进行安装。 
 
@@ -450,18 +455,16 @@ PortSIP PBX 的系统服务将在安装成功完成后自动运行，以及在�
 
 
 
-### 2.4 准备从 v12.6.3/v12..6.4 升级到 v12.6.5
+### 2.4 准备升级到 v12.x 最新版本
 
 
 #### Windows 升级
 
-1. 进入 **c:/programdata/portsip** 目录, 删除所有以 **.bak** 结束的文件和文件夹。
+1.确认您当前安装的 PortSIP PBX 已经是 **v12.6.4或者更高版本**
 
-2. 确认您当前安装的 PortSIP PBX 已经是 **v12.6.3**或者 **v12.6.4**
+1. 下载最新安装包 [PortSIP PBX v12.x Windows 安装包](http://www.portsip.cn/download-portsip-pbx/) 。
 
-3. 下载 v12.6.5 安装包 [PortSIP PBX v12.6.5 Windows 安装包](http://www.portsip.cn/download-portsip-pbx/) 。
-
-4. 双击安装包进行安装。
+2. 双击安装包进行安装。
 
    
 
@@ -498,10 +501,9 @@ PortSIP PBX 的系统服务将在安装成功完成后自动运行，以及在�
 # docker stop -t 120 portsip-pbx
 # docker rm -f portsip-pbx
 # cd /var/lib/portsip
-# sudo rm -rf *.bak
-# sudo curl https://raw.githubusercontent.com/portsip/portsip-pbx-sh/master/v12.6.x/install_pbx_docker.sh|bash
-# docker pull portsip/pbx:12
-# docker container run -d --name portsip-pbx --restart=always --cap-add=SYS_PTRACE --network=host -v /var/lib/portsip:/var/lib/portsip -v /etc/localtime:/etc/localtime:ro -e POSTGRES_PASSWORD="123456" -e POSTGRES_LISTEN_ADDRESSES="*" -e IP_ADDRESS="66.175.222.20" portsip/pbx:12
+# sudo curl http://portsip.cn/downloads/portsip-pbx-sh/v12.6.x/install_pbx_docker_cn.sh|bash
+# docker pull hangzhou.aliyuncs.com/portsip/pbx:12
+# docker container run -d --name portsip-pbx --restart=always --cap-add=SYS_PTRACE --network=host -v /var/lib/portsip:/var/lib/portsip -v /etc/localtime:/etc/localtime:ro -e POSTGRES_PASSWORD="123456" -e POSTGRES_LISTEN_ADDRESSES="*" -e IP_ADDRESS="66.175.222.20" hangzhou.aliyuncs.com/portsip/pbx:12
 ```
 
 

@@ -3,8 +3,8 @@
 # <center>PortSIP PBX User Guide</center>
 
 
-Version: v12.7.0
-Date: June 1, 2022
+Version: v12.7.1
+Date: June 16, 2022
 
 
 
@@ -43,6 +43,13 @@ PortSIP and/or its respective suppliers make no representations about the suitab
 
 
 ## Summary of Changes
+
+#### Changes for Release v12.7.1
+
+The following changes are included in this release:
+
+- Allows any extension obtain the contacts from PBX
+- Improvements in performance
 
 #### Changes for Release v12.7.0
 
@@ -287,8 +294,10 @@ The FQDN you are using must be able to be resolved correctly into the server wit
 
 ### 1.3 Getting Help and Support Resources
 
-You can find the guide, manual, video tutorials at the [PortSIP Knowledge Base](https://www.portsip.com/knowledge-base/), or send email to support@portsip.com to obtain the support.
-
+[Official PortSIP Support Community](https://forum.portsip.com/)
+[PortSIP Knowledge Base](https://www.portsip.com/knowledge-base/)
+[Submit a request](https://portsip.zendesk.com/hc/en-us/requests/new)
+[Email support](mailto:support@portsip.com)
 
 
 
@@ -361,7 +370,7 @@ Tasks that MUST be completed before installing PortSIP PBX:
   
   
 
-#### Installing a fresh PortSIP PBX v12.6.5 for Linux
+#### Installing a fresh PortSIP PBX v12.x for Linux
 
 To install the PortSIP PBX for Linux, please refer to: [Setup PortSIP PBX for Linux](https://support.portsip.com/knowledge-base/setup-portsip-pbx-linux)
 
@@ -428,7 +437,7 @@ Tasks that MUST be completed before installing PortSIP PBX.
 
 
 
-#### Installing a fresh PortSIP PBX v12.6.5 for Windows
+#### Installing a fresh PortSIP PBX v12.x for Windows
 
 To install PortSIP PBX, you only need to double-click the installer, which will guide you through the installation process.
 
