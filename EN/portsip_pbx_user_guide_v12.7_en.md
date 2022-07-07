@@ -356,12 +356,12 @@ Tasks that MUST be completed before installing PortSIP PBX:
 
 + Below ports must be permitted by your firewall.
   
-  UDP: 45000– 65000, 25000-  34999
+  UDP: 45000– 65000, 25000-  35000
   TCP: 8899– 8900、8887-8888、8881-8885
   
 + Make sure that below ports have not been used by other programs:
 
-  UDP: 45000– 65000, 25000-  34999
+  UDP: 45000– 65000, 25000-  35000
   TCP: 8899– 8900、8887-8888、8881-8885
 
   
@@ -381,7 +381,7 @@ To install the PortSIP PBX for Linux, please refer to: [Setup PortSIP PBX for Li
 After having successfully installed PortSIP PBX, the PortSIP PBX ports has been opened with Linux firewall. 
 If your server has a firewall which is blocking the ports, you must open the below ports in order to make the PortSIP PBX working properly.
 
-+ UDP ports: **45000– 65000, 25000-  34999**. These ports are used for the RTP sessions.
++ UDP ports: **45000– 65000, 25000-  35000**. These ports are used for the RTP sessions.
 + TCP: **8899– 8900、8887-8888、8881-8885**. These ports are used for the Server control and WebRTC client.
 + UDP: **5060**. This is the default UDP transport for SIP communications (to send and receive SIP signaling).
 + TCP: **5065.** This is the default WSS transport for SIP communications in browser (to send and receive SIP signaling).
@@ -423,12 +423,12 @@ Tasks that MUST be completed before installing PortSIP PBX.
 
 + Below ports must be permitted by your firewall:
   
-  UDP: 45000– 65000, 25000-  34999
+  UDP: 45000– 65000, 25000-  35000
   TCP: 8899– 8900、8887-8888、8881-8885
   
 + Make sure that below ports have not been used by other programs:
   
-  UDP: 45000– 65000, 25000-  34999
+  UDP: 45000– 65000, 25000-  35000
   TCP: 8899– 8900、8887-8888、8881-8885
   
 + Ensure your Windows Firewall is enabled
@@ -456,7 +456,7 @@ PortSIP PBX services will automatically start after successful installation (and
 After having successfully installed PortSIP PBX, the PortSIP PBX ports has been opened with Linux firewall. 
 If your server has a firewall which is blocking the ports, you must open the below ports in order to make the PortSIP PBX working properly.
 
-+ UDP ports: **45000– 65000, 25000-  34999**. These ports are used for the RTP sessions.
++ UDP ports: **45000– 65000, 25000-  35000**. These ports are used for the RTP sessions.
 + TCP: **8899– 8900、8887-8888、8881-8885**. These ports are used for the Server control and WebRTC client.
 + UDP: **5060**. This is the default UDP transport for SIP communications (to send and receive SIP signaling).
 + TCP: **5065.** This is the default WSS transport for SIP communications in browser (to send and receive SIP signaling).
