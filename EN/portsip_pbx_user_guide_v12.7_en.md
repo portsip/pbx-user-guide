@@ -3,8 +3,8 @@
 # <center>PortSIP PBX User Guide</center>
 
 
-Version: v12.7.1
-Date: June 16, 2022
+Version: v12.7.2
+Date: July 19, 2022
 
 
 
@@ -43,6 +43,13 @@ PortSIP and/or its respective suppliers make no representations about the suitab
 
 
 ## Summary of Changes
+
+#### Changes for Release v12.7.2
+
+The following changes are included in this release:
+
+- Fix a potential crash bug if the HA is enabled
+- Improvements in performance
 
 #### Changes for Release v12.7.1
 
