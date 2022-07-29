@@ -2575,56 +2575,24 @@ PortSIP PBX has provided backup and restore feature to backup system settings an
 #### Backup
 
 To backup the PBX, please:
-1. Go to “**Advanced > Backup**” menu, and click “**Backup**” button on top of the page.
-2. Enter the filename for the backup in “**Backup File Name**”, and choose the files to be included in the backup.
-3. Click “**Apply**” to commit the backup.
-4. It will take a while to complete the backup. Once completed, please refresh the page to view the backup file. User now may click to select one item of the list and click “**...**” icon button to popups the menu and choose "**download**" to download it to local, or click “**Restore**” button to restore PBX from backup file.
+1. Windows: copy the `C:\ProgramData\PortSIP` folder to backup it
+2. Linux: copy the `/var/lib/portsip` folder to backup it
 
 
 
 #### Migrate PBX to another Machine on Windows
 To migrate the PortSIP PBX from one machine to another:
 
-1. Backup the PBX as described in [above steps](#Backup), and download the backup file to local.
-2. In the new machine which has the PortSIP PBX installed,  copy that downloaded backup file to the **c:\ProgramData\PortSIP\backups** folder of new PBX server (The **c:\ProgramData** is hidden folder) 
-3. Sign in Web Portal of PortSIP PBX Click menu "**Advanced > Backup**", you will see that  backup file.
-4. Click the "**...**" button of this back file to expand the menu, choose "**Restore**"
-5. Once the restoration is completed, you will be redirected to the Sign-in page. Sign in again (If you fail to sign in, please wait a while as the restoration is not completed yet)
-
-
+1. Backup the PBX as described in [above steps](#Backup), and download the backup folder to local.
+2. In the new machine which has the PortSIP PBX installed,  copy that downloaded backup folder to the `c:\ProgramData\PortSIP\` folder of new PBX server (The `c:\ProgramData` is hidden folder) to overwrite it.
 
 #### Migrate PBX to another Machine on Linux
 
 To migrate the PortSIP PBX from one machine to another:
 
-1. Backup the PBX as described in [above steps](#Backup), and download the backup file to local.
+1. Backup the PBX as described in [above steps](#Backup), and download the backup folder to local.
 
-2. In the new machine which has the PortSIP PBX installed,  copy that downloaded backup file to the **/var/lib/portsip/backups** folder of new PBX server 
-
-3. Perform this command to change the owner of the backup file:
-
-   > sudo chown 888:888 /var/lib/portsip/backups/backupfile.ar
-
-4. Sign in Web Portal of PortSIP PBX, click the menu "**Advanced > Backup**", you will see that  backup file.
-
-5. Click the "**...**" button of this back file to expand the menu, choose "**Restore**"
-
-6. Once the restoration is completed, you will be redirected to the Sign-in page. Sign in again (If you fail to sign in, please wait a while as the restoration is not completed yet)
-
-
-
-
-
-#### Backup Schedule
-
-In addition to common single backup, user may also setup “**Backup Schedule**” to backup PBX settings and data regularly.
-
-To do this, please go to “**Advanced > Backup**” menu, click “**Backup Schedule**” button on top of the page, and fill in below fields if necessary:
-
-+ **Enable backup schedule**: Please check this selection to enable “**Backup Schedule**”.
-+ **Choose items to be included in backup**: This sections lists all the files available for backup, including a few items which can be backup. A selected item indicates the file type to be included in backup.
-+ **Backup timing**: Backup could be scheduled to execute daily or weekly by selecting the list time. Once selected, user may specify the hour for stating backup. For weekly backup, the weekday for running backup is also necessary.
-
+2. In the new machine which has the PortSIP PBX installed,  copy that downloaded backup folder to the `/var/lib/portsip` folder of new PBX server to overwrite it.
 
 
 ### 11.10 License
