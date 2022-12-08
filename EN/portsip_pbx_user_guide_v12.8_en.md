@@ -3,7 +3,7 @@
 # <center>PortSIP PBX User Guide</center>
 
 
-Version: v12.8.0
+Version: v12.8.1
 Date: Dec 5, 2022
 
 
@@ -43,6 +43,14 @@ PortSIP and/or its respective suppliers make no representations about the suitab
 
 
 ## Summary of Changes
+
+#### Changes for Release v12.8.1
+
+The following changes are included in this release:
+
+- Fix the issue where there is no ringback tone during IVR forward calls.
+- Fix the issue if there are many holidays, none of them are affected.
+- Fix the issue If the holiday falls on a different year.
 
 #### Changes for Release v12.8.0
 
