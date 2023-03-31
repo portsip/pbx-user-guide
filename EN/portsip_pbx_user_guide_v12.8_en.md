@@ -3,12 +3,12 @@
 # <center>PortSIP PBX User Guide</center>
 
 
-Version: v12.8.2
-Date: Dec 9, 2022
+Version: v12.8.3
+Date: March 8, 2023
 
 
 
-Copyright ©2022, PortSIP Solutions, Inc. All rights reserved. No part of this document may be reproduced, translated into another language or format, or transmitted in any form or by any means, electronic or mechanical, for any purpose, without the express written permission of PortSIP Solutions, Inc.
+Copyright ©2023, PortSIP Solutions, Inc. All rights reserved. No part of this document may be reproduced, translated into another language or format, or transmitted in any form or by any means, electronic or mechanical, for any purpose, without the express written permission of PortSIP Solutions, Inc.
 
 
 
@@ -44,6 +44,18 @@ PortSIP and/or its respective suppliers make no representations about the suitab
 
 ## Summary of Changes
 
+#### Changes for Release v12.8.3
+
+The following changes are included in this release:
+
+- To disable the PBX from sending a welcome email, set the extension custom options to { "disable_welcome_email" : true}.
+- The "extension_presence" event has been added for when an extension changes its - presence status.
+- The "cdr_id" field has been added to the CDR event.
+- Fixed an issue where the CDR was incorrect if the caller or callee registered to the PBX from multiple devices and launched a call via REST API.
+- Fixed an issue where intercom/paging calls would automatically hang up after 60 seconds.
+- Fixed an issue where an agent who signed out of the PBX and then signed back in would have a “Ready” status but could not receive distributed calls.
+
+
 #### Changes for Release v12.8.2
 
 The following changes are included in this release:
@@ -51,7 +63,7 @@ The following changes are included in this release:
 - Fix the RTP packet issue with the marker bit flag that is incompatible with some trunks.
 - Fix the issue where there is no ringback tone during IVR forward calls.
 - Fix the issue if there are many holidays, none of them are affected.
-- Fix the issue If the holiday falls on a different year.
+- Fix the issue if the holiday falls on a different year.
 
 #### Changes for Release v12.8.0
 
